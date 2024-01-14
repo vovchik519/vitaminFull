@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 const YandexMap = ({ onLocationSelect }) => {
@@ -9,6 +9,16 @@ const YandexMap = ({ onLocationSelect }) => {
         setSelectedLocation(coordinates);
         onLocationSelect(coordinates);
     };
+    const [height, setHeight] = useState(384)
+    useEffect(() => {
+        setTimeout(() => {
+            if (window.innerWidth < 480 && window.innerHeight < 820) {
+                setHeight(200)
+            } else {
+                setHeight(384)
+            }
+        }, 0)
+    }, [])
 
     return (
         <YMaps>
@@ -18,7 +28,7 @@ const YandexMap = ({ onLocationSelect }) => {
                     zoom: 9,
                 }}
                 width="100%"
-                height="400px"
+                height={height}
                 onClick={handleMapClick}
             >
                 {selectedLocation && <Placemark geometry={selectedLocation} />}

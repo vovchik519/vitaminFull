@@ -91,6 +91,10 @@
         object-fit: contain;
         border-radius: 50%;
     }
+    a,p{
+        display: flex;
+        align-items: center;
+    }
 }
 .logo {
     display: flex;

@@ -97,7 +97,7 @@ const Shop = () => {
                         ))}
                     </section>
                     <section>
-                        <ProductList product={productList.slice(0,6)} />
+                        <ProductList product={productList} />
                     </section>
                 </div>
             </main>
