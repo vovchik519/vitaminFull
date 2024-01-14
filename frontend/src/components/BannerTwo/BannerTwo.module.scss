@@ -1,0 +1,75 @@
+.wrapper {
+    position: relative;
+    margin-top: clamp(60px, calc(6.25rem + ((1vw - 10.24px) * 6.0241)), 100px);
+    padding: clamp(40px, calc(4.6875rem + ((1vw - 10.24px) * 5.2711)), 75px)
+        calc(clamp(200px, calc(18.375rem + ((1vw - 14.4px) * 13.9881)), 294px) + clamp(28px, calc(3.75rem + ((1vw - 14.4px) * 4.7619)), 60px))
+        clamp(60px, calc(6.25rem + ((1vw - 10.24px) * 6.0241)), 100px)
+        calc(clamp(180px, calc(16.625rem + ((1vw - 14.4px) * 12.7976)), 266px) + clamp(28px, calc(3.75rem + ((1vw - 14.4px) * 4.7619)), 60px));
+    background-color: #12486b;
+    color: white;
+}
+.wrapper::before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: clamp(28px, calc(3.75rem + ((1vw - 14.4px) * 4.7619)), 60px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("/images/bannerTwo/1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    width: clamp(200px, calc(18.375rem + ((1vw - 14.4px) * 13.9881)), 294px);
+    height: clamp(240px, calc(24.25rem + ((1vw - 14.4px) * 22.0238)), 388px);
+}
+.wrapper::after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: clamp(28px, calc(3.75rem + ((1vw - 14.4px) * 4.7619)), 60px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url("/images/bannerTwo/2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    width: clamp(180px, calc(16.625rem + ((1vw - 14.4px) * 12.7976)), 266px);
+    height: clamp(340px, calc(24.375rem + ((1vw - 14.4px) * 7.4405)), 390px);
+}
+.wrap {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    h2 {
+        color: white;
+        max-width: 70ch;
+        width: 100%;
+        padding: 0 10px;
+        margin-top: clamp(
+            20px,
+            calc(1.75rem + ((1vw - 14.4px) * 0.7407)),
+            28px
+        );
+        span {
+            color: inherit;
+        }
+    }
+    p {
+        font-size: clamp(14px, calc(1.25rem + ((1vw - 14.4px) * 1.4423)), 20px);
+        font-weight: 300;
+        line-height: 150%;
+        margin-top: clamp(18px, calc(1.5rem + ((1vw - 14.4px) * 0.5556)), 24px);
+        max-width: 45ch;
+        width: 100%;
+    }
+}
+@media (max-width: 1024px) {
+    .wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .wrapper::before,
+    .wrapper::after {
+        display: none;
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_poem_blocks",
+  "info": {
+    "displayName": "PoemBlock"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "poemLine": {
+      "type": "component",
+      "repeatable": true,
+      "required": true,
+      "component": "components.multi-paragraph"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "components.button"
+    }
+  }
+}

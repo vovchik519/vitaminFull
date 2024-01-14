@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_sections_blox_image_ones",
+  "info": {
+    "displayName": "blockImageOne",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "infoTop": {
+      "type": "component",
+      "repeatable": true,
+      "required": false,
+      "component": "components.multi-paragraph"
+    },
+    "images": {
+      "displayName": "ImageFour",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.image-four",
+      "required": true
+    },
+    "infoBottom": {
+      "type": "component",
+      "repeatable": true,
+      "required": false,
+      "component": "components.multi-paragraph"
+    }
+  }
+}

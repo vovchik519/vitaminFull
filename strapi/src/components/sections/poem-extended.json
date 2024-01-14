@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_poem_extendeds",
+  "info": {
+    "displayName": "PoemExtended"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "titleTwo": {
+      "type": "string"
+    },
+    "poemItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph",
+      "required": true
+    }
+  }
+}

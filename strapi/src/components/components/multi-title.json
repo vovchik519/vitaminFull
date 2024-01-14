@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_components_multi_titles",
+  "info": {
+    "displayName": "multiTitle",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

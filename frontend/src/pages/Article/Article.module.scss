@@ -1,0 +1,134 @@
+.wrapper {
+    h1 {
+        max-width: 23ch;
+    }
+}
+.block:first-child {
+    padding-top: 0;
+}
+.block {
+    padding: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
+        clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
+}
+.blockWrap {
+    display: flex;
+    gap: clamp(28px, calc(4.875rem + ((1vw - 14.4px) * 7.4405)), 78px);
+    .image {
+        img {
+            width: 100%;
+            height: clamp(
+                340px,
+                calc(33.75rem + ((1vw - 14.4px) * 29.7619)),
+                540px
+            );
+            object-fit: cover;
+            border-radius: 15px;
+        }
+    }
+    .info {
+        flex: 1 1 547px;
+    }
+}
+.block:nth-child(odd) {
+    background-color: white;
+    .blockWrap {
+        flex-direction: row;
+        .image {
+            flex: 1 1 655px;
+        }
+    }
+}
+.block:nth-child(even) {
+    background-color: #fbffe7;
+    .blockWrap {
+        flex-direction: row-reverse;
+        .image {
+            flex: 1 1 625px;
+        }
+    }
+}
+.info {
+    a {
+        display: inline-block;
+        font-family: PT Root UI;
+        font-size: clamp(16px, calc(1.25rem + ((1vw - 14.4px) * 0.3704)), 20px);
+        font-weight: 300;
+        line-height: normal;
+        letter-spacing: 1px;
+        border-bottom: 1px solid black;
+        text-transform: uppercase;
+        margin-top: clamp(
+            24px,
+            calc(3.4375rem + ((1vw - 14.4px) * 2.8704)),
+            55px
+        );
+    }
+}
+.infoWrap {
+    -webkit-line-clamp: 11;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    h2 {
+        font-family: Amatic SC;
+        font-size: clamp(36px, calc(4rem + ((1vw - 14.4px) * 2.5926)), 64px);
+        font-weight: 700;
+        line-height: 115%;
+        text-transform: uppercase;
+        margin-bottom: clamp(
+            18px,
+            calc(2rem + ((1vw - 14.4px) * 1.2963)),
+            32px
+        );
+    }
+}
+.paragraph {
+    margin-bottom: clamp(14px, calc(1.5rem + ((1vw - 14.4px) * 0.9259)), 24px);
+    h3 {
+        font-family: PT Root UI;
+        font-weight: 500;
+        line-height: 150%;
+        margin-bottom: clamp(
+            18px,
+            calc(2rem + ((1vw - 14.4px) * 1.2963)),
+            32px
+        );
+    }
+    p {
+        line-height: 150%;
+    }
+}
+@media (max-width: 1024px) {
+    .infoWrap {
+        -webkit-line-clamp: 9;
+    }
+}
+
+@media (max-width: 768px) {
+    .blockWrap {
+        .info {
+            flex: none;
+        }
+        .image {
+            img {
+                height: auto;
+            }
+        }
+    }
+    .block:nth-child(odd) {
+        .blockWrap {
+            flex-direction: column;
+            .image {
+                flex: none;
+            }
+        }
+    }
+    .block:nth-child(even) {
+        .blockWrap {
+            flex-direction: column;
+            .image {
+                flex: none;
+            }
+        }
+    }
+}

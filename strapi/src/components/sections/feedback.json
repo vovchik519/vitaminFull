@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_sections_feedbacks",
+  "info": {
+    "displayName": "Feedback",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "input": {
+      "displayName": "entryField",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.entry-field",
+      "required": true
+    },
+    "button": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

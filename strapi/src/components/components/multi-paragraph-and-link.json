@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_components_multi_paragraph_and_links",
+  "info": {
+    "displayName": "MultiParagraphAndLink",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "textStart": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "textEnd": {
+      "type": "string"
+    },
+    "removeIndentation": {
+      "type": "boolean"
+    }
+  }
+}

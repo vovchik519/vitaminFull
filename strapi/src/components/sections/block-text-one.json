@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_sections_block_text_ones",
+  "info": {
+    "displayName": "BlockTextOne",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph",
+      "required": true
+    },
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.title-colorful",
+      "required": true
+    }
+  }
+}

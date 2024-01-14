@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_sections_block_text_twos",
+  "info": {
+    "displayName": "BlockTextTwo",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "displayName": "MultiParagraph",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph",
+      "required": true
+    },
+    "button": {
+      "displayName": "Button",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button",
+      "required": false
+    }
+  }
+}

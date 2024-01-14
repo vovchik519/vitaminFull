@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "poem_pages",
+  "info": {
+    "singularName": "poem-page",
+    "pluralName": "poem-pages",
+    "displayName": "PoemPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "poemsList": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.poems-list",
+      "required": true
+    }
+  }
+}

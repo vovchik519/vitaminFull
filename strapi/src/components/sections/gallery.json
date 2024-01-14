@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_galleries",
+  "info": {
+    "displayName": "Gallery",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "gallery": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gallery.gallery"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button",
+      "required": true
+    }
+  }
+}

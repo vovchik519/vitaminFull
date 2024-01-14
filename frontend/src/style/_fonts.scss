@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "Amatic SC";
+    src: local("Amatic SC Regular"), local("AmaticSC-Regular"),
+        url("/fonts/Amaticscregular.woff2") format("woff2"),
+        url("/fonts/Amaticscregular.woff") format("woff"),
+        url("/fonts/Amaticscregular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Amatic SC";
+    src: local("Amatic SC Bold"), local("AmaticSC-Bold"),
+        url("/fonts/Amaticscbold.woff2") format("woff2"),
+        url("/fonts/Amaticscbold.woff") format("woff"),
+        url("/fonts/Amaticscbold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "PT Root UI";
+    src: url("/fonts/PTRootUI-Light.woff2") format("woff2"),
+        url("/fonts/PTRootUI-Light.woff") format("woff")
+        url("/fonts/PTRootUI-Light.ttf") format("ttf");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "PT Root UI";
+    src: url("/fonts/PTRootUI-Regular.woff2") format("woff2"),
+        url("/fonts/PTRootUI-Regular.woff") format("woff")
+        url("/fonts/PTRootUI-Regular.ttf") format("ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "PT Root UI";
+    src: url("/fonts/PTRootUI-Bold.woff2") format("woff2"),
+        url("/fonts/PTRootUI-Bold.woff") format("woff")
+        url("/fonts/PTRootUI-Bold.ttf") format("ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Kobzar KS";
+    src: local("Kobzar KS"), local("KobzarKS"),
+        url("/fonts/kobzarks.woff2") format("woff2"),
+        url("/fonts/kobzarks.woff") format("woff"),
+        url("/fonts/kobzarks.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_poems_lists",
+  "info": {
+    "displayName": "PoemsList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "supText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph"
+    },
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "subText": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph"
+    },
+    "poems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::poem.poem"
+    }
+  }
+}

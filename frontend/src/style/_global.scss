@@ -1,0 +1,98 @@
+.container {
+    max-width: 1440px;
+    padding: 0 clamp(20px, calc(5rem + ((1vw - 14.4px) * 5.5556)), 80px);
+    width: 100%;
+    margin: 0 auto;
+}
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    svg {
+        fill: inherit;
+        stroke: inherit;
+    }
+}
+h1,
+h2 {
+    span {
+        color: #12486b;
+    }
+}
+h2 {
+    font-size: clamp(28px, calc(2.5rem + ((1vw - 14.4px) * 1.1111)), 40px);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 115%;
+    text-transform: uppercase;
+}
+.hidden{
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+.indent {
+    margin-top: clamp(14px, calc(1.5rem + ((1vw - 14.4px) * 0.9259)), 24px);
+}
+.paginationWrapper {
+    width: 100%;
+    margin-top: clamp(24px, calc(3.4375rem + ((1vw - 14.4px) * 2.8704)), 55px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+.pagination {
+    display: flex;
+    gap: clamp(6px, calc(0.625rem + ((1vw - 14.4px) * 0.3704)), 10px);
+    button {
+        padding: 2px 12px;
+        border-radius: 3px;
+        font-family: PT Root UI;
+        font-size: clamp(14px, calc(1rem + ((1vw - 14.4px) * 0.1852)), 16px);
+        font-weight: 400;
+        line-height: 150%;
+        background-color: transparent;
+        color: black;
+        border: 1px solid transparent;
+        transition: 0.3s;
+    }
+    button:hover {
+        border-color: #12486b;
+    }
+    .swiper-pagination-bullet-active,
+    .active {
+        background-color: #12486b;
+        color: white;
+    }
+}
+.navigationNext,
+.navigationPrev {
+    background-color: transparent;
+    transition: 0.3s;
+    border-radius: 0.19rem;
+    svg {
+        width: 28px;
+        height: 28px;
+        use {
+            transition: 0.3s;
+            stroke: black;
+        }
+    }
+}
+.navigationNext:hover,
+.navigationPrev:hover {
+    background-color: #12486b;
+    svg {
+        use {
+            stroke: white;
+        }
+    }
+}
+.navigationNext {
+    svg {
+        transform: rotate(180deg);
+    }
+}
+body.lock{
+    overflow: hidden;
+}

@@ -1,0 +1,65 @@
+.slider{
+    align-items: stretch;
+    :global{
+        .swiper-slide{
+            height: auto;
+        }
+    }
+}
+.block{
+    height: 100%;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+}
+.infoWrap {
+    -webkit-line-clamp: 7;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1 1 100%;
+    h2 {
+        font-family: PT Root UI;
+        font-size: clamp(24px, calc(2.25rem + ((1vw - 14.4px) * 1.1111)), 36px);
+        font-weight: 500;
+        line-height: 150%;
+        text-transform: none;
+        margin-bottom: clamp(
+            12px,
+            calc(1.125rem + ((1vw - 14.4px) * 0.5556)),
+            18px
+        );
+    }
+    p {
+        font-size: clamp(
+            14px,
+            calc(1.125rem + ((1vw - 14.4px) * 0.3704)),
+            18px
+        );
+        font-style: normal;
+        font-weight: 300;
+        line-height: 150%;
+    }
+    :global {
+        .indent {
+            margin-top: 0;
+        }
+    }
+}
+.link {
+    display: inline-block;
+    font-size: clamp(14px, calc(1.25rem + ((1vw - 14.4px) * 0.5556)), 20px);
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: fit-content;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    margin-top: clamp(18px, calc(2.625rem + ((1vw - 14.4px) * 2.2222)), 42px);
+    flex: 0 0 auto;
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_gallery_blocks",
+  "info": {
+    "displayName": "GalleryBlock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "gallery": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gallery.gallery"
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph"
+    },
+    "subTitle": {
+      "type": "string"
+    }
+  }
+}

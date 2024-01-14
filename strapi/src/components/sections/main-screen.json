@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_sections_main_screens",
+  "info": {
+    "displayName": "MainScreen",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "displayName": "TitleColorful",
+      "type": "component",
+      "repeatable": false,
+      "component": "components.title-colorful"
+    },
+    "decoration": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

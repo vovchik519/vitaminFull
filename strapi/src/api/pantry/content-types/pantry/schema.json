@@ -1,0 +1,77 @@
+{
+  "kind": "singleType",
+  "collectionName": "pantries",
+  "info": {
+    "singularName": "pantry",
+    "pluralName": "pantries",
+    "displayName": "PantryPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "mainScreen": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.main-screen",
+      "required": true
+    },
+    "gallery": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.gallery-block",
+      "required": true
+    },
+    "poemsList": {
+      "displayName": "PoemsList",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.poems-list",
+      "required": true
+    },
+    "poem": {
+      "displayName": "PoemExtended",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.poem-extended"
+    },
+    "PoemBlock": {
+      "displayName": "PoemBlock",
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.poem-block",
+      "required": false
+    }
+  }
+}

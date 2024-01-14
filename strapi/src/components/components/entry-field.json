@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_components_entry_fields",
+  "info": {
+    "displayName": "entryField",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "placeholder": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "email",
+        "tel",
+        "password",
+        "file"
+      ],
+      "default": "text",
+      "required": true
+    },
+    "forId": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

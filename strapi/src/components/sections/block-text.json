@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_block_texts",
+  "info": {
+    "displayName": "BlockText",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button",
+      "required": true
+    },
+    "title": {
+      "displayName": "multiTitle",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-title",
+      "required": true
+    },
+    "description": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph"
+    }
+  }
+}

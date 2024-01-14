@@ -1,0 +1,8 @@
+.wrapper{
+    h1{
+        max-width: 17ch;
+    }
+    h2{
+        font-size: clamp(28px, calc(2.25rem + ((1vw - 14.4px) * 1.1905)), 36px);
+    }
+}

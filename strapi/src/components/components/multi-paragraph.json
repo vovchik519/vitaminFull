@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_multi_paragraphs",
+  "info": {
+    "displayName": "MultiParagraph",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "paragraph": {
+      "type": "text",
+      "required": true
+    },
+    "removeIndentation": {
+      "type": "boolean",
+      "required": false
+    }
+  }
+}

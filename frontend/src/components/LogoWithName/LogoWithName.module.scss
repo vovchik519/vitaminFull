@@ -1,0 +1,47 @@
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.63rem;
+    img {
+        width: clamp(56px, calc(3.875rem + ((1vw - 14.4px) * 0.5556)), 62px);
+        height: clamp(50px, calc(3.5rem + ((1vw - 14.4px) * 0.5556)), 56px);
+        object-fit: contain;
+    }
+    p {
+        color: white;
+        font-family: Amatic SC;
+        font-size: 1.69rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: 0.81px;
+        text-align: start;
+        width: 16ch;
+    }
+}
+.imgWhite {
+    display: none;
+}
+.imgBlack {
+    display: inline;
+}
+.white {
+    .imgWhite {
+        display: inline;
+    }
+    .imgBlack {
+        display: none;
+    }
+    p {
+        color: #292626;
+    }
+}
+@media (max-width: 768px) {
+    .logo {
+        :global {
+            .desctop {
+                display: none;
+            }
+        }
+    }
+}

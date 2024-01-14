@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_components_title_colorfuls",
+  "info": {
+    "displayName": "TitleColored",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "titleStart": {
+      "type": "string",
+      "required": false
+    },
+    "titleColored": {
+      "type": "string"
+    },
+    "titleEnd": {
+      "type": "string"
+    }
+  }
+}

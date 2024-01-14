@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_components_shop_blocks",
+  "info": {
+    "displayName": "ShopBlock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "paragraph": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "subParagraph": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.multi-paragraph"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

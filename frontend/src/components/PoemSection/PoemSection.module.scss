@@ -1,0 +1,27 @@
+.wrapper {
+    padding: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
+        clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
+    background-color: #fbffe7;
+}
+.wrap {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: clamp(
+        24px,
+        calc(3.375rem + ((1vw - 14.4px) * 2.7778)),
+        54px
+    );
+    p {
+        font-family: PT Root UI;
+        font-weight: 300;
+        line-height: 135%;
+    }
+}
+.subText {
+    margin-top: clamp(14px, calc(1.5rem + ((1vw - 14.4px) * 0.9259)), 24px);
+}
+.supText {
+    margin-bottom: clamp(14px, calc(1.5rem + ((1vw - 14.4px) * 0.9259)), 24px);
+}

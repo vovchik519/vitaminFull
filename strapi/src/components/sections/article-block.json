@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_article_blocks",
+  "info": {
+    "displayName": "ArticleBlock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "paragraph": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.paragraph"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

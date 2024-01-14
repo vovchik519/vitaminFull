@@ -1,0 +1,46 @@
+.firstPage {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    padding: clamp(20px, calc(1.75rem + ((1vw - 14.4px) * 0.7407)), 28px)
+        clamp(20px, calc(5rem + ((1vw - 14.4px) * 5.5556)), 80px)
+        clamp(25px, calc(3.125rem + ((1vw - 14.4px) * 2.3148)), 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h1 {
+        color: #fff;
+        text-align: right;
+        font-family: Amatic SC;
+        font-size: clamp(40px, calc(9.5625rem + ((1vw - 14.4px) * 10.463)), 153px);
+        font-style: normal;
+        width: 8ch;
+        font-weight: 400;
+        line-height: .9;
+        letter-spacing: clamp(-3px, calc(-0.1875rem + ((1vw - 14.4px) * -0.2037)), -0.8px);
+    }
+}
+.head,
+.foot {
+    display: flex;
+    justify-content: space-between;
+}
+.head {
+    align-items: flex-start;
+}
+.foot {
+    align-items: flex-end;
+}
+.link {
+    display: inline-block;
+    width: clamp(50px, calc(5rem + ((1vw - 14.4px) * 2.7778)), 80px);
+    height: clamp(50px, calc(5rem + ((1vw - 14.4px) * 2.7778)), 80px);
+    :global {
+        .icon {
+            width: inherit;
+            height: inherit;
+        }
+    }
+}

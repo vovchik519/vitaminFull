@@ -1,0 +1,98 @@
+.wrapper {
+    position: relative;
+    margin: clamp(60px, calc(6.25rem + ((1vw - 10.24px) * 6.0241)), 100px) 0
+        clamp(40px, calc(4.6875rem + ((1vw - 10.24px) * 5.2711)), 75px);
+    padding: clamp(40px, calc(6.25rem + ((1vw - 14.4px) * 5.5556)), 100px)
+        calc(
+            clamp(285px, calc(24.0625rem + ((1vw - 14.4px) * 24.0385)), 385px) -
+                clamp(20px, calc(5rem + ((1vw - 14.4px) * 5.5556)), 80px)
+        )
+        clamp(40px, calc(6.25rem + ((1vw - 14.4px) * 5.5556)), 100px)
+        calc(
+            clamp(300px, calc(25rem + ((1vw - 14.4px) * 24.0385)), 400px) -
+                clamp(20px, calc(5rem + ((1vw - 14.4px) * 5.5556)), 80px)
+        );
+    background-color: #fbffe7;
+}
+.wrapper::before {
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0px;
+    bottom: 0;
+    background-image: url("/images/poem/imgflowers3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    max-width: clamp(300px, calc(25rem + ((1vw - 14.4px) * 24.0385)), 400px);
+    width: 100%;
+    height: 100%;
+}
+.wrapper::after {
+    content: "";
+    position: absolute;
+    display: block;
+    right: 0px;
+    bottom: 0;
+    background-image: url("/images/poem/imgflowers4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    max-width: clamp(
+        285px,
+        calc(24.0625rem + ((1vw - 14.4px) * 24.0385)),
+        385px
+    );
+    width: 100%;
+    height: 100%;
+}
+.wrap {
+    text-align: center;
+    h2 {
+        font-size: clamp(
+            36px,
+            calc(2.875rem + ((1vw - 14.4px) * 0.9259)),
+            46px
+        );
+        margin-bottom: clamp(16px, calc(1.5rem + ((1vw - 14.4px) * 0.7407)), 24px);
+    }
+    .subTitle {
+        text-align: center;
+        font-family: PT Root UI;
+        font-size: clamp(14px, calc(1rem + ((1vw - 14.4px) * 0.1852)), 16px);
+        font-style: normal;
+        font-weight: 300;
+        line-height: 150%;
+        margin-bottom: clamp(36px, calc(4.625rem + ((1vw - 14.4px) * 3.5185)), 74px);
+    }
+    h3{
+        font-size: clamp(18px, calc(2.25rem + ((1vw - 14.4px) * 1.6667)), 36px);
+        margin-bottom: clamp(24px, calc(2.25rem + ((1vw - 14.4px) * 1.1111)), 36px);
+    }
+    p {
+        text-align: center;
+        font-family: Kobzar KS;
+        font-weight: 400;
+        font-size: clamp(18px, calc(1.5rem + ((1vw - 14.4px) * 1.4423)), 24px);
+        line-height: 130%;
+    }
+}
+@media (max-width: 1024px) {
+    .wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .wrapper::before,
+    .wrapper::after {
+        display: none;
+    }
+    .wrap {
+        p {
+            font-size: clamp(
+                14px,
+                calc(2rem + ((1vw - 10.24px) * 2.7108)),
+                32px
+            );
+        }
+    }
+}

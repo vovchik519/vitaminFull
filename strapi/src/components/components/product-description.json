@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_components_product_descriptions",
+  "info": {
+    "displayName": "productDescription"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
