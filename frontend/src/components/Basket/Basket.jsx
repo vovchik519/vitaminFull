@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './Basket.module.scss';
 import sprite from './../../images/icons/sprite.svg';
 import { Link } from 'react-router-dom';
+import ButtonDark from '../../ui/ButtonDark/ButtonDark';
+import LinkDark from '../../ui/LinkDark/LinkDark';
 
 const Basket = ({ orders, removeOrder, handleToggle, open }) => {
     let lang = localStorage.getItem('selectedLanguage');
@@ -101,7 +103,11 @@ const Basket = ({ orders, removeOrder, handleToggle, open }) => {
                                         <span className={styles.price}>{priceAll} ₽</span>
                                     </li>
                                 </ul>
-                                <Link to='/store/order-placement' className={styles.link}>{lang === 'ru' ? 'оформить заказ' : 'place an order'}</Link>
+                                {productNumbers === 0 ?
+                                    <ButtonDark type='button' disabled={true} className={styles.link} name={lang === 'ru' ? 'оформить заказ' : 'place an order'} />
+                                    :
+                                    <LinkDark link='/store/order-placement' hiddenSvg={true} name={lang === 'ru' ? 'оформить заказ' : 'place an order'} className={styles.link} />
+                                }
                             </div>
                         </div>
                     </div>

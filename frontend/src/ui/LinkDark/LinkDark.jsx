@@ -5,13 +5,16 @@ import { Link } from 'react-router-dom';
 
 const LinkDark = (props) => {
     return (
-        <Link to={props.link} className={styles.link}>
+        <Link to={props.link} className={`${styles.link} globalLinkDark`}>
             <span>
                 {props.name}
             </span>
-            <svg className='link'>
-                <use xlinkHref={`${sprite}#icon-arrow-link`}></use>
-            </svg>
+            {props.hiddenSvg ?
+                null :
+                <svg className='link'>
+                    <use xlinkHref={`${sprite}#icon-arrow-link`}></use>
+                </svg>
+            }
         </Link>
     );
 };

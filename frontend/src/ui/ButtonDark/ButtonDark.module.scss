@@ -15,10 +15,11 @@
     letter-spacing: 0.05rem;
     text-transform: uppercase;
 }
-.link.disabled{
+.link:disabled{
     color: rgba(255, 255, 255, 0.30);
+    cursor: no-drop;
 }
-.link.disabled:hover{
+.link:disabled:hover{
     background: #12486B;
 }
 .link:hover {

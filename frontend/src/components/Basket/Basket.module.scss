@@ -230,6 +230,12 @@
         font-weight: 700;
         color: #12486b;
     }
+    :global {
+        .globalLinkDark,
+        .globalButtonDark {
+            width: 100%;
+        }
+    }
 }
 .link {
     display: flex;
