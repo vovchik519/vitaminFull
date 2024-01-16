@@ -26,7 +26,6 @@ const FirstPage = () => {
                     }
                 });
                 const data = await response.json();
-                console.log(data)
                 // firstpage data
                 setData(data.data.attributes);
                 // logo

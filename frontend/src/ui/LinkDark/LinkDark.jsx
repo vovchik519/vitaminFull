@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const LinkDark = (props) => {
     return (
-        <Link to={props.link} className={`${styles.link} globalLinkDark`}>
+        <Link to={props.link} className={`${styles.link} globalLinkDark`} onClick={props.click}>
             <span>
                 {props.name}
             </span>

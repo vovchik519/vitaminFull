@@ -6,21 +6,27 @@ import sprite from './../../images/icons/sprite.svg';
 
 const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orderPlacement }) => {
     let lang = localStorage.getItem('selectedLanguage');
-    let productNumbers = orders.length
+    let productNumbers = orders.length;
 
     let priceAll = 0;
-    const [quanity, setQuanity] = useState(0)
+    const [quantity, setQuantity] = useState(0);
+    const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
-    const plusQuanity = () => {
-        setQuanity(() => quanity + 1)
-    }
-    const minusQuanity = () => {
-        if (quanity > 0) {
-            setQuanity(() => quanity - 1)
-        } else if (quanity <= 1) {
+    const updateQuantity = (index, newQuantity) => {
+        if (newQuantity >= 0) {
+            const updatedOrders = [...orders];
+            const ordersLocale = [...storedOrders];
+            updatedOrders[index].quantity = newQuantity;
+            ordersLocale[index].quantity = newQuantity;
+            setQuantity(newQuantity);
+
+            // Update localStorage with the modified ordersLocale
+            localStorage.setItem('orders', JSON.stringify(ordersLocale));
         }
+    };
+    const removeHidden = () => {
+        document.body.classList.remove('hidden')
     }
-
     return (
         <div className={orderPlacement === true ? `${styles.wrap} ${styles.wrapTwo}` : styles.wrap}>
             <div className={styles.head}>
@@ -36,7 +42,13 @@ const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orde
             </div>
             <ul className={styles.list}>
                 {orders && orders.map((product, index) => {
-                    priceAll += +product.price;
+                    if (product.quantity === undefined || product.quantity === 0) {
+                        priceAll += +product.price
+                    } else {
+                        priceAll += +product.price * product.quantity;
+                    }
+                    console.log(product.quantity)
+                    const quantity = product.quantity || 0;
                     return (
                         <li key={index} className={styles.item}>
                             <div className={styles.imageWrap}>
@@ -57,10 +69,10 @@ const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orde
                                 </strong>
                             </div>
                             <div className={styles.button}>
-                                <div className={styles.quanity}>
-                                    <button type="button" onClick={() => minusQuanity()} id='minus'>-</button>
-                                    <span>{quanity}</span>
-                                    <button type="button" onClick={() => plusQuanity()}>+</button>
+                                <div className={styles.quantity}>
+                                    <button type="button" onClick={() => updateQuantity(index, quantity - 1)} id='minus'>-</button>
+                                    <span>{quantity}</span>
+                                    <button type="button" onClick={() => updateQuantity(index, quantity + 1)}>+</button>
                                 </div>
                                 <button type="button" onClick={() => removeOrder(product)} className={styles.deleteOrder}>
                                     <svg className='icon'>
@@ -90,7 +102,7 @@ const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orde
                     productNumbers === 0 ?
                         <ButtonDark type='button' disabled={true} className={styles.link} name={lang === 'ru' ? 'оформить заказ' : 'place an order'} />
                         :
-                        <LinkDark link='/store/order-placement' hiddenSvg={true} name={lang === 'ru' ? 'оформить заказ' : 'place an order'} className={styles.link} />
+                        <LinkDark link='/store/order-placement' click={() => { removeHidden() }} hiddenSvg={true} name={lang === 'ru' ? 'оформить заказ' : 'place an order'} className={styles.link} />
                 }
             </div>
         </div>

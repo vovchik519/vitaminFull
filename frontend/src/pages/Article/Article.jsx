@@ -79,7 +79,6 @@ const Article = () => {
                 setArticlesImage(articlesImageArray)
                 setArticlesId(articlesIdArray)
                 setArticlesParagraphId(articlesParagraphIdArray)
-                console.log(data.data)
             } catch (e) {
                 console.log(e);
             }

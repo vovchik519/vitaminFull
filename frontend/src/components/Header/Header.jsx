@@ -113,17 +113,19 @@ const Header = ({ handleToggle, ordersProduct }) => {
                         <div className={styles.desctop}>
                             <Language />
                         </div>
-                        {document.location.pathname !== '/store/item' ?
-                            <Basket orders={orders} removeOrder={handleRemoveToCart} />
-                            :
-                            <button type="button" onClick={() => handleToggle()} className={styles.backetButton}>
-                                <svg className='icon'>
-                                    <use xlinkHref={`${sprite}#icon-basket-button`}></use>
-                                </svg>
-                                <span className={styles.number}>
-                                    <span>{ordersProduct.length}</span>
-                                </span>
-                            </button>
+                        {document.location.pathname !== '/store/order-placement' ?
+                            document.location.pathname !== '/store/item' ?
+                                <Basket orders={orders} removeOrder={handleRemoveToCart} />
+                                :
+                                <button type="button" onClick={() => handleToggle()} className={styles.backetButton}>
+                                    <svg className='icon'>
+                                        <use xlinkHref={`${sprite}#icon-basket-button`}></use>
+                                    </svg>
+                                    <span className={styles.number}>
+                                        <span>{ordersProduct.length}</span>
+                                    </span>
+                                </button>
+                            : null
                         }
                     </div>
                 </div>
