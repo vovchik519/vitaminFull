@@ -62,6 +62,11 @@
     .item {
         gap: clamp(10px, calc(1.875rem + ((1vw - 12.8px) * 7.8125)), 30px);
     }
+    .quantity {
+        button {
+            background-color: white;
+        }
+    }
 }
 @keyframes animWrap {
     0% {
@@ -244,7 +249,7 @@
     justify-self: end;
     gap: 20px;
 }
-.quanity {
+.quantity {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -263,7 +268,12 @@
         height: 24px;
     }
 }
-@media (max-width: 1360px) {
+@media (max-width: 1024px) {
+    .wrap {
+        padding: clamp(40px, calc(6.25rem + ((1vw - 12.8px) * 6.25)), 100px)
+            clamp(20px, calc(3.125rem + ((1vw - 10.24px) * 4.2614)), 50px)
+            clamp(75px, calc(6.25rem + ((1vw - 12.8px) * 4.1667)), 100px);
+    }
     .wrapTwo {
         border-radius: 0;
         background: transparent;
@@ -274,16 +284,6 @@
             padding: 0;
             overflow: auto;
         }
-    }
-}
-@media (max-width: 1024px) {
-    .wrap {
-        padding: clamp(40px, calc(6.25rem + ((1vw - 12.8px) * 6.25)), 100px)
-            clamp(20px, calc(3.125rem + ((1vw - 10.24px) * 4.2614)), 50px)
-            clamp(75px, calc(6.25rem + ((1vw - 12.8px) * 4.1667)), 100px);
-    }
-    .wrapTwo {
-        padding: 0;
     }
 }
 @media (max-width: 1440px) and (min-width: 1025px) {

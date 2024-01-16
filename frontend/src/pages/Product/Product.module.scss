@@ -157,6 +157,83 @@
         transform: rotate(0);
     }
 }
+.popup {
+    position: fixed;
+    top: clamp(90px, calc(7.5rem + ((1vw - 12.8px) * 3.125)), 120px);
+    right: clamp(20px, calc(5rem + ((1vw - 12.8px) * 6.25)), 80px);
+    z-index: 998;
+    display: flex;
+    gap: clamp(10px, calc(1rem + ((1vw - 12.8px) * 0.625)), 16px);
+    border-radius: clamp(18px, calc(1.875rem + ((1vw - 12.8px) * 1.25)), 30px);
+    padding: clamp(10px, calc(1rem + ((1vw - 12.8px) * 0.625)), 16px);
+    background: #f3f3f3;
+    animation: animPopup 0.7s ease-in-out forwards;
+    .imagesWrap {
+        width: clamp(70px, calc(8.5625rem + ((1vw - 12.8px) * 6.9792)), 137px);
+    }
+    .images {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        border-radius: clamp(
+            10px,
+            calc(0.9375rem + ((1vw - 12.8px) * 0.5208)),
+            15px
+        );
+        overflow: hidden;
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .popapInfo {
+        display: flex;
+        flex-direction: column;
+    }
+    span {
+        font-family: PT Root UI;
+        font-size: clamp(
+            0.625rem,
+            calc(1.25rem + ((1vw - 0.8rem) * 1.0417)),
+            1.25rem
+        );
+        font-style: normal;
+        font-weight: 300;
+        line-height: 115%;
+        letter-spacing: 0.6px;
+        flex: 0 1 auto;
+    }
+    h3 {
+        font-size: clamp(
+            0.8125rem,
+            calc(1.625rem + ((1vw - 0.8rem) * 1.3542)),
+            1.625rem
+        );
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        flex: 1 1 auto;
+    }
+    strong {
+        font-family: Amatic SC;
+        font-size: clamp(1.5rem, calc(3rem + ((1vw - 0.8rem) * 2.5)), 3rem);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 150%;
+        flex: 0 1 auto;
+    }
+}
+@keyframes animPopup {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 @media (max-width: 768px) {
     .product {
         grid-template-columns: 1fr;

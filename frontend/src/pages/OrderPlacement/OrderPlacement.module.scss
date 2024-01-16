@@ -143,6 +143,11 @@
 }
 @media (max-width: 1360px) {
     .wrap {
+        grid-template-columns: 1fr 1.2fr;
+    }
+}
+@media (max-width: 1024px) {
+    .wrap {
         grid-template-columns: 1fr;
         gap: 20px;
     }
