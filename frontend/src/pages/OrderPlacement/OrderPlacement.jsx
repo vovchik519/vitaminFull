@@ -6,9 +6,12 @@ import { Link } from 'react-router-dom';
 import YandexMap from '../../components/YandexMap/YandexMap';
 import axios from 'axios'
 import ButtonDark from './../../ui/ButtonDark/ButtonDark';
+import useOrders from '../../database-orders';
+import BasketInside from '../../components/BasketInside/BasketInside';
 
 const OrderPlacement = () => {
     let lang = localStorage.getItem('selectedLanguage');
+
     const [delivery, setDelivery] = useState(true)
 
     const [contact, setContact] = useState({
@@ -46,6 +49,18 @@ const OrderPlacement = () => {
         // Устанавливаем выбранные координаты
         setSelectedLocations([coordinates]);
     };
+
+    let dataOrders = localStorage.getItem('orders');
+    let dataOrdersArray = JSON.parse(dataOrders)
+    let ordersList = []
+    for (let elem of dataOrdersArray) {
+        const obj = {}
+        obj.name = elem.name
+        obj.city = elem.city
+        obj.price = elem.price
+        obj.year = elem.year
+        ordersList.push(obj)
+    }
     useEffect(() => {
         setTimeout(() => {
             if (delivery === true) {
@@ -55,8 +70,14 @@ const OrderPlacement = () => {
             }
         }, 0)
     }, [delivery])
+
+    const { orders, addOrder, removeOrder } = useOrders();
+
+    const handleRemoveToCart = (product) => {
+        removeOrder(product);
+    };
     const handleSubmit = () => {
-        console.log(contact, address, payment, addressMap);
+        console.log(contact, `Адрес доставки: ${address} ${addressMap}`, `Способ оплаты: ${payment}`, ordersList);
     }
     return (
         <>
@@ -149,8 +170,11 @@ const OrderPlacement = () => {
                                                         </li>
                                                     </ul>
                                                 ) :
-                                                    <div className={styles.map}>
-                                                        <YandexMap onLocationSelect={handleLocationSelect} />
+                                                    <div className={styles.mapWrap}>
+                                                        <div className={styles.map}>
+                                                            <YandexMap onLocationSelect={handleLocationSelect} />
+                                                        </div>
+                                                        <p>Адресс - {addressMap}</p>
                                                     </div>
                                                 }
                                             </div>
@@ -168,12 +192,13 @@ const OrderPlacement = () => {
                                             </div>
                                         </li>
                                     </ul>
-                                    <ButtonDark type="button" name="перейти к оплате" click={() => handleSubmit()} />
                                 </fieldset>
                             </form>
                         </div>
-                        <div className={styles.left}>
+                        <div className={styles.right}>
+                            <BasketInside orders={orders} removeOrder={removeOrder} orderPlacement={true} />
                         </div>
+                        <ButtonDark type="button" name="перейти к оплате" click={() => handleSubmit()} />
                     </div>
                 </div>
             </main>

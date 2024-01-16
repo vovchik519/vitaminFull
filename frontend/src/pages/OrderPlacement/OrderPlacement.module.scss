@@ -5,7 +5,7 @@
 .wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(20px, calc(4.375rem + ((1vw - 12.8px) * 19.5313)), 70px);
+    gap: 0 clamp(20px, calc(4.375rem + ((1vw - 12.8px) * 19.5313)), 70px);
 }
 .breadcrumbs {
     display: flex;
@@ -16,12 +16,6 @@
 }
 .breadcrumbs li:last-child:after {
     display: none;
-}
-@media (max-width: 1024px) {
-    .wrap {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
 }
 .listItem {
     margin-top: clamp(36px, calc(3.125rem + ((1vw - 12.8px) * 1.5217)), 50px);
@@ -140,5 +134,19 @@
         .globalButtonDark {
             width: 100%;
         }
+    }
+}
+.mapWrap {
+    p {
+        margin-top: 20px;
+    }
+}
+@media (max-width: 1360px) {
+    .wrap {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .right {
+        margin-top: 20px;
     }
 }

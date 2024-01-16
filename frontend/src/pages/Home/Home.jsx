@@ -135,6 +135,7 @@ const Home = () => {
             array.push(data[i][key])
         }
     }
+    console.log(mainScreen)
     return (
         <div className={styles.wrapper}>
             <Header />
