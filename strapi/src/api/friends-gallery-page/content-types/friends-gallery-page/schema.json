@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "friends_gallery_pages",
+  "info": {
+    "singularName": "friends-gallery-page",
+    "pluralName": "friends-gallery-pages",
+    "displayName": "FriendsGalleryPage"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "mainScreen": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.main-screen",
+      "required": true
+    },
+    "gallery": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.gallery-block"
+    }
+  }
+}

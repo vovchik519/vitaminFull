@@ -47,7 +47,6 @@ const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orde
                     } else {
                         priceAll += +product.price * product.quantity;
                     }
-                    console.log(product.quantity)
                     const quantity = product.quantity || 0;
                     return (
                         <li key={index} className={styles.item}>

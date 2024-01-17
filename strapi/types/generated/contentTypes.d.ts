@@ -1021,6 +1021,59 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
+export interface ApiFriendsGalleryPageFriendsGalleryPage
+  extends Schema.SingleType {
+  collectionName: 'friends_gallery_pages';
+  info: {
+    singularName: 'friends-gallery-page';
+    pluralName: 'friends-gallery-pages';
+    displayName: 'FriendsGalleryPage';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    mainScreen: Attribute.Component<'sections.main-screen'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    gallery: Attribute.Component<'sections.gallery-block', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::friends-gallery-page.friends-gallery-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::friends-gallery-page.friends-gallery-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::friends-gallery-page.friends-gallery-page',
+      'oneToMany',
+      'api::friends-gallery-page.friends-gallery-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiGalleryGallery extends Schema.CollectionType {
   collectionName: 'galleries';
   info: {
@@ -1592,6 +1645,7 @@ declare module '@strapi/types' {
       'api::catalog.catalog': ApiCatalogCatalog;
       'api::first-page.first-page': ApiFirstPageFirstPage;
       'api::footer.footer': ApiFooterFooter;
+      'api::friends-gallery-page.friends-gallery-page': ApiFriendsGalleryPageFriendsGalleryPage;
       'api::gallery.gallery': ApiGalleryGallery;
       'api::gallery-page.gallery-page': ApiGalleryPageGalleryPage;
       'api::header.header': ApiHeaderHeader;

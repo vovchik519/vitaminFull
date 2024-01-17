@@ -13,6 +13,7 @@ import Preloader from './components/Preloader/Preloader';
 import Shop from './pages/Shop/Shop';
 import Product from './pages/Product/Product';
 import OrderPlacement from './pages/OrderPlacement/OrderPlacement';
+import FriendsGallery from './pages/FriendsGallery/FriendsGallery';
 
 const App = () => {
   let server = 'http://localhost:1337';
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/item" element={<Item />} />
           <Route path="/poem" element={<PoemItem />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/friends-gallery" element={<FriendsGallery />} />
           <Route path="/pantry" element={<Pantry />} />
           <Route path="/store" element={<Shop />} />
           <Route path="/store/item" element={<Product />} />

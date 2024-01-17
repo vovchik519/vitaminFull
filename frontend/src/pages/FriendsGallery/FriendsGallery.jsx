@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ImageGroup, Image } from 'react-fullscreen-image'
 
-import styles from './Gallery.module.scss';
-import FirstScreen from './../../components/FirstScreen/FirstScreen';
+import styles from './FriendsGallery.module.scss';
+import FirstScreen from '../../components/FirstScreen/FirstScreen';
 import Masonry from 'react-masonry-css';
 
-import Header from './../../components/Header/Header';
-import Footer from './../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 
-const Gallery = () => {
+const FriendsGallery = () => {
     let server = 'http://localhost:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -18,8 +18,8 @@ const Gallery = () => {
             return new Promise(r => setTimeout(() => r(), ms))
         }
 
-        let galleryPage = `${server}/api/gallery-page?locale=${lang}&populate=deep`;
-        
+        let galleryPage = `${server}/api/friends-gallery-page?locale=${lang}&populate=deep`;
+
         async function fetchData() {
             try {
                 await newPromise();
@@ -157,4 +157,4 @@ const Gallery = () => {
     );
 };
 
-export default Gallery;
+export default FriendsGallery;
