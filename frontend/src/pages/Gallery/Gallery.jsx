@@ -120,18 +120,20 @@ const Gallery = () => {
     return (
         <>
             {switched === '' ?
-                <>
+                <div className={styles.container}>
                     <Header />
                     <div className={styles.switched}>
                         <div className="container">
-                            <ButtonDark type='button' name='Галерея Деда Валерия' click={() => switchedPages(true)} />
-                            <ButtonDark type='button' name='Галерея друзей Деда Валерия' click={() => switchedPages(false)} />
+                            <div className={styles.switchedWrap}>
+                                <ButtonDark type='button' name={lang === 'ru' ? 'Галерея Деда Валерия' : "GRANDPA VALERII'S GALLERY"} click={() => switchedPages(true)} />
+                                <ButtonDark type='button' name={lang === 'ru' ? 'Галерея друзей Деда Валерия' : "THE GALLERY OF GRANNDPA VALERII'S FRIENDS"} click={() => switchedPages(false)} />
+                            </div>
                         </div>
                     </div>
                     <Footer />
-                </>
+                </div>
                 :
-                <div className={styles.container}>
+                <>
                     {isLoading === true ? (
                         <Preloader />
                     ) : null}
@@ -187,7 +189,7 @@ const Gallery = () => {
                         </div>
                     </main>
                     <Footer />
-                </div>
+                </>
             }
         </>
     );

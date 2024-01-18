@@ -12,6 +12,7 @@ import LinkDark from '../../ui/LinkDark/LinkDark';
 
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
+import Error from '../../components/Error/Error';
 
 const Item = () => {
     let server = 'http://localhost:1337'
@@ -99,7 +100,7 @@ const Item = () => {
     };
 
     const swiperRef = useRef();
-
+    const [errorRender, setErrorRender] = useState()
     return (
         <>
             <Header />
@@ -134,6 +135,7 @@ const Item = () => {
                             </div>
                         ) : null
                     ))}
+                    {!articlesId.some(blockId => blockId == window.location.hash.substring(1)) && <Error />}
                 </section>
                 <section className={styles.otherArticles}>
                     <div className="container">

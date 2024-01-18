@@ -12,8 +12,15 @@ const Language = () => {
         setLang(newLang);
         localStorage.setItem('selectedLanguage', newLang);
         document.location.reload()
-        if (document.location.pathname === '/item' || document.location.pathname === '/poem' || document.location.pathname === '/store/item') {
-            window.history.back();
+        if (document.location.pathname === '/item') {
+            document.location.hash = ''
+            document.location.pathname = '/for-kids'
+        } else if (document.location.pathname === '/poem') {
+            document.location.hash = ''
+            document.location.pathname = '/pantry'
+        } else if (document.location.pathname === '/store/item') {
+            document.location.hash = ''
+            document.location.pathname = '/store'
         }
     };
     return (

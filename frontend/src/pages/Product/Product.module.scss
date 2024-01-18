@@ -1,5 +1,6 @@
-.wrapper {
-    margin-top: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px);
+.wrap {
+    margin: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
+        clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
 }
 .product {
     margin: clamp(35px, calc(3.4375rem + ((1vw - 12.8px) * 2.0833)), 55px) 0
@@ -102,7 +103,6 @@
     background-color: #093653;
 }
 .list {
-    margin-top: clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
     padding: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
         clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
     background-color: #fbffe7;

@@ -1,11 +1,11 @@
 .article {
-    margin: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
-        clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
     h1 {
         max-width: 23ch;
     }
 }
 .info {
+    margin: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
+        clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
     h2 {
         font-family: Amatic SC;
         font-size: clamp(28px, calc(3rem + ((1vw - 14.4px) * 1.8519)), 48px);

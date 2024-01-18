@@ -9,6 +9,7 @@ import PoemSection from '../../components/PoemSection/PoemSection';
 
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
+import Error from '../../components/Error/Error';
 
 const PoemItem = () => {
     let server = 'http://localhost:1337'
@@ -122,6 +123,7 @@ const PoemItem = () => {
                         </div>
                     ) : null
                 ))}
+                {!articlesId.some(blockId => blockId == window.location.hash.substring(1)) && <Error />}
                 <PoemSection
                     event={handleReloadClick}
                     page='poem-page'

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import useOrders from '../../database-orders';
 import Basket from '../../components/Basket/Basket';
 import sprite from './../../images/icons/sprite.svg';
+import Error from '../../components/Error/Error';
 
 const Product = () => {
     let server = 'http://localhost:1337'
@@ -107,7 +108,7 @@ const Product = () => {
                 <div className="container">
                     {productList.map((product, index) => (
                         product.id == window.location.hash.substring(1) ? (
-                            <div key={index}>
+                            <div key={index} className={styles.wrap}>
                                 <section>
                                     <ul className={styles.breadcrumbs}>
                                         <li><Link to="/home">{lang === 'ru' ? 'Главная' : 'Home'}</Link></li>
@@ -211,6 +212,7 @@ const Product = () => {
                         ) : null
                     ))}
                 </div>
+                {!productList.some(product => product.id == window.location.hash.substring(1)) && <Error />}
                 <section className={styles.list}>
                     <div className="container">
                         <div className={styles.title}>
