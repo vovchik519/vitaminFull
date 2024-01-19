@@ -31,6 +31,7 @@ export interface ComponentsGalleryItem extends Schema.Component {
   collectionName: 'components_components_gallery_items';
   info: {
     displayName: 'GalleryItem';
+    description: '';
   };
   attributes: {
     image: Attribute.Media & Attribute.Required;

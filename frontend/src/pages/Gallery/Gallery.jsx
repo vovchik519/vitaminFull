@@ -45,6 +45,7 @@ const Gallery = () => {
                 let galleryId = []
                 let galleryImageArray = []
                 let galleryTitleArray = []
+                let galleryMimeArray = []
                 let gallerySubTitleArray = []
                 let galleryDescriptionArray = []
                 let galleryDescriptionIndentArray = []
@@ -55,9 +56,11 @@ const Gallery = () => {
                     gallerySubTitleArray.push(data.data.attributes.gallery[i].subTitle)
                     let descriptionArray = []
                     let descriptionIndentArray = []
+                    let mimeArray = []
                     let imageArray = []
                     let signatureArray = []
                     for (let g = 0; g < data.data.attributes.gallery[i].gallery.data.attributes.Image.length; g++) {
+                        mimeArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.mime)
                         imageArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
                         signatureArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
                     }
@@ -68,6 +71,7 @@ const Gallery = () => {
                     galleryDescriptionArray.push(descriptionArray)
                     galleryDescriptionIndentArray.push(descriptionIndentArray)
                     galleryImageArray.push(imageArray)
+                    galleryMimeArray.push(mimeArray)
                     gallerySignatureArray.push(signatureArray)
                 }
                 setGalleryId(galleryId)
@@ -76,6 +80,7 @@ const Gallery = () => {
                 setGalleryDescription(galleryDescriptionArray)
                 setGalleryDescriptionIndent(galleryDescriptionIndentArray)
                 setGalleryImage(galleryImageArray)
+                setGalleryMime(galleryMimeArray)
                 setGallerySignature(gallerySignatureArray)
             } catch (e) {
                 console.log(e);
@@ -96,6 +101,7 @@ const Gallery = () => {
     const [galleryDescription, setGalleryDescription] = useState([]);
     const [galleryDescriptionIndent, setGalleryDescriptionIndent] = useState([]);
     const [galleryImage, setGalleryImage] = useState([]);
+    const [galleryMime, setGalleryMime] = useState([]);
     const [gallerySignature, setGallerySignature] = useState([]);
     const breakpointColumnsObj = {
         default: 3,
@@ -173,6 +179,14 @@ const Gallery = () => {
                                                     className="images-wrap"
                                                     columnClassName="images-column">
                                                     {galleryImage[index].map((image, imageIndex) => (
+                                                        galleryMime[0][imageIndex].indexOf('image') ?
+                                                            <div key={imageIndex} className={styles.imageTop}>
+                                                                <div key={imageIndex} className={styles.image}>
+                                                                    <video src={image} controls></video>
+                                                                </div>
+                                                                <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                            </div>
+                                                            :
                                                         <div key={imageIndex} className={styles.imageTop}>
                                                             <div key={imageIndex} className={styles.image}>
                                                                 <Image src={`${image}`} alt="Картинка" />

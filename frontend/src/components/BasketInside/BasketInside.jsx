@@ -9,11 +9,11 @@ const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orde
     let productNumbers = orders.length;
 
     let priceAll = 0;
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
 
     const updateQuantity = (index, newQuantity) => {
-        if (newQuantity >= 0) {
+        if (newQuantity >= 1) {
             const updatedOrders = [...orders];
             const ordersLocale = [...storedOrders];
             updatedOrders[index].quantity = newQuantity;
@@ -42,12 +42,12 @@ const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orde
             </div>
             <ul className={styles.list}>
                 {orders && orders.map((product, index) => {
-                    if (product.quantity === undefined || product.quantity === 0) {
+                    if (product.quantity === undefined || product.quantity === 1) {
                         priceAll += +product.price
                     } else {
                         priceAll += +product.price * product.quantity;
                     }
-                    const quantity = product.quantity || 0;
+                    const quantity = product.quantity || 1;
                     return (
                         <li key={index} className={styles.item}>
                             <div className={styles.imageWrap}>

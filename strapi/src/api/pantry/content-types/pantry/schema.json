@@ -72,6 +72,16 @@
       },
       "component": "sections.poem-block",
       "required": false
+    },
+    "galleryFriends": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.gallery-block"
     }
   }
 }

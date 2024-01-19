@@ -63,10 +63,13 @@ const Home = () => {
                 setGallery(data.data.attributes.gallery);
                 setGalleryButton(data.data.attributes.gallery.button);
                 let galleryImageArray = []
+                let mimeArray = []
                 for (let i = 0; i < data.data.attributes.gallery.gallery.data.attributes.Image.length; i++) {
+                    mimeArray.push(data.data.attributes.gallery.gallery.data.attributes.Image[i].image.data.attributes.mime)
                     galleryImageArray.push(data.data.attributes.gallery.gallery.data.attributes.Image[i].image.data.attributes.url)
                 }
                 setGalleryImage(galleryImageArray)
+                setGalleryMime(mimeArray)
                 // feedback
                 setFeedback(data.data.attributes.feedback);
                 setFeedbackImage(data.data.attributes.feedback.image.data.attributes);
@@ -142,6 +145,8 @@ const Home = () => {
     const [gallery, setGallery] = useState({});
     const [galleryImage, setGalleryImage] = useState([]);
     const [galleryButton, setGalleryButton] = useState({});
+    const [galleryMime, setGalleryMime] = useState([]);
+
     // feedback
     const [feedback, setFeedback] = useState({});
     const [feedbackInputs, setFeedbackInputs] = useState([]);
@@ -208,6 +213,7 @@ const Home = () => {
                     buttonName={galleryButton.name}
                     buttonLink={galleryButton.link}
                     slides={galleryImage}
+                    galleryMime={galleryMime}
                 />
                 <Feedback
                     name={feedback.name}

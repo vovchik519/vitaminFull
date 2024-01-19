@@ -17,7 +17,6 @@ const GalleryMain = (props) => {
     let { slides } = props;
 
     const swiperRef = useRef();
-
     return (
         <section className={styles.wrapper}>
             <div className="container">
@@ -38,14 +37,19 @@ const GalleryMain = (props) => {
                         }}
                         autoplay={{
                             delay: 4000,
-                            disableOnInteraction: false,
+                            disableOnInteraction: true,
                         }}
                         className={styles.slider}
                     >
                         {slides.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <img src={`${image}`} alt='slide' />
-                            </SwiperSlide>
+                            props.galleryMime[index].indexOf('image') ?
+                                    <SwiperSlide key={index}>
+                                        <video src={image} controls></video>
+                                    </SwiperSlide>
+                                :
+                                <SwiperSlide key={index}>
+                                    <img src={image} alt='slide' />
+                                </SwiperSlide>
                         ))}
                     </Swiper>
                     <div className={styles.buttons}>

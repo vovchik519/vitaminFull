@@ -44,6 +44,7 @@ const Pantry = () => {
                 // gallery
                 let galleryId = []
                 let galleryImageArray = []
+                let galleryMimeArray = []
                 let galleryTitleArray = []
                 let gallerySubTitleArray = []
                 let galleryDescriptionArray = []
@@ -56,8 +57,10 @@ const Pantry = () => {
                     let descriptionArray = []
                     let descriptionIndentArray = []
                     let imageArray = []
+                    let mimeArray = []
                     let signatureArray = []
                     for (let g = 0; g < data.data.attributes.gallery[i].gallery.data.attributes.Image.length; g++) {
+                        mimeArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.mime)
                         imageArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
                         signatureArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
                     }
@@ -68,6 +71,7 @@ const Pantry = () => {
                     galleryDescriptionArray.push(descriptionArray)
                     galleryDescriptionIndentArray.push(descriptionIndentArray)
                     galleryImageArray.push(imageArray)
+                    galleryMimeArray.push(mimeArray)
                     gallerySignatureArray.push(signatureArray)
                 }
                 setGalleryId(galleryId)
@@ -76,6 +80,7 @@ const Pantry = () => {
                 setGalleryDescription(galleryDescriptionArray)
                 setGalleryDescriptionIndent(galleryDescriptionIndentArray)
                 setGalleryImage(galleryImageArray)
+                setGalleryMime(galleryMimeArray)
                 setGallerySignature(gallerySignatureArray)
                 // poem
                 setPoems(data.data.attributes.poem);
@@ -110,6 +115,7 @@ const Pantry = () => {
     const [galleryDescription, setGalleryDescription] = useState([]);
     const [galleryDescriptionIndent, setGalleryDescriptionIndent] = useState([]);
     const [galleryImage, setGalleryImage] = useState([]);
+    const [galleryMime, setGalleryMime] = useState([]);
     const [gallerySignature, setGallerySignature] = useState([]);
     // poem
     const [poemBlockImage, setPoemBlockImage] = useState('');
@@ -169,12 +175,20 @@ const Pantry = () => {
                                             className="images-wrap"
                                             columnClassName="images-column">
                                             {galleryImage[index].map((image, imageIndex) => (
-                                                <div key={imageIndex} className={styles.imageTop}>
-                                                    <div key={imageIndex} className={styles.image}>
-                                                        <Image src={`${image}`} alt="Картинка" />
+                                                galleryMime[0][imageIndex].indexOf('image') ?
+                                                    <div key={imageIndex} className={styles.imageTop}>
+                                                        <div className={styles.image}>
+                                                            <video src={image} controls></video>
+                                                        </div>
+                                                        <h3>{gallerySignature[index][imageIndex]}</h3>
                                                     </div>
-                                                    <h3>{gallerySignature[index][imageIndex]}</h3>
-                                                </div>
+                                                    :
+                                                    <div key={imageIndex} className={styles.imageTop}>
+                                                        <div className={styles.image}>
+                                                            <Image src={image} alt="Картинка" />
+                                                        </div>
+                                                        <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                    </div>
                                             ))}
                                         </Masonry>
                                     </ImageGroup>
