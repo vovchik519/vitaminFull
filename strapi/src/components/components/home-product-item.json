@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_home_product_items",
+  "info": {
+    "displayName": "homeProductItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "catalogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::catalog.catalog"
+    }
+  }
+}

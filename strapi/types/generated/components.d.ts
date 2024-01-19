@@ -38,6 +38,21 @@ export interface ComponentsGalleryItem extends Schema.Component {
   };
 }
 
+export interface ComponentsHomeProductItem extends Schema.Component {
+  collectionName: 'components_components_home_product_items';
+  info: {
+    displayName: 'homeProductItem';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    catalogs: Attribute.Relation<
+      'components.home-product-item',
+      'oneToMany',
+      'api::catalog.catalog'
+    >;
+  };
+}
+
 export interface ComponentsImageFour extends Schema.Component {
   collectionName: 'components_components_image_fours';
   info: {
@@ -340,6 +355,18 @@ export interface SectionsGallery extends Schema.Component {
   };
 }
 
+export interface SectionsHomeProductList extends Schema.Component {
+  collectionName: 'components_sections_home_product_lists';
+  info: {
+    displayName: 'HomeProductList';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    productItem: Attribute.Component<'components.home-product-item', true> &
+      Attribute.Required;
+  };
+}
+
 export interface SectionsMainScreen extends Schema.Component {
   collectionName: 'components_sections_main_screens';
   info: {
@@ -406,6 +433,7 @@ declare module '@strapi/types' {
       'components.button': ComponentsButton;
       'components.entry-field': ComponentsEntryField;
       'components.gallery-item': ComponentsGalleryItem;
+      'components.home-product-item': ComponentsHomeProductItem;
       'components.image-four': ComponentsImageFour;
       'components.link': ComponentsLink;
       'components.logo-with-name': ComponentsLogoWithName;
@@ -427,6 +455,7 @@ declare module '@strapi/types' {
       'sections.feedback': SectionsFeedback;
       'sections.gallery-block': SectionsGalleryBlock;
       'sections.gallery': SectionsGallery;
+      'sections.home-product-list': SectionsHomeProductList;
       'sections.main-screen': SectionsMainScreen;
       'sections.poem-block': SectionsPoemBlock;
       'sections.poem-extended': SectionsPoemExtended;

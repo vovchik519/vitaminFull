@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_home_product_lists",
+  "info": {
+    "displayName": "HomeProductList"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "productItem": {
+      "displayName": "homeProductItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.home-product-item",
+      "required": true
+    }
+  }
+}

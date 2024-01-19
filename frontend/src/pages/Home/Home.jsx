@@ -10,6 +10,7 @@ import BannerOne from './../../components/BannerOne/BannerOne';
 import BannerTwo from './../../components/BannerTwo/BannerTwo';
 import Footer from './../../components/Footer/Footer';
 import Header from './../../components/Header/Header';
+import ProductList from '../../components/ProductList/ProductList';
 
 const Home = () => {
     let server = 'http://localhost:1337'
@@ -21,7 +22,7 @@ const Home = () => {
             return new Promise(r => setTimeout(() => r(), ms))
         }
 
-        let homePage = `${server}/api/home-page?locale=${lang}&populate=deep`;
+        let homePage = `${server}/api/home-page?locale=${lang}&populate=deep,10`;
 
         async function fetchData() {
             try {
@@ -73,6 +74,20 @@ const Home = () => {
                 setStoreroomTitle(data.data.attributes.storeroom.title);
                 setStoreroomDescription(data.data.attributes.storeroom.description);
                 setStoreroomButton(data.data.attributes.storeroom.button);
+                // productList
+                const productArray = []
+                for (let i = 0; i < data.data.attributes.productList.productItem.length; i++) {
+                    const productArray1 = []
+                    for (let g = 0; g < data.data.attributes.productList.productItem[i].catalogs.data.length; g++) {
+                        const productArray2 = []
+                        for (let j = 0; j < data.data.attributes.productList.productItem[i].catalogs.data[g].attributes.product.length; j++) {
+                            productArray2.push(data.data.attributes.productList.productItem[i].catalogs.data[g].attributes.product[j])
+                        }
+                        productArray1.push(productArray2)
+                    }
+                    productArray.push(productArray1)
+                }
+                setProductList(productArray[0]?.[0].slice(0, 3))
             } catch (e) {
                 console.log(e);
             }
@@ -130,6 +145,9 @@ const Home = () => {
     const storeroomDescriptionsArray = [];
     multiData(storeroomTitlesArray, storeroomTitle, 'title')
     multiData(storeroomDescriptionsArray, storeroomDescription, 'paragraph')
+    // productList
+    const [productList, setProductList] = useState([]);
+    
     function multiData(array, data, key) {
         for (let i = 0; i < data.length; i++) {
             array.push(data[i][key])
@@ -195,6 +213,11 @@ const Home = () => {
                     buttonName={storeroomButton.name}
                     buttonLink={storeroomButton.link}
                 />
+                {productList &&
+                    <div className='container'>
+                        <ProductList product={productList} />
+                    </div>
+                }
             </main>
             <Footer theme='white' />
         </div>

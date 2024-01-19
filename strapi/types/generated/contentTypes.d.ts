@@ -1293,11 +1293,18 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    catalog: Attribute.Relation<
+    catalogs: Attribute.Relation<
       'api::home-page.home-page',
-      'oneToOne',
+      'oneToMany',
       'api::catalog.catalog'
     >;
+    productList: Attribute.Component<'sections.home-product-list'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
