@@ -82,6 +82,45 @@ const Pantry = () => {
                 setGalleryImage(galleryImageArray)
                 setGalleryMime(galleryMimeArray)
                 setGallerySignature(gallerySignatureArray)
+                // galleryFriends
+                let galleryFriendsId = []
+                let galleryFriendsImageArray = []
+                let galleryFriendsMimeArray = []
+                let galleryFriendsTitleArray = []
+                let galleryFriendsSubTitleArray = []
+                let galleryFriendsDescriptionArray = []
+                let galleryFriendsDescriptionIndentArray = []
+                let galleryFriendsSignatureArray = []
+                    galleryFriendsId.push(data.data.attributes.galleryFriends.id)
+                    galleryFriendsTitleArray.push(data.data.attributes.galleryFriends.title)
+                    galleryFriendsSubTitleArray.push(data.data.attributes.galleryFriends.subTitle)
+                    let descriptionFriendArray = []
+                    let descriptionFriendIndentArray = []
+                    let imageFriendArray = []
+                    let mimeFriendArray = []
+                    let signatureFriendArray = []
+                    for (let g = 0; g < data.data.attributes.galleryFriends.gallery.data.attributes.Image.length; g++) {
+                        mimeFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].image.data.attributes.mime)
+                        imageFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].image.data.attributes.url)
+                        signatureFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].signature)
+                    }
+                    for (let j = 0; j < data.data.attributes.galleryFriends.description.length; j++) {
+                        descriptionFriendArray.push(data.data.attributes.galleryFriends.description[j].paragraph)
+                        descriptionFriendIndentArray.push(data.data.attributes.galleryFriends.description[j].removeIndentation)
+                    }
+                    galleryFriendsDescriptionArray.push(descriptionFriendArray)
+                    galleryFriendsDescriptionIndentArray.push(descriptionFriendIndentArray)
+                    galleryFriendsImageArray.push(imageFriendArray)
+                    galleryFriendsMimeArray.push(mimeFriendArray)
+                    galleryFriendsSignatureArray.push(signatureFriendArray)
+                setgalleryFriendsId(galleryFriendsId)
+                setgalleryFriendsTitle(galleryFriendsTitleArray)
+                setgalleryFriendsSubTitle(galleryFriendsSubTitleArray)
+                setgalleryFriendsDescription(galleryFriendsDescriptionArray)
+                setgalleryFriendsDescriptionIndent(galleryFriendsDescriptionIndentArray)
+                setgalleryFriendsImage(galleryFriendsImageArray)
+                setgalleryFriendsMime(galleryFriendsMimeArray)
+                setgalleryFriendsSignature(galleryFriendsSignatureArray)
                 // poem
                 setPoems(data.data.attributes.poem);
                 setPoemItem(data.data.attributes.poem.poemItem);
@@ -117,6 +156,15 @@ const Pantry = () => {
     const [galleryImage, setGalleryImage] = useState([]);
     const [galleryMime, setGalleryMime] = useState([]);
     const [gallerySignature, setGallerySignature] = useState([]);
+    // galeryFriend
+    const [galleryFriendsId, setgalleryFriendsId] = useState([]);
+    const [galleryFriendsTitle, setgalleryFriendsTitle] = useState([]);
+    const [galleryFriendsSubTitle, setgalleryFriendsSubTitle] = useState([]);
+    const [galleryFriendsDescription, setgalleryFriendsDescription] = useState([]);
+    const [galleryFriendsDescriptionIndent, setgalleryFriendsDescriptionIndent] = useState([]);
+    const [galleryFriendsImage, setgalleryFriendsImage] = useState([]);
+    const [galleryFriendsMime, setgalleryFriendsMime] = useState([]);
+    const [galleryFriendsSignature, setgalleryFriendsSignature] = useState([]);
     // poem
     const [poemBlockImage, setPoemBlockImage] = useState('');
     const [poemBlockButton, setPoemBlockButton] = useState({});
@@ -226,6 +274,52 @@ const Pantry = () => {
                     </div> : null
                 }
                 <PoemSection page='pantry' />
+                <div>
+                    {galleryFriendsId.map((blockId, index) => (
+                        <div key={index} className={styles.gallery}>
+                            <div className="container">
+                                <div className={styles.titleWrap}>
+                                    <div className={styles.titleTop}>
+                                        <h2>{galleryFriendsTitle[index]}</h2>
+                                        <div>
+                                            {galleryFriendsDescription[index].map((paragraph, descriptionIndex) => (
+                                                <p className={galleryFriendsDescriptionIndent[index][descriptionIndex] === true ? '' : 'indent'} key={descriptionIndex}>
+                                                    {paragraph}
+                                                </p>
+                                            ))}
+                                        </div>
+                                    </div>
+                                    <h3>{galleryFriendsSubTitle[index]}</h3>
+                                </div>
+                                <div className={styles.images}>
+                                    <ImageGroup>
+                                        <Masonry
+                                            breakpointCols={breakpointColumnsObj}
+                                            className="images-wrap"
+                                            columnClassName="images-column">
+                                            {galleryFriendsImage[index].map((image, imageIndex) => (
+                                                galleryFriendsMime[0][imageIndex].indexOf('image') ?
+                                                    <div key={imageIndex} className={styles.imageTop}>
+                                                        <div className={styles.image}>
+                                                            <video src={image} controls></video>
+                                                        </div>
+                                                        <h3>{galleryFriendsSignature[index][imageIndex]}</h3>
+                                                    </div>
+                                                    :
+                                                    <div key={imageIndex} className={styles.imageTop}>
+                                                        <div className={styles.image}>
+                                                            <Image src={image} alt="Картинка" />
+                                                        </div>
+                                                        <h3>{galleryFriendsSignature[index][imageIndex]}</h3>
+                                                    </div>
+                                            ))}
+                                        </Masonry>
+                                    </ImageGroup>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </main>
             <Footer />
         </>
