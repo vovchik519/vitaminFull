@@ -97,11 +97,6 @@
       "component": "sections.block-text",
       "required": true
     },
-    "catalogs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::catalog.catalog"
-    },
     "productList": {
       "displayName": "HomeProductList",
       "type": "component",

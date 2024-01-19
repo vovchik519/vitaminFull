@@ -11,6 +11,8 @@ import BannerTwo from './../../components/BannerTwo/BannerTwo';
 import Footer from './../../components/Footer/Footer';
 import Header from './../../components/Header/Header';
 import ProductList from '../../components/ProductList/ProductList';
+import Name from '../../ui/Name/Name';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     let server = 'http://localhost:1337'
@@ -76,7 +78,11 @@ const Home = () => {
                 setStoreroomButton(data.data.attributes.storeroom.button);
                 // productList
                 const productArray = []
+                const productArrayTwo = []
+                const productArrayTitle = []
+                setProductName(data.data.attributes.productList.name)
                 for (let i = 0; i < data.data.attributes.productList.productItem.length; i++) {
+                    productArrayTitle.push(data.data.attributes.productList.productItem[i].title)
                     const productArray1 = []
                     for (let g = 0; g < data.data.attributes.productList.productItem[i].catalogs.data.length; g++) {
                         const productArray2 = []
@@ -87,7 +93,11 @@ const Home = () => {
                     }
                     productArray.push(productArray1)
                 }
-                setProductList(productArray[0]?.[0].slice(0, 3))
+                for (let i = 0; i < productArray.length; i++) {
+                    productArrayTwo.push(productArray[i]?.[0].slice(0, 3))
+                }
+                setProductTitle(productArrayTitle)
+                setProductList(productArrayTwo)
             } catch (e) {
                 console.log(e);
             }
@@ -147,7 +157,8 @@ const Home = () => {
     multiData(storeroomDescriptionsArray, storeroomDescription, 'paragraph')
     // productList
     const [productList, setProductList] = useState([]);
-    
+    const [productName, setProductName] = useState('');
+    const [productTitle, setProductTitle] = useState('');
     function multiData(array, data, key) {
         for (let i = 0; i < data.length; i++) {
             array.push(data[i][key])
@@ -213,13 +224,26 @@ const Home = () => {
                     buttonName={storeroomButton.name}
                     buttonLink={storeroomButton.link}
                 />
-                {productList &&
-                    <div className='container'>
-                        <ProductList product={productList} />
-                    </div>
+                {productList.length !== 0 ?
+                    <div className={styles.productWrapper}>
+                        <div className='container'>
+                            <Name name={productName} />
+                            <div className={styles.productWrap}>
+                                {productList.map((product, index) => (
+                                    <div className={styles.productRow} key={index}>
+                                        <div className={styles.productTitle}>
+                                            <h2>{productTitle[index]}</h2>
+                                            <Link to='/store'>{lang === 'ru' ? 'Смотреть все' : 'See all'}</Link>
+                                        </div>
+                                        <ProductList product={product} />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div> : null
                 }
             </main>
-            <Footer theme='white' />
+            <Footer />
         </div>
     );
 };

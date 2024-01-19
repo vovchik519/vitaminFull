@@ -7,3 +7,29 @@
         }
     }
 }
+.productWrapper {
+    padding: clamp(40px, calc(4.6875rem + ((1vw - 14.4px) * 3.2407)), 75px) 0
+        clamp(60px, calc(6.25rem + ((1vw - 14.4px) * 3.7037)), 100px);
+    background-color: #fbffe7;
+    :global {
+        .product__item:hover {
+            background-color: white;
+        }
+    }
+}
+.productWrap {
+    .productRow:first-child {
+        margin-top: clamp(24px, calc(2rem + ((1vw - 12.8px) * 0.8333)), 32px);
+    }
+    .productRow {
+        margin-top: clamp(40px, calc(6.25rem + ((1vw - 12.8px) * 6.25)), 100px);
+    }
+}
+.productTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 0 clamp(7px, calc(0.875rem + ((1vw - 12.8px) * 0.7292)), 14px);
+    margin-bottom: clamp(14px, calc(1.5rem + ((1vw - 12.8px) * 1.0417)), 24px);
+}
