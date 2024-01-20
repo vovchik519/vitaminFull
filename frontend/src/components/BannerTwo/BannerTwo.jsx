@@ -12,6 +12,7 @@ const BannerTwo = (props) => {
             <div className={styles.wrap}>
                 <Name
                     name={props.name}
+                    white={true}
                 />
                 <h2>
                     {

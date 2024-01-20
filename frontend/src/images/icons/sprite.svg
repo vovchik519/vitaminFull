@@ -74,4 +74,14 @@
 			<path d="M15 15L25 25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 		</g>
 	</symbol>
+	<symbol id="icon-name-border" viewBox="0 0 152 41" fill="none">
+		<g>
+			<path d="M120.647 6.91528C93.8092 1.9137 7.78197 -2.57562 1.69319 17.1962C-4.39558 36.968 40.0912 44.4907 120.096 37.0972C182.576 31.3233 136.758 -1.81754 94.2506 0.981744" stroke="#419197" stroke-width="1.5" stroke-linecap="round" />
+		</g>
+	</symbol>
+	<symbol id="icon-name-border-white" viewBox="0 0 112 42" fill="none">
+		<g>
+			<path d="M88.269 6.42206C68.3233 2.19874 4.8703 -0.00759983 1.21929 19.5574C-2.43172 39.1224 30.5988 45.3691 89.126 36.0646C134.833 28.7983 99.7522 -2.56275 68.6089 1.27258" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+		</g>
+	</symbol>
 </svg>

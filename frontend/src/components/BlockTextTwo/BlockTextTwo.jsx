@@ -18,7 +18,7 @@ const BlockTextTwo = (props) => {
                     </div>
                     <div className={styles.info}>
                         <Name
-                            name={props.name} />
+                            name={props.name} white={true} />
                         <h2>{props.title}</h2>
                         <div className={styles.description}>
                             {descriptions.map((description, index) => (

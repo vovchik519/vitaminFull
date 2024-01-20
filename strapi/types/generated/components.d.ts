@@ -68,6 +68,16 @@ export interface ComponentsImageFour extends Schema.Component {
   };
 }
 
+export interface ComponentsImagesItem extends Schema.Component {
+  collectionName: 'components_components_images_items';
+  info: {
+    displayName: 'ImagesItem';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+  };
+}
+
 export interface ComponentsLink extends Schema.Component {
   collectionName: 'components_components_links';
   info: {
@@ -225,6 +235,7 @@ export interface SectionsBlockTextAndLink extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     list: Attribute.Component<'components.multi-paragraph-and-link', true>;
     description: Attribute.Component<'components.multi-paragraph', true>;
+    images: Attribute.Component<'components.images-item', true>;
   };
 }
 
@@ -436,6 +447,7 @@ declare module '@strapi/types' {
       'components.gallery-item': ComponentsGalleryItem;
       'components.home-product-item': ComponentsHomeProductItem;
       'components.image-four': ComponentsImageFour;
+      'components.images-item': ComponentsImagesItem;
       'components.link': ComponentsLink;
       'components.logo-with-name': ComponentsLogoWithName;
       'components.multi-paragraph-and-link': ComponentsMultiParagraphAndLink;

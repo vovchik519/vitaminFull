@@ -44,6 +44,11 @@ const About = () => {
                 setInfo(data.data.attributes.info);
                 setInfoDescription(data.data.attributes.info.description);
                 setInfoImage(data.data.attributes.info.image.data.attributes);
+                const infoImagesArray = []
+                for (let i = 0; i < data.data.attributes.info.images.length; i++) {
+                    infoImagesArray.push(data.data.attributes.info.images[i].image.data.attributes.url)
+                }
+                setInfoImages(infoImagesArray)
                 let infoListArray = []
                 for (let i = 0; i < data.data.attributes.info.list.length; i++) {
                     infoListArray.push(data.data.attributes.info.list[i])
@@ -85,6 +90,7 @@ const About = () => {
     const [infoDescription, setInfoDescription] = useState({});
     const [infoList, setInfoList] = useState({});
     const [infoImage, setInfoImage] = useState({});
+    const [infoImages, setInfoImages] = useState([]);
 
     const infoDescriptionsArray = [];
     let infoDescriptionsIndentsArray = [];
@@ -155,6 +161,7 @@ const About = () => {
                     list={infoList}
                     listIndents={infoListIndentsArray}
                     imageUrl={infoImage.url}
+                    images={infoImages}
                     imageAlt={infoImage.alternativeText}
                 />
                 {poem.length !== 0 ?

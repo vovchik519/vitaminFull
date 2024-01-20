@@ -29,6 +29,12 @@
       "type": "component",
       "repeatable": true,
       "component": "components.multi-paragraph"
+    },
+    "images": {
+      "displayName": "ImagesItem",
+      "type": "component",
+      "repeatable": true,
+      "component": "components.images-item"
     }
   }
 }

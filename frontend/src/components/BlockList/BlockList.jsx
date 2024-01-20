@@ -9,6 +9,7 @@ const BlockList = (props) => {
     const { descriptionsIndents } = props;
     const { list } = props;
     const { listIndents } = props;
+    const { images } = props;
     let listId = [];
 
     multiData(listId, list, 'id')
@@ -32,6 +33,15 @@ const BlockList = (props) => {
                                     {list[index].textEnd !== null ? list[index].textEnd : ''}</li>
                             ))}
                         </ul>
+                        {images && images.length > 0 &&
+                            <div className={styles.images}>
+                                {images.map((item, index) => (
+                                    <div key={index} className={images.length <= 2 ? `${styles.imagesWrap} block__list-images${images.length}` : `${styles.imagesWrap}`}>
+                                        <img src={item} alt='изображение' />
+                                    </div>
+                                ))}
+                            </div>
+                        }
                         <div className={styles.description}>
                             {descriptions.map((description, index) => (
                                 <p className={props.descriptionsIndents[index] === true ? '' : styles.indent} key={index}>{description}</p>
