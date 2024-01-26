@@ -1,48 +1,53 @@
 import React, { useState, useMemo } from 'react';
 import Pagination from './../Pagination/Pagination';
-import data from './mock-data.json';
 
 let PageSize = 10;
 
 export default function TestApp() {
+    const poemArray = [
+        "Все!",
+        "Тает твердь, в наклон идёт планета,",
+        "Законам космоса, как прежде подчинясь,",
+        "Кипят снега в ручьях, играют светом",
+        "В калюжах отражением смеясь.",
+        "Апрель горяч, обнявшись с солнцем ходит,",
+        "Нательный лёд срывая от земли,",
+        "Весну, ещё раздетой в свет выводит,",
+        "Наслуд ломая, отпускает корабли.",
+        "Март стужу не прогнал, слабо начало!",
+        "Зима при нём гуляла в дыгыле!",
+        "Морозом ночью северным дышала,",
+        "Была студёна, будто в феврале.",
+        "А нынче гам стоит, тревожит душу,",
+        "Воробушки гладят, осыпали ивняк,",
+        "Перебирает важно лапками крякуша,",
+        "Заманивая селезня в овраг.",
+        "Все ожило, иль заново родиться",
+        "Веками повториться вновь и вновь,",
+        "Зима в Весну, из снега превратиться,",
+        "Даря надежду, веру, и любовь."
+    ];
     const [currentPage, setCurrentPage] = useState(1);
 
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
-        return data.slice(firstPageIndex, lastPageIndex);
+        return poemArray.slice(firstPageIndex, lastPageIndex);
     }, [currentPage]);
-
+    
     return (
         <>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>FIRST NAME</th>
-                        <th>LAST NAME</th>
-                        <th>EMAIL</th>
-                        <th>PHONE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {currentTableData.map(item => {
-                        return (
-                            <tr>
-                                <td>{item.id}</td>
-                                <td>{item.first_name}</td>
-                                <td>{item.last_name}</td>
-                                <td>{item.email}</td>
-                                <td>{item.phone}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            {currentTableData.map((item, index) => {
+                return (
+                    <div key={index}>
+                        <p>{item}</p>
+                    </div>
+                );
+            })}
             <Pagination
                 className="pagination-bar"
                 currentPage={currentPage}
-                totalCount={data.length}
+                totalCount={poemArray.length}
                 pageSize={PageSize}
                 onPageChange={page => setCurrentPage(page)}
             />

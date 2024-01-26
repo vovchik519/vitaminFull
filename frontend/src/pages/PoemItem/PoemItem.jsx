@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 
 import styles from './PoemItem.module.scss';
 
@@ -10,6 +10,7 @@ import PoemSection from '../../components/PoemSection/PoemSection';
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 import Error from '../../components/Error/Error';
+import Pagination from './../../components/Pagination/Pagination';
 
 const PoemItem = () => {
     let server = 'http://localhost:1337'
@@ -58,13 +59,20 @@ const PoemItem = () => {
                 setArticlesParagraphIndents(articlesParagraphIndentsArray)
                 setArticlesId(articlesIdArray)
                 setArticlesType(articlesTypeArray)
+                for (let i = 0; i < 99; i++) {
+                    if (articlesIdArray[i] == window.location.hash.substring(1)) {
+                        setArticlesPagination(articlesParagraphArray[i])
+                        setArticlesTypePagination(articlesTypeArray[i])
+                    }
+                }
+                console.log(articlesParagraphArray)
             } catch (e) {
                 console.log(e);
             }
         }
         fetchData();
     }, []);
-
+    // articlesType[index] === true ? setPageSize(2) : setPageSize(25)
     // article
     const [articlesId, setArticlesId] = useState([]);
     const [articlesType, setArticlesType] = useState([]);
@@ -76,7 +84,27 @@ const PoemItem = () => {
             window.location.reload();
         }, 0)
     };
-
+    const [PageSize, setPageSize] = useState(25);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [articlesPagination, setArticlesPagination] = useState([]);
+    const [articlesTypePagination, setArticlesTypePagination] = useState(false);
+    useEffect(() => {
+        if (articlesTypePagination === true) {
+            if (window.innerWidth >= 580) {
+                setPageSize(8)
+            } else {
+                setPageSize(5)
+            }
+        } else {
+            setPageSize(25)
+        }
+    }, [articlesTypePagination])
+    console.log(window.innerWidth)
+    const currentTableData = useMemo(() => {
+        const firstPageIndex = (currentPage - 1) * PageSize;
+        const lastPageIndex = firstPageIndex + PageSize;
+        return articlesPagination.slice(firstPageIndex, lastPageIndex);
+    }, [PageSize, currentPage, articlesPagination]);
     return (
         <>
             <Header />
@@ -84,42 +112,32 @@ const PoemItem = () => {
                 {articlesId.map((blockId, index) => (
                     blockId == window.location.hash.substring(1) ? (
                         <div key={index}>
-                            {articlesType[index] === true ?
-                                <section className={styles.wrapperTwo}>
-                                    <div className="container">
-
-                                        <div className={styles.blockTwo}>
-                                            <h2>
-                                                {articlesTitle[index]}
-                                            </h2>
-                                            <div className={styles.text}>
-                                                {articlesParagraph[index].map((textId, textIndex) => (
+                            <section className={articlesType[index] === true ? styles.wrapperTwo : styles.wrapper}>
+                                <div className="container">
+                                    <div className={articlesType[index] === true ? styles.blockTwo : styles.block}>
+                                        <h2>
+                                            {articlesTitle[index]}
+                                        </h2>
+                                        <div className={styles.text}>
+                                            {currentTableData.map((textId, textIndex) => {
+                                                return (
                                                     <p key={textIndex} className={articlesParagraphIndents[index][textIndex] === true ? '' : 'indent'}>
-                                                        {articlesParagraph[index][textIndex]}
-                                                    </p>
-                                                ))}
-                                            </div>
+                                                        {textId}</p>
+                                                );
+                                            })}
+                                            <div className={styles.paginationWrapper}>
+                                            <Pagination
+                                                className="pagination-bar"
+                                                currentPage={currentPage}
+                                                totalCount={articlesPagination.length}
+                                                pageSize={PageSize}
+                                                onPageChange={page => setCurrentPage(page)}
+                                                />
+                                                </div>
                                         </div>
                                     </div>
-                                </section> :
-                                <section className={styles.wrapper}>
-                                    <div className="container">
-
-                                        <div className={styles.block}>
-                                            <h2>
-                                                {articlesTitle[index]}
-                                            </h2>
-                                            <div className={styles.text}>
-                                                {articlesParagraph[index].map((textId, textIndex) => (
-                                                    <p key={textIndex} className={articlesParagraphIndents[index][textIndex] === true ? '' : 'indent'}>
-                                                        {articlesParagraph[index][textIndex]}
-                                                    </p>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
-                            }
+                                </div>
+                            </section>
                         </div>
                     ) : null
                 ))}

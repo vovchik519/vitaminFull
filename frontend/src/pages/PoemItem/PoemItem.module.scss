@@ -88,6 +88,11 @@
         letter-spacing: 0.54px;
     }
 }
+.paginationWrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(30px, calc(3.4375rem + ((1vw - 12.8px) * 2.6042)), 55px);
+}
 @media (max-width: 1024px) {
     .wrapper {
         padding-left: 0;
