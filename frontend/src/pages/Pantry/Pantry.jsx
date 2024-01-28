@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { ImageGroup, Image } from 'react-fullscreen-image'
 
 import styles from './Pantry.module.scss';
@@ -10,6 +10,7 @@ import PoemSection from '../../components/PoemSection/PoemSection';
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Pantry = () => {
     let server = 'http://localhost:1337'
@@ -91,34 +92,35 @@ const Pantry = () => {
                 let galleryFriendsDescriptionArray = []
                 let galleryFriendsDescriptionIndentArray = []
                 let galleryFriendsSignatureArray = []
-                    galleryFriendsId.push(data.data.attributes.galleryFriends.id)
-                    galleryFriendsTitleArray.push(data.data.attributes.galleryFriends.title)
-                    galleryFriendsSubTitleArray.push(data.data.attributes.galleryFriends.subTitle)
-                    let descriptionFriendArray = []
-                    let descriptionFriendIndentArray = []
-                    let imageFriendArray = []
-                    let mimeFriendArray = []
-                    let signatureFriendArray = []
-                    for (let g = 0; g < data.data.attributes.galleryFriends.gallery.data.attributes.Image.length; g++) {
-                        mimeFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].image.data.attributes.mime)
-                        imageFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].image.data.attributes.url)
-                        signatureFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].signature)
-                    }
-                    for (let j = 0; j < data.data.attributes.galleryFriends.description.length; j++) {
-                        descriptionFriendArray.push(data.data.attributes.galleryFriends.description[j].paragraph)
-                        descriptionFriendIndentArray.push(data.data.attributes.galleryFriends.description[j].removeIndentation)
-                    }
-                    galleryFriendsDescriptionArray.push(descriptionFriendArray)
-                    galleryFriendsDescriptionIndentArray.push(descriptionFriendIndentArray)
-                    galleryFriendsImageArray.push(imageFriendArray)
-                    galleryFriendsMimeArray.push(mimeFriendArray)
-                    galleryFriendsSignatureArray.push(signatureFriendArray)
+                galleryFriendsId.push(data.data.attributes.galleryFriends.id)
+                galleryFriendsTitleArray.push(data.data.attributes.galleryFriends.title)
+                galleryFriendsSubTitleArray.push(data.data.attributes.galleryFriends.subTitle)
+                let descriptionFriendArray = []
+                let descriptionFriendIndentArray = []
+                let imageFriendArray = []
+                let mimeFriendArray = []
+                let signatureFriendArray = []
+                for (let g = 0; g < data.data.attributes.galleryFriends.gallery.data.attributes.Image.length; g++) {
+                    mimeFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].image.data.attributes.mime)
+                    imageFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].image.data.attributes.url)
+                    signatureFriendArray.push(data.data.attributes.galleryFriends.gallery.data.attributes.Image[g].signature)
+                }
+                for (let j = 0; j < data.data.attributes.galleryFriends.description.length; j++) {
+                    descriptionFriendArray.push(data.data.attributes.galleryFriends.description[j].paragraph)
+                    descriptionFriendIndentArray.push(data.data.attributes.galleryFriends.description[j].removeIndentation)
+                }
+                galleryFriendsDescriptionArray.push(descriptionFriendArray)
+                galleryFriendsDescriptionIndentArray.push(descriptionFriendIndentArray)
+                galleryFriendsImageArray.push(imageFriendArray)
+                galleryFriendsMimeArray.push(mimeFriendArray)
+                galleryFriendsSignatureArray.push(signatureFriendArray)
                 setgalleryFriendsId(galleryFriendsId)
                 setgalleryFriendsTitle(galleryFriendsTitleArray)
                 setgalleryFriendsSubTitle(galleryFriendsSubTitleArray)
                 setgalleryFriendsDescription(galleryFriendsDescriptionArray)
                 setgalleryFriendsDescriptionIndent(galleryFriendsDescriptionIndentArray)
                 setgalleryFriendsImage(galleryFriendsImageArray)
+                setImagePagination(galleryImageArray)
                 setgalleryFriendsMime(galleryFriendsMimeArray)
                 setgalleryFriendsSignature(galleryFriendsSignatureArray)
                 // poem
@@ -185,6 +187,21 @@ const Pantry = () => {
             array.push(data[i][key])
         }
     }
+    const PageSize = 7;
+    const [imagePagination, setImagePagination] = useState([]);
+    const [currentPage, setCurrentPage] = useState();
+    useEffect(() => {
+        const initialCurrentPage = Object.fromEntries(imagePagination.map((_, index) => [index, 1]));
+        setCurrentPage(initialCurrentPage)
+    }, [imagePagination])
+
+    const handlePageChange = (page, index) => {
+        setCurrentPage((prevPages) => ({
+            ...prevPages,
+            [index]: page,
+        }));
+    };
+
     return (
         <>
             <Header />
@@ -200,8 +217,13 @@ const Pantry = () => {
                     decoration={mainScreenDecoration.url}
                 />
                 <div>
-                    {galleryId.map((blockId, index) => (
-                        <div key={index} className={styles.gallery}>
+                    {imagePagination.map((blockId, index) => {
+                        const currentTableData = () => {
+                            const firstPageIndex = (currentPage[index] - 1) * PageSize;
+                            const lastPageIndex = firstPageIndex + PageSize;
+                            return blockId.slice(firstPageIndex, lastPageIndex);
+                        };
+                        return <div key={index} className={styles.gallery}>
                             <div className="container">
                                 <div className={styles.titleWrap}>
                                     <div className={styles.titleTop}>
@@ -222,11 +244,11 @@ const Pantry = () => {
                                             breakpointCols={breakpointColumnsObj}
                                             className="images-wrap"
                                             columnClassName="images-column">
-                                            {galleryImage[index].map((image, imageIndex) => (
-                                                galleryMime[0][imageIndex].indexOf('image') ?
+                                            {currentTableData().map((image, imageIndex) => (
+                                                image.includes('.mp4') ?
                                                     <div key={imageIndex} className={styles.imageTop}>
                                                         <div className={styles.image}>
-                                                            <video src={image} controls></video>
+                                                            <video src={galleryImage[index][imageIndex]} controls></video>
                                                         </div>
                                                         <h3>{gallerySignature[index][imageIndex]}</h3>
                                                     </div>
@@ -240,10 +262,19 @@ const Pantry = () => {
                                             ))}
                                         </Masonry>
                                     </ImageGroup>
+                                    <div className={styles.pagination}>
+                                        <Pagination
+                                            className="pagination-bar"
+                                            currentPage={currentPage[index]}
+                                            totalCount={blockId.length}
+                                            pageSize={PageSize}
+                                            onPageChange={(page) => handlePageChange(page, index)}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    })}
                 </div>
                 {poemParagraphArray.length !== 0 ?
                     <Poem

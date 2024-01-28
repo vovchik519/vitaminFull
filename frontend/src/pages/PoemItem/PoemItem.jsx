@@ -99,7 +99,6 @@ const PoemItem = () => {
             setPageSize(25)
         }
     }, [articlesTypePagination])
-    console.log(window.innerWidth)
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;

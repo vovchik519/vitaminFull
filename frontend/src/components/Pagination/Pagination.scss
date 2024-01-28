@@ -1,17 +1,16 @@
 .pagination-container {
+    position: relative;
+    z-index: 1;
     display: flex;
     ul {
         display: flex;
         list-style-type: none;
     }
     .pagination-item {
-        padding: 0 12px;
         height: 32px;
         text-align: center;
         margin: auto 4px;
-        display: flex;
         padding: 2px 12px;
-        align-items: center;
         border-radius: 3px;
         min-width: 32px;
         color: black;
@@ -70,12 +69,15 @@
             }
         }
     }
-    button.pagination-item,
-    button.pagination-item:hover {
+    button.pagination-item {
+        background-color: transparent;
+    }
+    .pagination-button,
+    .pagination-button.pagination-item:hover {
         background-color: transparent;
         border: 1px solid transparent;
     }
-    button.pagination-item:hover {
+    .pagination-button.pagination-item:hover {
         border-color: black;
     }
 }
