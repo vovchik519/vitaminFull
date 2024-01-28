@@ -1412,7 +1412,7 @@ export interface ApiPantryPantry extends Schema.SingleType {
           localized: true;
         };
       }>;
-    galleryFriends: Attribute.Component<'sections.gallery-block'> &
+    galleryFriends: Attribute.Component<'sections.gallery-block', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
