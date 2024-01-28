@@ -207,6 +207,12 @@
         margin-top: 0;
     }
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(30px, calc(4.0625rem + ((1vw - 12.8px) * 3.6458)), 65px);
+}
 @media (max-width: 1024px) {
     .switched {
         height: 350px;

@@ -9,6 +9,7 @@ import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 import ButtonDark from '../../ui/ButtonDark/ButtonDark';
 import Preloader from './../../components/Preloader/Preloader';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Gallery = () => {
     let server = 'http://localhost:1337'
@@ -123,6 +124,20 @@ const Gallery = () => {
             setIsLoading(false)
         }, 750)
     }, [switched])
+
+    const PageSize = 7;
+    const [currentPage, setCurrentPage] = useState();
+    useEffect(() => {
+        const initialCurrentPage = Object.fromEntries(galleryImage.map((_, index) => [index, 1]));
+        setCurrentPage(initialCurrentPage)
+    }, [galleryImage])
+
+    const handlePageChange = (page, index) => {
+        setCurrentPage((prevPages) => ({
+            ...prevPages,
+            [index]: page,
+        }));
+    };
     return (
         <>
             {switched === '' ?
@@ -156,8 +171,13 @@ const Gallery = () => {
                             decoration={mainScreenDecoration.url}
                         />
                         <div>
-                            {galleryId.map((blockId, index) => (
-                                <div key={index} className={styles.gallery}>
+                            {galleryImage.map((blockId, index) => {
+                                const currentTableData = () => {
+                                    const firstPageIndex = (currentPage[index] - 1) * PageSize;
+                                    const lastPageIndex = firstPageIndex + PageSize;
+                                    return blockId.slice(firstPageIndex, lastPageIndex);
+                                };
+                                return <div key={index} className={styles.gallery}>
                                     <div className="container">
                                         <div className={styles.titleWrap}>
                                             <div className={styles.titleTop}>
@@ -178,28 +198,37 @@ const Gallery = () => {
                                                     breakpointCols={breakpointColumnsObj}
                                                     className="images-wrap"
                                                     columnClassName="images-column">
-                                                    {galleryImage[index].map((image, imageIndex) => (
-                                                        galleryMime[0][imageIndex].indexOf('image') ?
+                                                    {currentTableData().map((image, imageIndex) => (
+                                                        image.includes('.mp4') ?
                                                             <div key={imageIndex} className={styles.imageTop}>
-                                                                <div key={imageIndex} className={styles.image}>
-                                                                    <video src={image} controls></video>
+                                                                <div className={styles.image}>
+                                                                    <video src={galleryImage[index][imageIndex]} controls></video>
                                                                 </div>
                                                                 <h3>{gallerySignature[index][imageIndex]}</h3>
                                                             </div>
                                                             :
-                                                        <div key={imageIndex} className={styles.imageTop}>
-                                                            <div key={imageIndex} className={styles.image}>
-                                                                <Image src={`${image}`} alt="Картинка" />
+                                                            <div key={imageIndex} className={styles.imageTop}>
+                                                                <div className={styles.image}>
+                                                                    <Image src={image} alt="Картинка" />
+                                                                </div>
+                                                                <h3>{gallerySignature[index][imageIndex]}</h3>
                                                             </div>
-                                                            <h3>{gallerySignature[index][imageIndex]}</h3>
-                                                        </div>
                                                     ))}
                                                 </Masonry>
                                             </ImageGroup>
+                                            <div className={styles.pagination}>
+                                                <Pagination
+                                                    className="pagination-bar"
+                                                    currentPage={currentPage[index]}
+                                                    totalCount={blockId.length}
+                                                    pageSize={PageSize}
+                                                    onPageChange={(page) => handlePageChange(page, index)}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            })}
                         </div>
                     </main>
                     <Footer />
