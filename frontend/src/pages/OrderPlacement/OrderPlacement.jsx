@@ -8,6 +8,7 @@ import axios from 'axios'
 import ButtonDark from './../../ui/ButtonDark/ButtonDark';
 import useOrders from '../../database-orders';
 import BasketInside from '../../components/BasketInside/BasketInside';
+import ThankYou from '../../components/ThankYou/ThankYou';
 
 const OrderPlacement = () => {
     let lang = localStorage.getItem('selectedLanguage');
@@ -76,9 +77,12 @@ const OrderPlacement = () => {
     const handleRemoveToCart = (product) => {
         removeOrder(product);
     };
+    const [isOpen, setIsOpen] = useState(false)
     const handleSubmit = () => {
         console.log(contact, `Адрес доставки: ${address} ${addressMap}`, `Способ оплаты: ${payment}`, ordersList);
+        setIsOpen(true)
     }
+
     return (
         <>
             <Header />
@@ -203,6 +207,7 @@ const OrderPlacement = () => {
                 </div>
             </main>
             <Footer />
+            <ThankYou isOpen={isOpen} title={lang === 'ru' ? 'Спасибо. Ваш заказ принят.' : 'Thank you. Your order has been accepted.'} />
         </>
     );
 };

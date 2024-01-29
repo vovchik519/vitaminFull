@@ -14,7 +14,7 @@ const ProductList = (product) => {
         }
     }, [product.product]);
 
-    let PageSize = 10;
+    let PageSize = 12;
     const [currentPage, setCurrentPage] = useState(1);
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;

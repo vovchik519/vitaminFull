@@ -99,7 +99,6 @@ const Product = () => {
             setProductListOpen(false)
         }
     };
-
     return (
         <>
             <Header ordersProduct={orders} handleToggle={handleToggle} />

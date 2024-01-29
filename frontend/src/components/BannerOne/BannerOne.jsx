@@ -9,24 +9,26 @@ const BannerOne = (props) => {
 
     return (
         <section className={styles.wrapper}>
-            <div className={styles.wrap}>
-                <Name
-                    name={props.name}
-                />
-                <h2>
-                    {
-                        titles.map((title, index) => (
-                            <span key={index}>{title}</span>
-                        ))
-                    }
-                </h2>
-                {descriptions.map((description, index) => (
-                    <p key={index}>{description}</p>
-                ))}
-                <LinkDark
-                    name={props.buttonName}
-                    link={props.buttonLink}
-                />
+            <div className='container'>
+                <div className={styles.wrap}>
+                    <Name
+                        name={props.name}
+                    />
+                    <h2>
+                        {
+                            titles.map((title, index) => (
+                                <span key={index}>{title}</span>
+                            ))
+                        }
+                    </h2>
+                    {descriptions.map((description, index) => (
+                        <p key={index}>{description}</p>
+                    ))}
+                    <LinkDark
+                        name={props.buttonName}
+                        link={props.buttonLink}
+                    />
+                </div>
             </div>
         </section>
     );

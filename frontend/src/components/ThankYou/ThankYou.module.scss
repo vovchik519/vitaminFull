@@ -1,0 +1,46 @@
+.wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    max-width: 90vw;
+    width: clamp(280px, calc(33.75rem + ((1vw - 12.8px) * 27.0833)), 540px);
+    min-height: clamp(
+        190px,
+        calc(18.75rem + ((1vw - 12.8px) * 11.4583)),
+        300px
+    );
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #12486b;
+    padding: 32px;
+    z-index: 999;
+    h2 {
+        font-family: "PT Root UI";
+        font-size: clamp(1rem, calc(2rem + ((1vw - 0.8rem) * 1.6667)), 2rem);
+        font-weight: 400;
+        line-height: 130%;
+        text-transform: none;
+        text-align: center;
+    }
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(30px, calc(2.3125rem + ((1vw - 12.8px) * 0.7292)), 37px);
+    svg {
+        width: clamp(106px, calc(8rem + ((1vw - 12.8px) * 2.2917)), 128px);
+        height: clamp(106px, calc(8rem + ((1vw - 12.8px) * 2.2917)), 128px);
+    }
+}
+.exit {
+    position: absolute;
+    background-color: transparent;
+    top: 20px;
+    right: 20px;
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
