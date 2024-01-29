@@ -93,6 +93,12 @@ h2 {
         transform: rotate(180deg);
     }
 }
+.pagination-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: clamp(30px, calc(4.0625rem + ((1vw - 12.8px) * 3.6458)), 65px);
+}
 body.lock{
     overflow: hidden;
 }

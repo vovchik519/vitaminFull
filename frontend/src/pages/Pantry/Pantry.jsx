@@ -200,7 +200,7 @@ const Pantry = () => {
         const initialFriendsCurrentPage = Object.fromEntries(imageFriendsPagination.map((_, index) => [index, 1]));
         setCurrentPage(initialCurrentPage)
         setCurrentFriendsPage(initialFriendsCurrentPage)
-    }, [imagePagination])
+    }, [imagePagination, imageFriendsPagination])
 
     const handlePageChange = (page, index) => {
         setCurrentPage((prevPages) => ({
@@ -275,7 +275,7 @@ const Pantry = () => {
                                             ))}
                                         </Masonry>
                                     </ImageGroup>
-                                    <div className={styles.pagination}>
+                                    <div className='pagination-main'>
                                         <Pagination
                                             className="pagination-bar"
                                             currentPage={currentPage[index]}
@@ -364,7 +364,7 @@ const Pantry = () => {
                                             ))}
                                         </Masonry>
                                     </ImageGroup>
-                                    <div className={styles.pagination}>
+                                    <div className='pagination-main'>
                                         <Pagination
                                             className="pagination-bar"
                                             currentPage={currentFriendsPage[index]}

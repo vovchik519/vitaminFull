@@ -216,7 +216,7 @@ const Gallery = () => {
                                                     ))}
                                                 </Masonry>
                                             </ImageGroup>
-                                            <div className={styles.pagination}>
+                                            <div className='pagination-main'>
                                                 <Pagination
                                                     className="pagination-bar"
                                                     currentPage={currentPage[index]}

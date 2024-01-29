@@ -44,13 +44,13 @@ const Pagination = props => {
                 <div className="arrow left" />
             </button>
             <ul>
-                {paginationRange.map(pageNumber => {
+                {paginationRange.map(( pageNumber, index) => {
                     if (pageNumber === DOTS) {
-                        return <li className="pagination-item dots">&#8230;</li>;
+                        return <li className="pagination-item dots" key={index}>&#8230;</li>;
                     }
 
                     return (
-                        <li>
+                        <li key={index}>
                             <button type='button' className={classnames('pagination-item', {
                                 selected: pageNumber === currentPage
                             })}
