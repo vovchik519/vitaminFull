@@ -214,7 +214,11 @@ const Pantry = () => {
             [index]: page,
         }));
     };
-
+    function isVideo(url) {
+        let videoType = ['.mp4', '.mov', '.wmv', '.avi', '.avchd', '.flv', '.f4v', '.swf', '.mkv', '.webm', '.html5']
+        const lowercasedUrl = url.toLowerCase();
+        return videoType.some(ext => lowercasedUrl.endsWith(ext));
+    }
     return (
         <>
             <Header />
@@ -258,20 +262,17 @@ const Pantry = () => {
                                             className="images-wrap"
                                             columnClassName="images-column">
                                             {currentTableData().map((image, imageIndex) => (
-                                                image.includes('.mp4') ?
-                                                    <div key={imageIndex} className={styles.imageTop}>
-                                                        <div className={styles.image}>
-                                                            <video src={galleryImage[index][imageIndex]} controls></video>
-                                                        </div>
-                                                        <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                <div key={imageIndex} className={styles.imageTop}>
+                                                    <div className={styles.image}>
+                                                        {
+                                                            isVideo(image) ?
+                                                                <video src={image} controls></video>
+                                                                :
+                                                                <Image src={image} alt="Картинка" />
+                                                        }
                                                     </div>
-                                                    :
-                                                    <div key={imageIndex} className={styles.imageTop}>
-                                                        <div className={styles.image}>
-                                                            <Image src={image} alt="Картинка" />
-                                                        </div>
-                                                        <h3>{gallerySignature[index][imageIndex]}</h3>
-                                                    </div>
+                                                    <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                </div>
                                             ))}
                                         </Masonry>
                                     </ImageGroup>
@@ -347,20 +348,16 @@ const Pantry = () => {
                                             className="images-wrap"
                                             columnClassName="images-column">
                                             {currentTableDataFriends().map((image, imageIndex) => (
-                                                image.includes('.mp4') ?
-                                                    <div key={imageIndex} className={styles.imageTop}>
-                                                        <div className={styles.image}>
-                                                            <video src={galleryFriendsImage[index][imageIndex]} controls></video>
-                                                        </div>
-                                                        <h3>{galleryFriendsSignature[index][imageIndex]}</h3>
-                                                    </div>
-                                                    :
-                                                    <div key={imageIndex} className={styles.imageTop}>
-                                                        <div className={styles.image}>
+                                                <div key={imageIndex} className={styles.imageTop}>
+                                                    <div className={styles.image}>
+                                                        {isVideo(image) ?
+                                                            <video src={image} controls></video>
+                                                            :
                                                             <Image src={image} alt="Картинка" />
-                                                        </div>
-                                                        <h3>{galleryFriendsSignature[index][imageIndex]}</h3>
+                                                        }
                                                     </div>
+                                                    <h3>{galleryFriendsSignature[index][imageIndex]}</h3>
+                                                </div>
                                             ))}
                                         </Masonry>
                                     </ImageGroup>
