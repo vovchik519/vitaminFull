@@ -159,7 +159,6 @@ const Item = () => {
                                         slidesPerView: 3,
                                     },
                                 }}
-                                loop={true}
                                 onBeforeInit={(swiper) => {
                                     swiperRef.current = swiper;
                                 }}

@@ -31,7 +31,6 @@ const GalleryMain = (props) => {
                         modules={[Autoplay, Navigation]}
                         spaceBetween={20}
                         slidesPerView='auto'
-                        loop={true}
                         onBeforeInit={(swiper) => {
                             swiperRef.current = swiper;
                         }}
