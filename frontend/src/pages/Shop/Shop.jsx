@@ -67,6 +67,33 @@ const Shop = () => {
     multiData(subIndentsArray, subParagraph, 'removeIndentation')
     // product
     const [productList, setProductList] = useState([]);
+    const [sortOption, setSortOption] = useState('bestSales');
+
+    const handleSortChange = (event) => {
+        setSortOption(event.target.value);
+    };
+
+    const sortedProductList = [...productList]; // Создаем копию массива перед сортировкой
+
+    switch (sortOption) {
+        case 'bestSales':
+            sortedProductList.sort((a, b) => b.rating - a.rating);
+            break;
+        case 'alphabeticalAsc':
+            sortedProductList.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'alphabeticalDesc':
+            sortedProductList.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+        case 'priceAsc':
+            sortedProductList.sort((a, b) => a.price - b.price);
+            break;
+        case 'priceDesc':
+            sortedProductList.sort((a, b) => b.price - a.price);
+            break;
+        default:
+            break;
+    }
     function multiData(array, data, key) {
         for (let i = 0; i < data.length; i++) {
             array.push(data[i][key])
@@ -97,7 +124,17 @@ const Shop = () => {
                         ))}
                     </section>
                     <section>
-                        <ProductList product={productList} />
+                        <label className={styles.sort}>
+                            Сортировать по: 
+                            <select value={sortOption} onChange={handleSortChange}>
+                                <option value="bestSales">Лучшие продажи</option>
+                                <option value="alphabeticalAsc">По алфавиту А-Я</option>
+                                <option value="alphabeticalDesc">По алфавиту Я-А</option>
+                                <option value="priceAsc">По возрастанию цены</option>
+                                <option value="priceDesc">По убыванию цены</option>
+                            </select>
+                        </label>
+                        <ProductList product={sortedProductList} />
                     </section>
                 </div>
             </main>

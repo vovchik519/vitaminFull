@@ -1,17 +1,18 @@
 {
   "collectionName": "components_components_products",
   "info": {
-    "displayName": "Product"
+    "displayName": "Product",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "name": {
       "type": "string",
@@ -40,6 +41,14 @@
     "year": {
       "type": "string",
       "required": true
+    },
+    "rating": {
+      "type": "integer",
+      "default": 1,
+      "required": true,
+      "max": 5,
+      "min": 1,
+      "unique": false
     }
   }
 }

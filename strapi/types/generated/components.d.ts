@@ -171,6 +171,7 @@ export interface ComponentsProduct extends Schema.Component {
   collectionName: 'components_components_products';
   info: {
     displayName: 'Product';
+    description: '';
   };
   attributes: {
     image: Attribute.Media & Attribute.Required;
@@ -181,6 +182,13 @@ export interface ComponentsProduct extends Schema.Component {
     size: Attribute.String & Attribute.Required;
     frame: Attribute.String & Attribute.Required;
     year: Attribute.String & Attribute.Required;
+    rating: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 1;
+        max: 5;
+      }> &
+      Attribute.DefaultTo<1>;
   };
 }
 
