@@ -59,13 +59,15 @@
         }
       }
     },
-    "description": {
+    "descriptions": {
+      "type": "component",
+      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text"
+      "component": "components.multi-paragraph"
     }
   }
 }

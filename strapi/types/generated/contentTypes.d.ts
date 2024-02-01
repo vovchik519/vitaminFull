@@ -941,7 +941,7 @@ export interface ApiFirstPageFirstPage extends Schema.SingleType {
           localized: false;
         };
       }>;
-    description: Attribute.Text &
+    descriptions: Attribute.Component<'components.multi-paragraph', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

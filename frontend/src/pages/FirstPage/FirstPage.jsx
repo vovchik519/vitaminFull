@@ -28,6 +28,7 @@ const FirstPage = () => {
                 const data = await response.json();
                 // firstpage data
                 setData(data.data.attributes);
+                setDescriptions(data.data.attributes.descriptions);
                 // logo
                 setLogo(data.data.attributes.logo);
                 setLogoImg(data.data.attributes.logo.icon.data.attributes);
@@ -43,6 +44,7 @@ const FirstPage = () => {
 
     // firstpage data
     const [data, setData] = useState({});
+    const [descriptions, setDescriptions] = useState({});
     // logo
     const [logo, setLogo] = useState({});
     const [logoImg, setLogoImg] = useState({});
@@ -52,18 +54,33 @@ const FirstPage = () => {
     let backgroundStyle = {
         backgroundImage: `url(${background.url})`,
     }
+    const descriptionsArray = []
+    function multiData(array, data, key) {
+        for (let i = 0; i < data.length; i++) {
+            array.push(data[i][key])
+        }
+    }
+    multiData(descriptionsArray, descriptions, 'paragraph')
+    console.log(descriptions)
     return (
         <section className={styles.firstPage} style={backgroundStyle}>
             <div className={styles.head}>
-                <Link to="/home" aria-label="Главная страница" className={styles.logo}>
-                    <LogoWithName
-                        visibility='desctop'
-                        url={logoImg.url}
-                        urlWhite={logoWhiteImg.url}
-                        alt={logoImg.alternativeText}
-                        name={logo.name}
-                    />
-                </Link>
+                <div>
+                    <Link to="/home" aria-label="Главная страница" className={styles.logo}>
+                        <LogoWithName
+                            visibility='desctop'
+                            url={logoImg.url}
+                            urlWhite={logoWhiteImg.url}
+                            alt={logoImg.alternativeText}
+                            name={logo.name}
+                        />
+                    </Link>
+                    <div className={styles.description}>
+                        {descriptionsArray.map((item, index) => (
+                            <p className={descriptions[index].removeIndentation === true ? '' : 'indent'} key={index}>{item}</p>
+                        ))}
+                    </div>
+                </div>
                 <h1>{data.title}</h1>
             </div>
             <div className={styles.foot}>
