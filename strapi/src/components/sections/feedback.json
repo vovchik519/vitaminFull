@@ -13,13 +13,6 @@
       "type": "string",
       "required": true
     },
-    "input": {
-      "displayName": "entryField",
-      "type": "component",
-      "repeatable": true,
-      "component": "components.entry-field",
-      "required": true
-    },
     "button": {
       "type": "string",
       "required": true

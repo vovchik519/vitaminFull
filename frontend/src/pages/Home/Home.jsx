@@ -73,7 +73,6 @@ const Home = () => {
                 // feedback
                 setFeedback(data.data.attributes.feedback);
                 setFeedbackImage(data.data.attributes.feedback.image.data.attributes);
-                setFeedbackInputs(data.data.attributes.feedback.input);
                 // storeroom
                 setStoreroom(data.data.attributes.storeroom);
                 setStoreroomTitle(data.data.attributes.storeroom.title);
@@ -149,7 +148,6 @@ const Home = () => {
 
     // feedback
     const [feedback, setFeedback] = useState({});
-    const [feedbackInputs, setFeedbackInputs] = useState([]);
     const [feedbackImage, setFeedbackImage] = useState({});
     // storeroom
     const [storeroom, setStoreroom] = useState({});
@@ -218,7 +216,6 @@ const Home = () => {
                 <Feedback
                     name={feedback.name}
                     title={feedback.title}
-                    inputs={feedbackInputs}
                     button={feedback.button}
                     imageUrl={feedbackImage.url}
                     imageAlt={feedbackImage.alternativeText}

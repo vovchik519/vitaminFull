@@ -333,8 +333,6 @@ export interface SectionsFeedback extends Schema.Component {
   attributes: {
     name: Attribute.String;
     title: Attribute.String & Attribute.Required;
-    input: Attribute.Component<'components.entry-field', true> &
-      Attribute.Required;
     button: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
   };
