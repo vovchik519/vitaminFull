@@ -9,27 +9,12 @@ import ButtonDark from './../../ui/ButtonDark/ButtonDark';
 import useOrders from '../../database-orders';
 import BasketInside from '../../components/BasketInside/BasketInside';
 import ThankYou from '../../components/ThankYou/ThankYou';
+import emailjs from '@emailjs/browser';
 
 const OrderPlacement = () => {
     let lang = localStorage.getItem('selectedLanguage');
 
     const [delivery, setDelivery] = useState(true)
-
-    const [contact, setContact] = useState({
-        name: '',
-        email: '',
-        address: '',
-        phone: ''
-    });
-    const [address, setAddress] = useState('');
-    const [payment, setPayment] = useState('');
-
-    const handleInputContact = (field, value) => {
-        setContact({
-            ...contact,
-            [field]: value,
-        });
-    };
 
     const [selectedLocations, setSelectedLocations] = useState([]);
     const [addressMap, setAddressMap] = useState('');
@@ -51,37 +36,82 @@ const OrderPlacement = () => {
         setSelectedLocations([coordinates]);
     };
 
-    let dataOrders = localStorage.getItem('orders');
-    let dataOrdersArray = JSON.parse(dataOrders)
-    let ordersList = []
-    for (let elem of dataOrdersArray) {
-        const obj = {}
-        obj.name = elem.name
-        obj.city = elem.city
-        obj.price = elem.price
-        obj.year = elem.year
-        ordersList.push(obj)
-    }
-    useEffect(() => {
-        setTimeout(() => {
-            if (delivery === true) {
-                setAddressMap('')
-            } else {
-                setAddress('')
-            }
-        }, 0)
-    }, [delivery])
-
     const { orders, addOrder, removeOrder } = useOrders();
 
     const handleRemoveToCart = (product) => {
         removeOrder(product);
     };
     const [isOpen, setIsOpen] = useState(false)
-    const handleSubmit = () => {
-        console.log(contact, `Адрес доставки: ${address} ${addressMap}`, `Способ оплаты: ${payment}`, ordersList);
-        setIsOpen(true)
-    }
+    const [btnDisabled, setBtnDisabled] = useState(false)
+    
+    useEffect(() => {
+        if (delivery === true) {
+            setAddressMap('')
+        }
+    }, [delivery])
+    const handleSubmit = (event, additionalData) => {
+        event.preventDefault();
+
+        const serviceID = 'service_t521m3p';
+        const templateID = 'template_mzkragh';
+
+        const formData = new FormData(event.target);
+        const templateParams = {};
+        formData.forEach((value, key) => {
+            templateParams[key] = value;
+        });
+        templateParams.orders = []
+        let ordersList = []
+        for (let elem of additionalData) {
+            const obj = {}
+            obj.name = `Имя: ${elem.name} |`
+            obj.city = `Город: ${elem.city} |`
+            obj.price = `Цена: ${elem.price} Рублей |`
+            obj.priceNumber = +elem.price
+            obj.year = `Год: ${elem.year}`
+            obj.quantity = `Количество: ${elem.quantity}`
+            obj.quantityNumber = elem.quantity
+            ordersList.push(obj)
+        }
+        let priceAll = 0
+        for (let elem of ordersList) {
+            if (elem.quantityNumber === undefined || elem.quantityNumber === 1) {
+                priceAll += elem.priceNumber
+            } else {
+                priceAll += elem.priceNumber * elem.quantityNumber;
+            }
+        }
+        for (const key in ordersList) {
+            templateParams.orders.push(ordersList[key])
+        }
+        if (addressMap) {
+            templateParams.address = addressMap
+        }
+        templateParams.price = priceAll
+        console.log(ordersList)
+        console.log(priceAll)
+        emailjs.send(serviceID, templateID, templateParams)
+            .then(() => {
+                setBtnDisabled(true);
+                setIsOpen(true)
+                setTimeout(() => {
+                    setIsOpen(false)
+                    setBtnDisabled(false)
+                }, 15000)
+            })
+            .catch((err) => {
+                alert(JSON.stringify(err));
+            });
+    };
+    const onSubmit = (event) => {
+        handleSubmit(event, orders);
+    };
+    emailjs.init({
+        publicKey: '5cI6hHPYaqMSkDWlb',
+        limitRate: {
+            throttle: 15000,
+        },
+    })
 
     return (
         <>
@@ -95,7 +125,7 @@ const OrderPlacement = () => {
                                 <li><Link to="/store">{lang === 'ru' ? 'Магазин' : 'Store'}</Link></li>
                                 <li><Link to="/store/order-placement">{lang === 'ru' ? 'Оформление заказа' : ''}</Link></li>
                             </ul>
-                            <form className={styles.info}>
+                            <form className={styles.info} onSubmit={onSubmit}>
                                 <fieldset>
                                     <ul className={styles.list}>
                                         <li className={styles.listItem}><h3>1. Контактные данные</h3>
@@ -105,9 +135,8 @@ const OrderPlacement = () => {
                                                     <input
                                                         type="text"
                                                         id="name"
+                                                        name='name'
                                                         placeholder='Валерий'
-                                                        value={contact.name}
-                                                        onChange={(e) => handleInputContact('name', e.target.value)}
                                                     />
                                                 </li>
                                                 <li>
@@ -115,9 +144,8 @@ const OrderPlacement = () => {
                                                     <input
                                                         type="email"
                                                         id="email"
+                                                        name='email'
                                                         placeholder='mail@example.com'
-                                                        value={contact.email}
-                                                        onChange={(e) => handleInputContact('email', e.target.value)}
                                                     />
                                                 </li>
                                                 <li>
@@ -125,9 +153,8 @@ const OrderPlacement = () => {
                                                     <input
                                                         type="text"
                                                         id="address"
+                                                        name='addressForm'
                                                         placeholder='Москва'
-                                                        value={contact.address}
-                                                        onChange={(e) => handleInputContact('address', e.target.value)}
                                                     />
                                                 </li>
                                                 <li>
@@ -135,9 +162,8 @@ const OrderPlacement = () => {
                                                     <input
                                                         type="tel"
                                                         id="phone"
+                                                        name='phone'
                                                         placeholder='+7 777 77 77 777'
-                                                        value={contact.phone}
-                                                        onChange={(e) => handleInputContact('phone', e.target.value)}
                                                     />
                                                 </li>
                                             </ul>
@@ -153,23 +179,23 @@ const OrderPlacement = () => {
                                                 {delivery ? (
                                                     <ul className={styles.listAddress}>
                                                         <li>
-                                                            <input type="radio" id='vernadskogo' name="address" onChange={() => (setAddress('Проспект Вернадского, 18 к1'))} />
+                                                            <input type="radio" id='vernadskogo' name="address" value='Проспект Вернадского, 18 к1' />
                                                             <label htmlFor="vernadskogo">Проспект Вернадского, 18 к1</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='gruzinslaya' name="address" onChange={() => (setAddress('Улица Малая Грузинская, 46'))} />
-                                                            <label htmlFor="gruzinslaya">Улица Малая Грузинская, 46</label>
+                                                            <input type="radio" id='gruzinskaya' name="address" value='Улица Малая Грузинская, 46' />
+                                                            <label htmlFor="gruzinskaya">Улица Малая Грузинская, 46</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='universitetskii' name="address" onChange={() => (setAddress('Университетский проспект, 21 к1'))} />
+                                                            <input type="radio" id='universitetskii' name="address" value='Университетский проспект, 21 к1' />
                                                             <label htmlFor="universitetskii">Университетский проспект, 21 к1</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='molodogravardeiskaya' name="address" onChange={() => (setAddress('Молодогвардейская улица, 30'))} />
+                                                            <input type="radio" id='molodogravardeiskaya' name="address" value='Молодогвардейская улица, 30' />
                                                             <label htmlFor="molodogravardeiskaya">Молодогвардейская улица, 30</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='rossoshanskaya' name="address" onChange={() => (setAddress('Россошанская улица, 7 к1Б'))} />
+                                                            <input type="radio" id='rossoshanskaya' name="address" value='Россошанская улица, 7 к1Б' />
                                                             <label htmlFor="rossoshanskaya">Россошанская улица, 7 к1Б</label>
                                                         </li>
                                                     </ul>
@@ -186,23 +212,23 @@ const OrderPlacement = () => {
                                         <li className={styles.listItem}><h3>3. Способ оплаты</h3>
                                             <div className={styles.payment}>
                                                 <div>
-                                                    <input type="radio" id='online' name='payment' onChange={() => (setPayment('Банковской картой онлайн'))} />
+                                                    <input type="radio" id='online' name='payment' value='Банковской картой онлайн' />
                                                     <label htmlFor="online">Банковской картой онлайн</label>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" id='offline' name='payment' onChange={() => (setPayment('Банковской картой при получении'))} />
+                                                    <input type="radio" id='offline' name='payment' value='Банковской картой при получении' />
                                                     <label htmlFor="offline">Банковской картой при получении</label>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
                                 </fieldset>
+                                <ButtonDark type="submit" name="перейти к оплате" disabled={btnDisabled} />
                             </form>
                         </div>
                         <div className={styles.right}>
                             <BasketInside orders={orders} removeOrder={removeOrder} orderPlacement={true} />
                         </div>
-                        <ButtonDark type="button" name="перейти к оплате" click={() => handleSubmit()} />
                     </div>
                 </div>
             </main>

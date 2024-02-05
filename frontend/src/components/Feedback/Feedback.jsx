@@ -48,19 +48,19 @@ const Feedback = (props) => {
             <form className={styles.form} id="form" onSubmit={handleSubmitForm}>
               <div className={styles.row}>
                 <label htmlFor="name">Имя</label>
-                <input type="text" name="name" id="name" required/>
-              </div>
+                <input type="text" name="name" id="name" placeholder='Введите имя' required/>
+             </div>
               <div className={styles.row}>
                 <label htmlFor="email">Почта</label>
-                <input type="email" name="email" id="email" required/>
+                <input type="email" name="email" id="email" placeholder='Введите почту' required/>
               </div>
               <div className={styles.row}>
                 <label htmlFor="phone">Телефон</label>
-                <input type="tel" name="phone" id="phone" required/>
+                <input type="tel" name="phone" id="phone" placeholder='Введите телефон' required/>
               </div>
               <div className={styles.row}>
                 <label htmlFor="message">Сообщение</label>
-                <input type="text" name="message" id="message" required/>
+                <input type="text" name="message" id="message" placeholder='Введите сообщение' required/>
               </div>
               <ButtonDark
                 type="submit"

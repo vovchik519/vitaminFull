@@ -47,6 +47,10 @@
     line-height: 130%;
     margin-left: clamp(7px, calc(0.875rem + ((1vw - 12.8px) * 0.7292)), 14px);
     margin-bottom: 28px;
+    select{
+        background-color: white;
+        margin-left: 5px;
+    }
 }
 @media (max-width: 1024px) {
     .images {
