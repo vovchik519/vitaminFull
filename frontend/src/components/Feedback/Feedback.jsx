@@ -14,8 +14,8 @@ const Feedback = (props) => {
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
-    const serviceID = 'service_t521m3p';
-    const templateID = 'template_t5hvbc3';
+    const serviceID = 'service_0362ci1';
+    const templateID = 'template_hck6ft2';
 
     emailjs.sendForm(serviceID, templateID, event.target)
       .then(() => {
@@ -31,7 +31,7 @@ const Feedback = (props) => {
       });
   };
   emailjs.init({
-    publicKey: '5cI6hHPYaqMSkDWlb',
+    publicKey: 'Fhpa1Ls471A5JsDGg',
     limitRate: {
       throttle: 15000,
     },

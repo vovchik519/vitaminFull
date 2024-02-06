@@ -65,7 +65,6 @@ const PoemItem = () => {
                         setArticlesTypePagination(articlesTypeArray[i])
                     }
                 }
-                console.log(articlesParagraphArray)
             } catch (e) {
                 console.log(e);
             }

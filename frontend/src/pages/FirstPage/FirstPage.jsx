@@ -61,7 +61,6 @@ const FirstPage = () => {
         }
     }
     multiData(descriptionsArray, descriptions, 'paragraph')
-    console.log(descriptions)
     return (
         <section className={styles.firstPage} style={backgroundStyle}>
             <div className={styles.head}>

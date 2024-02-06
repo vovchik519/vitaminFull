@@ -52,8 +52,8 @@ const OrderPlacement = () => {
     const handleSubmit = (event, additionalData) => {
         event.preventDefault();
 
-        const serviceID = 'service_t521m3p';
-        const templateID = 'template_mzkragh';
+        const serviceID = 'service_0362ci1';
+        const templateID = 'template_e8y7ios';
 
         const formData = new FormData(event.target);
         const templateParams = {};
@@ -67,9 +67,9 @@ const OrderPlacement = () => {
             obj.name = `Имя: ${elem.name} |`
             obj.city = `Город: ${elem.city} |`
             obj.price = `Цена: ${elem.price} Рублей |`
-            obj.priceNumber = +elem.price
-            obj.year = `Год: ${elem.year}`
+            obj.year = `Год: ${elem.year} |`
             obj.quantity = `Количество: ${elem.quantity}`
+            obj.priceNumber = +elem.price
             obj.quantityNumber = elem.quantity
             ordersList.push(obj)
         }
@@ -88,8 +88,6 @@ const OrderPlacement = () => {
             templateParams.address = addressMap
         }
         templateParams.price = priceAll
-        console.log(ordersList)
-        console.log(priceAll)
         emailjs.send(serviceID, templateID, templateParams)
             .then(() => {
                 setBtnDisabled(true);
@@ -107,7 +105,7 @@ const OrderPlacement = () => {
         handleSubmit(event, orders);
     };
     emailjs.init({
-        publicKey: '5cI6hHPYaqMSkDWlb',
+        publicKey: 'Fhpa1Ls471A5JsDGg',
         limitRate: {
             throttle: 15000,
         },
