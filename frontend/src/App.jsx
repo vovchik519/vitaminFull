@@ -13,7 +13,6 @@ import Preloader from './components/Preloader/Preloader';
 import Shop from './pages/Shop/Shop';
 import Product from './pages/Product/Product';
 import OrderPlacement from './pages/OrderPlacement/OrderPlacement';
-import TestApp from './components/TestApp/TestApp';
 import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
@@ -52,7 +51,6 @@ const App = () => {
           <Route path="/store" element={<Shop />} />
           <Route path="/store/item" element={<Product />} />
           <Route path="/store/order-placement" element={<OrderPlacement />} />
-          <Route path="/test" element={<TestApp />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
