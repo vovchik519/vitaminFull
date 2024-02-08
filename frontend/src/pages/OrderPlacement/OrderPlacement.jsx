@@ -135,6 +135,7 @@ const OrderPlacement = () => {
                                                         id="name"
                                                         name='name'
                                                         placeholder='Валерий'
+                                                        required
                                                     />
                                                 </li>
                                                 <li>
@@ -144,6 +145,7 @@ const OrderPlacement = () => {
                                                         id="email"
                                                         name='email'
                                                         placeholder='mail@example.com'
+                                                        required
                                                     />
                                                 </li>
                                                 <li>
@@ -153,6 +155,7 @@ const OrderPlacement = () => {
                                                         id="address"
                                                         name='addressForm'
                                                         placeholder='Москва'
+                                                        required
                                                     />
                                                 </li>
                                                 <li>
@@ -162,6 +165,7 @@ const OrderPlacement = () => {
                                                         id="phone"
                                                         name='phone'
                                                         placeholder='+7 777 77 77 777'
+                                                        required
                                                     />
                                                 </li>
                                             </ul>
@@ -177,23 +181,23 @@ const OrderPlacement = () => {
                                                 {delivery ? (
                                                     <ul className={styles.listAddress}>
                                                         <li>
-                                                            <input type="radio" id='vernadskogo' name="address" value='Проспект Вернадского, 18 к1' />
+                                                            <input type="radio" id='vernadskogo' name="address" value='Проспект Вернадского, 18 к1' required/>
                                                             <label htmlFor="vernadskogo">Проспект Вернадского, 18 к1</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='gruzinskaya' name="address" value='Улица Малая Грузинская, 46' />
+                                                            <input type="radio" id='gruzinskaya' name="address" value='Улица Малая Грузинская, 46' required/>
                                                             <label htmlFor="gruzinskaya">Улица Малая Грузинская, 46</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='universitetskii' name="address" value='Университетский проспект, 21 к1' />
+                                                            <input type="radio" id='universitetskii' name="address" value='Университетский проспект, 21 к1' required/>
                                                             <label htmlFor="universitetskii">Университетский проспект, 21 к1</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='molodogravardeiskaya' name="address" value='Молодогвардейская улица, 30' />
+                                                            <input type="radio" id='molodogravardeiskaya' name="address" value='Молодогвардейская улица, 30' required/>
                                                             <label htmlFor="molodogravardeiskaya">Молодогвардейская улица, 30</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='rossoshanskaya' name="address" value='Россошанская улица, 7 к1Б' />
+                                                            <input type="radio" id='rossoshanskaya' name="address" value='Россошанская улица, 7 к1Б' required/>
                                                             <label htmlFor="rossoshanskaya">Россошанская улица, 7 к1Б</label>
                                                         </li>
                                                     </ul>
@@ -210,11 +214,11 @@ const OrderPlacement = () => {
                                         <li className={styles.listItem}><h3>3. Способ оплаты</h3>
                                             <div className={styles.payment}>
                                                 <div>
-                                                    <input type="radio" id='online' name='payment' value='Банковской картой онлайн' />
+                                                    <input type="radio" id='online' name='payment' value='Банковской картой онлайн' required/>
                                                     <label htmlFor="online">Банковской картой онлайн</label>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" id='offline' name='payment' value='Банковской картой при получении' />
+                                                    <input type="radio" id='offline' name='payment' value='Банковской картой при получении' required/>
                                                     <label htmlFor="offline">Банковской картой при получении</label>
                                                 </div>
                                             </div>

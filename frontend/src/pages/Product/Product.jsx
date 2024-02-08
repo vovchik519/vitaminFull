@@ -53,10 +53,14 @@ const Product = () => {
     const { orders, addOrder, removeOrder } = useOrders();
     const [popup, setPopup] = useState(false)
     const handleAddToCart = (product) => {
-        addOrder(product);
-        const existingOrders = orders.find((order) => order.id === product.id)
-        if (!existingOrders) {
-            setPopup(true)
+        if(orders.length < 20){
+            addOrder(product);
+            const existingOrders = orders.find((order) => order.id === product.id)
+            if (!existingOrders) {
+                setPopup(true)
+            }
+        } else{
+            alert('product limit 20 pcs')
         }
     };
     useEffect(() => {
