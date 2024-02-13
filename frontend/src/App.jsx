@@ -16,7 +16,7 @@ import OrderPlacement from './pages/OrderPlacement/OrderPlacement';
 import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
-  let server = 'http://localhost:1337';
+  let server = 'http://185.251.88.31:1337';
   let lang = localStorage.getItem('selectedLanguage');
   const navigation = useNavigate();
   const [isLoading, setIsLoading] = useState(true);

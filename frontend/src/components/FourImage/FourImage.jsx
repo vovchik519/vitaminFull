@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './FourImage.module.scss';
 
 const FourImage = (props) => {
-    let server = 'http://localhost:1337'
+    let server = 'http://185.251.88.31:1337'
 
     const { descriptionsTop } = props;
     const { descriptionsTopIndents } = props;

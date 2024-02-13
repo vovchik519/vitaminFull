@@ -6,7 +6,7 @@ import ThankYou from '../ThankYou/ThankYou';
 import emailjs from '@emailjs/browser';
 
 const Feedback = (props) => {
-  let server = 'http://localhost:1337'
+  let server = 'http://185.251.88.31:1337'
   let lang = localStorage.getItem('selectedLanguage');
   const [isOpen, setIsOpen] = useState(false)
   const [btnDisabled, setBtnDisabled] = useState(false);

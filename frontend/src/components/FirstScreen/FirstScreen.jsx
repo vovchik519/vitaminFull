@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './FirstScreen.module.scss';
 
 const FirstScreen = (props) => {
-    let server = 'http://localhost:1337'
+    let server = 'http://185.251.88.31:1337'
     return (
         <section className={styles.wrapper}>
             <div className="container">

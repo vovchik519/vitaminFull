@@ -7,7 +7,7 @@ import LogoWithName from './../../components/LogoWithName/LogoWithName';
 import { Link } from 'react-router-dom';
 
 const FirstPage = () => {
-    let server = 'http://localhost:1337'
+    let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage')
     useEffect(() => {
@@ -22,7 +22,7 @@ const FirstPage = () => {
                 await newPromise();
                 const response = await fetch(firstPage, {
                     headers: {
-                        Authorization: `Bearer fb7c31a357909346e11a059b41875d56ff2e06aa0ce4103236269fa19590c0d1a6876554250315f0dcaa39a84eb1f47461604a2ad9d37e190465b3cc44ceba8340685182f7c477059f24339e97ed4a689984e5bd7480739e65e6ffa69cd15d1fdc2dbbb770ddb60087e7799f7675b4e129c9b31e51869b5ef10162d5feeab92c`
+                        Authorization: `Bearer f66dbcdd40ea112c1922a33c00ef12399433cecaf44cc622f7ecb965b7462b1930e0bec5bb93f45ba485ada66eab5aaa548c1703eacf201a2a0bea3996cb0e746c94e9e316c737b4080eb53344edc4fe8d8bee794530d46926fdc72b75cb73a0cca89551386776de20138eea544f5458b22044468172b1a40f1a65a645e24998`
                     }
                 });
                 const data = await response.json();

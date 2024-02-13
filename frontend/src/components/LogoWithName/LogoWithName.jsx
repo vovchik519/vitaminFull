@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './LogoWithName.module.scss';
 
 const LogoWithName = (props) => {
-    let server = 'http://localhost:1337'
+    let server = 'http://185.251.88.31:1337'
     
     return (
         <div className={`${styles.logo} ${props.theme !== undefined ? styles[props.theme] : ''}`}>
