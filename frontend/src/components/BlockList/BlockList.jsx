@@ -48,7 +48,7 @@ const BlockList = (props) => {
                             ))}
                         </div>
                     </div>
-                    <div className={styles.image}>
+                    <div className={`${props.class} ${styles.image}`}>
                         <img src={`${props.imageUrl}`} alt={props.imageAlt} />
                     </div>
                 </div>

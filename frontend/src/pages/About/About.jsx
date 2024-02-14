@@ -163,6 +163,7 @@ const About = () => {
                     imageUrl={infoImage.url}
                     images={infoImages}
                     imageAlt={infoImage.alternativeText}
+                    class={'blockListImage'}
                 />
                 {poem.length !== 0 ?
                     <Poem

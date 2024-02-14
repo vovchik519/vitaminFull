@@ -25,7 +25,7 @@ const App = () => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500)
+    }, 2000)
   }, [navigation]);
 
   const location = useLocation().pathname;
