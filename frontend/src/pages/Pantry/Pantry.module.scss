@@ -181,7 +181,7 @@
     flex: 1 1 auto;
 }
 .poemBlockParagraph {
-    -webkit-line-clamp: 20;
+    -webkit-line-clamp: 25;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -210,6 +210,11 @@
         margin-top: 24px;
     }
     width: 303px;
+}
+@media (max-width: 1024px) {
+.poemBlockParagraph {
+    -webkit-line-clamp: 20;
+}
 }
 @media (max-width: 768px) {
     .poemBlock {

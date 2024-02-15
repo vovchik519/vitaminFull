@@ -125,13 +125,13 @@ const Shop = () => {
                     </section>
                     <section>
                         <label className={styles.sort}>
-                            Сортировать по: 
+                            {lang === 'ru' ? 'Сортировать по:' : 'Sort by:'}
                             <select value={sortOption} onChange={handleSortChange}>
-                                <option value="bestSales">Лучшие продажи</option>
-                                <option value="alphabeticalAsc">По алфавиту А-Я</option>
-                                <option value="alphabeticalDesc">По алфавиту Я-А</option>
-                                <option value="priceAsc">По возрастанию цены</option>
-                                <option value="priceDesc">По убыванию цены</option>
+                                <option value="bestSales">{lang === 'ru' ? 'Лучшие продажи' : 'Best sales'}</option>
+                                <option value="alphabeticalAsc">{lang === 'ru' ? 'По алфавиту А-Я' : 'Alphabetically AZ'}</option>
+                                <option value="alphabeticalDesc">{lang === 'ru' ? 'По алфавиту Я-А' : 'Alphabetically ZA'}</option>
+                                <option value="priceAsc">{lang === 'ru' ? 'По возрастанию цены' : 'In descending order of price'}</option>
+                                <option value="priceDesc">{lang === 'ru' ? 'По убыванию цены' : 'In ascending order of price'}</option>
                             </select>
                         </label>
                         <ProductList product={sortedProductList} />

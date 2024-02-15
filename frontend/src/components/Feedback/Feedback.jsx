@@ -10,7 +10,7 @@ const Feedback = (props) => {
   let lang = localStorage.getItem('selectedLanguage');
   const [isOpen, setIsOpen] = useState(false)
   const [btnDisabled, setBtnDisabled] = useState(false);
-  
+
   const handleSubmitForm = (event) => {
     event.preventDefault();
 
@@ -36,7 +36,7 @@ const Feedback = (props) => {
       throttle: 15000,
     },
   })
-  
+
   return (
     <section className={styles.wrapper}>
       <div className="container">
@@ -47,20 +47,20 @@ const Feedback = (props) => {
             <h2>{props.title}</h2>
             <form className={styles.form} id="form" onSubmit={handleSubmitForm}>
               <div className={styles.row}>
-                <label htmlFor="name">Имя</label>
-                <input type="text" name="name" id="name" placeholder='Введите имя' required/>
-             </div>
-              <div className={styles.row}>
-                <label htmlFor="email">Почта</label>
-                <input type="email" name="email" id="email" placeholder='Введите почту' required/>
+                <label htmlFor="name">{lang === 'ru' ? 'Имя' : 'Name'}</label>
+                <input type="text" name="name" id="name" placeholder={lang === 'ru' ? 'Введите имя' : 'Enter your name'} required />
               </div>
               <div className={styles.row}>
-                <label htmlFor="phone">Телефон</label>
-                <input type="tel" name="phone" id="phone" placeholder='Введите телефон' required/>
+                <label htmlFor="email">{lang === 'ru' ? 'Почта' : 'Email'}</label>
+                <input type="email" name="email" id="email" placeholder={lang === 'ru' ? 'Введите адрес электронной почты' : 'Enter your email'} required />
               </div>
               <div className={styles.row}>
-                <label htmlFor="message">Сообщение</label>
-                <input type="text" name="message" id="message" placeholder='Введите сообщение' required/>
+                <label htmlFor="phone">{lang === 'ru' ? 'Телефон' : 'Phone'}</label>
+                <input type="tel" name="phone" id="phone" placeholder={lang === 'ru' ? 'Введите номер телефона' : 'Enter your phone number'} required />
+              </div>
+              <div className={styles.row}>
+                <label htmlFor="message">{lang === 'ru' ? 'Сообщение' : 'Message'}</label>
+                <input type="text" name="message" id="message" placeholder={lang === 'ru' ? 'Введите сообщение' : 'Enter your message'} required />
               </div>
               <ButtonDark
                 type="submit"

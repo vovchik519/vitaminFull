@@ -121,25 +121,25 @@ const OrderPlacement = () => {
                             <ul className={styles.breadcrumbs}>
                                 <li><Link to="/home">{lang === 'ru' ? 'Главная' : 'Home'}</Link></li>
                                 <li><Link to="/store">{lang === 'ru' ? 'Магазин' : 'Store'}</Link></li>
-                                <li><Link to="/store/order-placement">{lang === 'ru' ? 'Оформление заказа' : ''}</Link></li>
+                                <li><Link to="/store/order-placement">{lang === 'ru' ? 'Оформление заказа' : 'Order placement'}</Link></li>
                             </ul>
                             <form className={styles.info} onSubmit={onSubmit}>
                                 <fieldset>
                                     <ul className={styles.list}>
-                                        <li className={styles.listItem}><h3>1. Контактные данные</h3>
+                                        <li className={styles.listItem}><h3>1. {lang === 'ru' ? 'Контактные данные' : 'Contact details'}</h3>
                                             <ul className={styles.contact}>
                                                 <li>
-                                                    <label htmlFor="name">Имя*</label>
+                                                    <label htmlFor="name">{lang === 'ru' ? 'Имя*' : 'Name*'}</label>
                                                     <input
                                                         type="text"
                                                         id="name"
                                                         name='name'
-                                                        placeholder='Валерий'
+                                                        placeholder={lang === 'ru' ? 'Валерий' : 'Valeria'}
                                                         required
                                                     />
                                                 </li>
                                                 <li>
-                                                    <label htmlFor="email">Почтовый ящик*</label>
+                                                    <label htmlFor="email">{lang === 'ru' ? 'Почтовый ящик*' : 'Mailbox*'}</label>
                                                     <input
                                                         type="email"
                                                         id="email"
@@ -149,17 +149,17 @@ const OrderPlacement = () => {
                                                     />
                                                 </li>
                                                 <li>
-                                                    <label htmlFor="address">Адрес доставки*</label>
+                                                    <label htmlFor="address">{lang === 'ru' ? 'Адрес доставки*' : 'Delivery address*'}</label>
                                                     <input
                                                         type="text"
                                                         id="address"
                                                         name='addressForm'
-                                                        placeholder='Москва'
+                                                        placeholder={lang === 'ru' ? 'Москва' : 'Moscow'}
                                                         required
                                                     />
                                                 </li>
                                                 <li>
-                                                    <label htmlFor="phone">Телефон*</label>
+                                                    <label htmlFor="phone">{lang === 'ru' ? 'Телефон*' : 'Phone*'}</label>
                                                     <input
                                                         type="tel"
                                                         id="phone"
@@ -170,35 +170,35 @@ const OrderPlacement = () => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li className={styles.listItem}><h3>2. Доставка</h3>
-                                            <span className={styles.subTitle}>Курьерская доставка Почты России</span>
+                                        <li className={styles.listItem}><h3>2. {lang === 'ru' ? 'Доставка' : 'Delivery'}</h3>
+                                            <span className={styles.subTitle}>{lang === 'ru' ? 'Курьерская доставка Почты России' : 'Courier delivery right to your door by the Russian Post'}</span>
                                             <ul className={styles.switchingAdress}>
-                                                <li onClick={() => setDelivery(true)} className={delivery === true ? styles.active : ''}>список
+                                                <li onClick={() => setDelivery(true)} className={delivery === true ? styles.active : ''}>{lang === 'ru' ? 'список' : 'list'}
                                                 </li>
-                                                <li onClick={() => setDelivery(false)} className={delivery === false ? styles.active : ''}>карта</li>
+                                                <li onClick={() => setDelivery(false)} className={delivery === false ? styles.active : ''}>{lang === 'ru' ? 'карта' : 'map'}</li>
                                             </ul>
                                             <div>
                                                 {delivery ? (
                                                     <ul className={styles.listAddress}>
                                                         <li>
                                                             <input type="radio" id='vernadskogo' name="address" value='Проспект Вернадского, 18 к1' required/>
-                                                            <label htmlFor="vernadskogo">Проспект Вернадского, 18 к1</label>
+                                                            <label htmlFor="vernadskogo">{lang === 'ru' ? 'Проспект Вернадского, 18 к1' : 'Prospect Vernadskogo, 18 k1'}</label>
                                                         </li>
                                                         <li>
                                                             <input type="radio" id='gruzinskaya' name="address" value='Улица Малая Грузинская, 46' required/>
-                                                            <label htmlFor="gruzinskaya">Улица Малая Грузинская, 46</label>
+                                                            <label htmlFor="gruzinskaya">{lang === 'ru' ? 'Улица Малая Грузинская, 46' : 'Malaya Gruzinskaya Street, 46'}</label>
                                                         </li>
                                                         <li>
                                                             <input type="radio" id='universitetskii' name="address" value='Университетский проспект, 21 к1' required/>
-                                                            <label htmlFor="universitetskii">Университетский проспект, 21 к1</label>
+                                                            <label htmlFor="universitetskii">{lang === 'ru' ? 'Университетский проспект, 21 к1' : 'Universitetsky prospect, 21 k1'}</label>
                                                         </li>
                                                         <li>
                                                             <input type="radio" id='molodogravardeiskaya' name="address" value='Молодогвардейская улица, 30' required/>
-                                                            <label htmlFor="molodogravardeiskaya">Молодогвардейская улица, 30</label>
+                                                            <label htmlFor="molodogravardeiskaya">{lang === 'ru' ? 'Молодогвардейская улица, 30' : 'Molodogvardeyskaya Street, 30'}</label>
                                                         </li>
                                                         <li>
                                                             <input type="radio" id='rossoshanskaya' name="address" value='Россошанская улица, 7 к1Б' required/>
-                                                            <label htmlFor="rossoshanskaya">Россошанская улица, 7 к1Б</label>
+                                                            <label htmlFor="rossoshanskaya">{lang === 'ru' ? 'Россошанская улица, 7 к1Б' : 'Rossoshanskaya street, 7 k1B'}</label>
                                                         </li>
                                                     </ul>
                                                 ) :
@@ -206,26 +206,26 @@ const OrderPlacement = () => {
                                                         <div className={styles.map}>
                                                             <YandexMap onLocationSelect={handleLocationSelect} />
                                                         </div>
-                                                        <p>Адресс - {addressMap}</p>
+                                                        <p>{lang === 'ru' ? 'Адрес ' : 'Address '} - {addressMap}</p>
                                                     </div>
                                                 }
                                             </div>
                                         </li>
-                                        <li className={styles.listItem}><h3>3. Способ оплаты</h3>
+                                        <li className={styles.listItem}><h3>3. {lang === 'ru' ? 'Способ оплаты' : 'Method of payment'}</h3>
                                             <div className={styles.payment}>
                                                 <div>
                                                     <input type="radio" id='online' name='payment' value='Банковской картой онлайн' required/>
-                                                    <label htmlFor="online">Банковской картой онлайн</label>
+                                                    <label htmlFor="online">{lang === 'ru' ? 'Банковской картой онлайн' : 'By bank card online'}</label>
                                                 </div>
                                                 <div>
                                                     <input type="radio" id='offline' name='payment' value='Банковской картой при получении' required/>
-                                                    <label htmlFor="offline">Банковской картой при получении</label>
+                                                    <label htmlFor="offline">{lang === 'ru' ? 'Банковской картой при получении' : 'By bank card upon receipt'}</label>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
                                 </fieldset>
-                                <ButtonDark type="submit" name="перейти к оплате" disabled={btnDisabled} />
+                                <ButtonDark type="submit" name={lang === 'ru' ? 'перейти к оплате' : 'proceed to payment'} disabled={btnDisabled} />
                             </form>
                         </div>
                         <div className={styles.right}>

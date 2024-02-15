@@ -198,7 +198,7 @@ const Product = () => {
                                             </div>
                                         </div>
                                         <div className={styles.popapInfo}>
-                                            <span>Добавлен в корзину</span>
+                                            <span>{lang === 'ru' ? 'Добавлен в корзину' : 'Added to cart'}</span>
                                             <h3>
                                                 {product.name}
                                             </h3>
