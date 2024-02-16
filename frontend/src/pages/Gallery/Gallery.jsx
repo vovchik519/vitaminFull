@@ -10,6 +10,7 @@ import Footer from './../../components/Footer/Footer';
 import ButtonDark from '../../ui/ButtonDark/ButtonDark';
 import Preloader from './../../components/Preloader/Preloader';
 import Pagination from '../../components/Pagination/Pagination';
+import sprite from './../../images/icons/sprite.svg';
 
 const Gallery = () => {
     let server = 'http://185.251.88.31:1337'
@@ -162,77 +163,85 @@ const Gallery = () => {
                 <>
                     {isLoading === true ? (
                         <Preloader />
-                    ) : null}
-                    <Header />
-                    <main className={styles.wrapper}>
-                        <FirstScreen
-                            name={mainScreen.name}
-                            titleStart={mainScreenTitle.titleStart}
-                            titleColored={mainScreenTitle.titleColored}
-                            titleEnd={mainScreenTitle.titleEnd}
-                            description={mainScreen.description}
-                            imageUrl={mainScreenImage.url}
-                            imageAlt={mainScreenImage.alternativeText}
-                            decoration={mainScreenDecoration.url}
-                        />
-                        <div>
-                            {galleryImage.map((blockId, index) => {
-                                const currentTableData = () => {
-                                    const firstPageIndex = (currentPage[index] - 1) * PageSize;
-                                    const lastPageIndex = firstPageIndex + PageSize;
-                                    return blockId.slice(firstPageIndex, lastPageIndex);
-                                };
-                                return <div key={index} className={styles.gallery}>
-                                    <div className="container">
-                                        <div className={styles.titleWrap}>
-                                            <div className={styles.titleTop}>
-                                                <h2>{galleryTitle[index]}</h2>
-                                                <div>
-                                                    {galleryDescription[index].map((paragraph, descriptionIndex) => (
-                                                        <p className={galleryDescriptionIndent[index][descriptionIndex] === true ? '' : 'indent'} key={descriptionIndex}>
-                                                            {paragraph}
-                                                        </p>
-                                                    ))}
+                    ) :
+                        <>
+                            <Header />
+                            <main className={styles.wrapper}>
+                                <button type='button' onClick={() => switchedPages(switched)} title={lang === 'ru' ? 'переключить галерею' : 'switch gallery'} className={styles.reverse}>
+                                    <svg className='icon'>
+                                        <use xlinkHref={`${sprite}#icon-reverse`}></use>
+                                    </svg>
+                                </button>
+                                <FirstScreen
+                                    name={mainScreen.name}
+                                    titleStart={mainScreenTitle.titleStart}
+                                    titleColored={mainScreenTitle.titleColored}
+                                    titleEnd={mainScreenTitle.titleEnd}
+                                    description={mainScreen.description}
+                                    imageUrl={mainScreenImage.url}
+                                    imageAlt={mainScreenImage.alternativeText}
+                                    decoration={mainScreenDecoration.url}
+                                />
+                                <div>
+                                    {galleryImage.map((blockId, index) => {
+                                        const currentTableData = () => {
+                                            const firstPageIndex = (currentPage[index] - 1) * PageSize;
+                                            const lastPageIndex = firstPageIndex + PageSize;
+                                            return blockId.slice(firstPageIndex, lastPageIndex);
+                                        };
+                                        return <div key={index} className={styles.gallery}>
+                                            <div className="container">
+                                                <div className={styles.titleWrap}>
+                                                    <div className={styles.titleTop}>
+                                                        <h2>{galleryTitle[index]}</h2>
+                                                        <div>
+                                                            {galleryDescription[index].map((paragraph, descriptionIndex) => (
+                                                                <p className={galleryDescriptionIndent[index][descriptionIndex] === true ? '' : 'indent'} key={descriptionIndex}>
+                                                                    {paragraph}
+                                                                </p>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                    <h3>{gallerySubTitle[index]}</h3>
+                                                </div>
+                                                <div className={styles.images}>
+                                                    <ImageGroup>
+                                                        <Masonry
+                                                            breakpointCols={breakpointColumnsObj}
+                                                            className="images-wrap"
+                                                            columnClassName="images-column">
+                                                            {currentTableData().map((image, imageIndex) => (
+                                                                <div key={imageIndex} className={styles.imageTop}>
+                                                                    <div className={styles.image}>
+                                                                        {isVideo(image) ?
+                                                                            <video src={image} controls></video>
+                                                                            :
+                                                                            <Image src={image} alt="Картинка" />
+                                                                        }
+                                                                    </div>
+                                                                    <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                                </div>
+                                                            ))}
+                                                        </Masonry>
+                                                    </ImageGroup>
+                                                    <div className='pagination-main'>
+                                                        <Pagination
+                                                            className="pagination-bar"
+                                                            currentPage={currentPage[index]}
+                                                            totalCount={blockId.length}
+                                                            pageSize={PageSize}
+                                                            onPageChange={(page) => handlePageChange(page, index)}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <h3>{gallerySubTitle[index]}</h3>
                                         </div>
-                                        <div className={styles.images}>
-                                            <ImageGroup>
-                                                <Masonry
-                                                    breakpointCols={breakpointColumnsObj}
-                                                    className="images-wrap"
-                                                    columnClassName="images-column">
-                                                    {currentTableData().map((image, imageIndex) => (
-                                                        <div key={imageIndex} className={styles.imageTop}>
-                                                            <div className={styles.image}>
-                                                                {isVideo(image) ?
-                                                                    <video src={image} controls></video>
-                                                                    :
-                                                                    <Image src={image} alt="Картинка" />
-                                                                }
-                                                            </div>
-                                                            <h3>{gallerySignature[index][imageIndex]}</h3>
-                                                        </div>
-                                                    ))}
-                                                </Masonry>
-                                            </ImageGroup>
-                                            <div className='pagination-main'>
-                                                <Pagination
-                                                    className="pagination-bar"
-                                                    currentPage={currentPage[index]}
-                                                    totalCount={blockId.length}
-                                                    pageSize={PageSize}
-                                                    onPageChange={(page) => handlePageChange(page, index)}
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
+                                    })}
                                 </div>
-                            })}
-                        </div>
-                    </main>
-                    <Footer />
+                            </main>
+                            <Footer />
+                        </>
+                    }
                 </>
             }
         </>
