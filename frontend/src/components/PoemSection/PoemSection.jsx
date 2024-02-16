@@ -29,6 +29,8 @@ const PoemSection = (props) => {
                 setPoem(data.data.attributes.poemsList)
                 setPoemTextSup(data.data.attributes.poemsList.supText)
                 setPoemTextSub(data.data.attributes.poemsList.subText)
+
+                props.onLoading()
             } catch (e) {
                 console.log(e);
             }

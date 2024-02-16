@@ -6,7 +6,7 @@ import Language from './../../components/Language/Language';
 import LogoWithName from './../../components/LogoWithName/LogoWithName';
 import { Link } from 'react-router-dom';
 
-const FirstPage = () => {
+const FirstPage = ({ onLoading }) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage')
@@ -35,6 +35,8 @@ const FirstPage = () => {
                 setLogoWhiteImg(data.data.attributes.logo.iconWhite.data.attributes);
                 // background
                 setBackground(data.data.attributes.background.data.attributes);
+                
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

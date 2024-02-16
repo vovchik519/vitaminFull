@@ -11,7 +11,7 @@ import BasketInside from '../../components/BasketInside/BasketInside';
 import ThankYou from '../../components/ThankYou/ThankYou';
 import emailjs from '@emailjs/browser';
 
-const OrderPlacement = () => {
+const OrderPlacement = ({onLoading}) => {
     let lang = localStorage.getItem('selectedLanguage');
 
     const [delivery, setDelivery] = useState(true)
@@ -43,12 +43,15 @@ const OrderPlacement = () => {
     };
     const [isOpen, setIsOpen] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(false)
-    
+
     useEffect(() => {
         if (delivery === true) {
             setAddressMap('')
         }
     }, [delivery])
+    setTimeout(() => {
+        onLoading()
+    }, 0)
     const handleSubmit = (event, additionalData) => {
         event.preventDefault();
 
@@ -181,23 +184,23 @@ const OrderPlacement = () => {
                                                 {delivery ? (
                                                     <ul className={styles.listAddress}>
                                                         <li>
-                                                            <input type="radio" id='vernadskogo' name="address" value='Проспект Вернадского, 18 к1' required/>
+                                                            <input type="radio" id='vernadskogo' name="address" value='Проспект Вернадского, 18 к1' required />
                                                             <label htmlFor="vernadskogo">{lang === 'ru' ? 'Проспект Вернадского, 18 к1' : 'Prospect Vernadskogo, 18 k1'}</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='gruzinskaya' name="address" value='Улица Малая Грузинская, 46' required/>
+                                                            <input type="radio" id='gruzinskaya' name="address" value='Улица Малая Грузинская, 46' required />
                                                             <label htmlFor="gruzinskaya">{lang === 'ru' ? 'Улица Малая Грузинская, 46' : 'Malaya Gruzinskaya Street, 46'}</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='universitetskii' name="address" value='Университетский проспект, 21 к1' required/>
+                                                            <input type="radio" id='universitetskii' name="address" value='Университетский проспект, 21 к1' required />
                                                             <label htmlFor="universitetskii">{lang === 'ru' ? 'Университетский проспект, 21 к1' : 'Universitetsky prospect, 21 k1'}</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='molodogravardeiskaya' name="address" value='Молодогвардейская улица, 30' required/>
+                                                            <input type="radio" id='molodogravardeiskaya' name="address" value='Молодогвардейская улица, 30' required />
                                                             <label htmlFor="molodogravardeiskaya">{lang === 'ru' ? 'Молодогвардейская улица, 30' : 'Molodogvardeyskaya Street, 30'}</label>
                                                         </li>
                                                         <li>
-                                                            <input type="radio" id='rossoshanskaya' name="address" value='Россошанская улица, 7 к1Б' required/>
+                                                            <input type="radio" id='rossoshanskaya' name="address" value='Россошанская улица, 7 к1Б' required />
                                                             <label htmlFor="rossoshanskaya">{lang === 'ru' ? 'Россошанская улица, 7 к1Б' : 'Rossoshanskaya street, 7 k1B'}</label>
                                                         </li>
                                                     </ul>
@@ -214,11 +217,11 @@ const OrderPlacement = () => {
                                         <li className={styles.listItem}><h3>3. {lang === 'ru' ? 'Способ оплаты' : 'Method of payment'}</h3>
                                             <div className={styles.payment}>
                                                 <div>
-                                                    <input type="radio" id='online' name='payment' value='Банковской картой онлайн' required/>
+                                                    <input type="radio" id='online' name='payment' value='Банковской картой онлайн' required />
                                                     <label htmlFor="online">{lang === 'ru' ? 'Банковской картой онлайн' : 'By bank card online'}</label>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" id='offline' name='payment' value='Банковской картой при получении' required/>
+                                                    <input type="radio" id='offline' name='payment' value='Банковской картой при получении' required />
                                                     <label htmlFor="offline">{lang === 'ru' ? 'Банковской картой при получении' : 'By bank card upon receipt'}</label>
                                                 </div>
                                             </div>

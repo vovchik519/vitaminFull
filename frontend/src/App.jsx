@@ -21,13 +21,17 @@ const App = () => {
   const navigation = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleDataLoaded = () => {
+    setTimeout(() =>{
+      setIsLoading(false);
+    }, 100)
+  };
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
     }, 2000)
   }, [navigation]);
-
   const location = useLocation().pathname;
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,18 +44,18 @@ const App = () => {
       ) : null}
       <div className={isLoading ? 'hidden' : null}>
         <Routes>
-          <Route path="/" index element={<FirstPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/for-kids" element={<Article />} />
-          <Route path="/item" element={<Item />} />
-          <Route path="/poem" element={<PoemItem />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/storeroom" element={<Pantry />} />
-          <Route path="/store" element={<Shop />} />
-          <Route path="/store/item" element={<Product />} />
-          <Route path="/store/order-placement" element={<OrderPlacement />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" index element={<FirstPage onLoading={handleDataLoaded} />} />
+          <Route path="/home" element={<Home onLoading={handleDataLoaded} />} />
+          <Route path="/about" element={<About onLoading={handleDataLoaded} />} />
+          <Route path="/for-kids" element={<Article onLoading={handleDataLoaded} />} />
+          <Route path="/item" element={<Item onLoading={handleDataLoaded} />} />
+          <Route path="/poem" element={<PoemItem onLoading={handleDataLoaded} />} />
+          <Route path="/gallery" element={<Gallery onLoading={handleDataLoaded} />} />
+          <Route path="/storeroom" element={<Pantry onLoading={handleDataLoaded} />} />
+          <Route path="/store" element={<Shop onLoading={handleDataLoaded} />} />
+          <Route path="/store/item" element={<Product onLoading={handleDataLoaded} />} />
+          <Route path="/store/order-placement" element={<OrderPlacement onLoading={handleDataLoaded} />} />
+          <Route path="*" element={<NotFound onLoading={handleDataLoaded}/>} />
         </Routes>
       </div>
     </div>

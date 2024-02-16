@@ -12,7 +12,7 @@ import Footer from './../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import Pagination from '../../components/Pagination/Pagination';
 
-const Pantry = () => {
+const Pantry = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -133,6 +133,7 @@ const Pantry = () => {
                 setPoemBlockImage(data.data.attributes.PoemBlock.image.data.attributes);
                 setPoemBlockButton(data.data.attributes.PoemBlock.button)
                 setPoemBlockLine(data.data.attributes.PoemBlock.poemLine)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

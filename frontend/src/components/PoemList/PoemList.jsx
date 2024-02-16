@@ -53,6 +53,8 @@ const PoemList = (props) => {
                 setArticlesParagraph(articlesParagraphArray)
                 setArticlesParagraphIndents(articlesParagraphIndentsArray)
                 setArticlesId(articlesIdArray)
+
+                props.onLoading()
             } catch (e) {
                 console.log(e);
             }

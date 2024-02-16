@@ -10,7 +10,7 @@ import FourImage from './../../components/FourImage/FourImage';
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 
-const About = () => {
+const About = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -73,6 +73,8 @@ const About = () => {
                 setGicleeImageTwo(data.data.attributes.giclee.images.two.data.attributes)
                 setGicleeImageThree(data.data.attributes.giclee.images.three.data.attributes)
                 setGicleeImageFour(data.data.attributes.giclee.images.four.data.attributes)
+
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

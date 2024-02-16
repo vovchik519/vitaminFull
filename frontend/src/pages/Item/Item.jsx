@@ -14,7 +14,7 @@ import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 import Error from '../../components/Error/Error';
 
-const Item = () => {
+const Item = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -78,6 +78,7 @@ const Item = () => {
                 setArticlesImage(articlesImageArray)
                 setArticlesId(articlesIdArray)
                 setArticlesParagraphId(articlesParagraphIdArray)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

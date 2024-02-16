@@ -7,7 +7,7 @@ import Footer from './../../components/Footer/Footer';
 import Name from './../../ui/Name/Name';
 import ProductList from '../../components/ProductList/ProductList';
 
-const Shop = () => {
+const Shop = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -44,6 +44,7 @@ const Shop = () => {
                     }
                 }
                 setProductList(productArray)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

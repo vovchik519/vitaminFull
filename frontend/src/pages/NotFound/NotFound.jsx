@@ -4,7 +4,10 @@ import Header from '../../components/Header/Header';
 import Error from '../../components/Error/Error';
 import Footer from '../../components/Footer/Footer';
 
-const NotFound = () => {
+const NotFound = ({onLoading}) => {
+    setTimeout(() =>{
+        onLoading()
+    },0)
     return (
         <>
             <Header />

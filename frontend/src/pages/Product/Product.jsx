@@ -12,7 +12,7 @@ import Basket from '../../components/Basket/Basket';
 import sprite from './../../images/icons/sprite.svg';
 import Error from '../../components/Error/Error';
 
-const Product = () => {
+const Product = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -41,6 +41,7 @@ const Product = () => {
                     }
                 }
                 setProductList(productArray)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

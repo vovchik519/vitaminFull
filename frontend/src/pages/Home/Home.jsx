@@ -14,7 +14,7 @@ import ProductList from '../../components/ProductList/ProductList';
 import Name from '../../ui/Name/Name';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -100,6 +100,7 @@ const Home = () => {
                 }
                 setProductTitle(productArrayTitle)
                 setProductList(productArrayTwo)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

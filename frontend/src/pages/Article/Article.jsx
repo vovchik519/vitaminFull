@@ -7,7 +7,7 @@ import FirstScreen from './../../components/FirstScreen/FirstScreen';
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 
-const Article = () => {
+const Article = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -79,6 +79,7 @@ const Article = () => {
                 setArticlesImage(articlesImageArray)
                 setArticlesId(articlesIdArray)
                 setArticlesParagraphId(articlesParagraphIdArray)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

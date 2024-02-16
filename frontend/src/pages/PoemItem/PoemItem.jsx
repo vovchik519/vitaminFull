@@ -12,7 +12,7 @@ import Footer from './../../components/Footer/Footer';
 import Error from '../../components/Error/Error';
 import Pagination from './../../components/Pagination/Pagination';
 
-const PoemItem = () => {
+const PoemItem = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -65,6 +65,7 @@ const PoemItem = () => {
                         setArticlesTypePagination(articlesTypeArray[i])
                     }
                 }
+                onLoading()
             } catch (e) {
                 console.log(e);
             }

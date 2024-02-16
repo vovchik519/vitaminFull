@@ -12,7 +12,7 @@ import Preloader from './../../components/Preloader/Preloader';
 import Pagination from '../../components/Pagination/Pagination';
 import sprite from './../../images/icons/sprite.svg';
 
-const Gallery = () => {
+const Gallery = ({onLoading}) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -84,6 +84,7 @@ const Gallery = () => {
                 setGalleryImage(galleryImageArray)
                 setGalleryMime(galleryMimeArray)
                 setGallerySignature(gallerySignatureArray)
+                onLoading()
             } catch (e) {
                 console.log(e);
             }
