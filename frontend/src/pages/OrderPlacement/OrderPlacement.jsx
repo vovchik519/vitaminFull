@@ -114,6 +114,37 @@ const OrderPlacement = ({ onLoading }) => {
         },
     })
     const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    const [phoneNumber, setPhoneNumber] = useState('+7');
+
+    const handlePhoneNumberChange = (event) => {
+        const input = event.target.value;
+
+        const hasPlusInBeginning = input.startsWith('+');
+
+        let filteredInput = input.replace(/[^0-9+]/g, '');
+
+        if (!hasPlusInBeginning) {
+            filteredInput = filteredInput.replace(/^\+/, '');
+        }
+
+        let formattedNumber = '';
+
+        if (hasPlusInBeginning) {
+            if (filteredInput.length <= 12) {
+                formattedNumber = filteredInput.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '$1 ($2) $3-$4');
+            } else {
+                return formattedNumber
+            }
+        } else {
+            if (filteredInput.length <= 11) {
+                formattedNumber = filteredInput.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '$1 ($2) $3-$4');
+            } else {
+                return formattedNumber
+            }
+        }
+
+        setPhoneNumber(formattedNumber);
+    };
     return (
         <>
             <Header />
@@ -167,7 +198,9 @@ const OrderPlacement = ({ onLoading }) => {
                                                         type="tel"
                                                         id="phone"
                                                         name='phone'
-                                                        placeholder='+7 777 77 77 777'
+                                                        value={phoneNumber}
+                                                        onChange={handlePhoneNumberChange}
+                                                        placeholder='+7 (777) 777-7777'
                                                         required
                                                     />
                                                 </li>

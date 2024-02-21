@@ -36,7 +36,42 @@ const Feedback = (props) => {
       throttle: 15000,
     },
   })
+  const [phoneNumber, setPhoneNumber] = useState('+7');
 
+  const handlePhoneNumberChange = (event) => {
+    const input = event.target.value;
+
+    // Проверяем, содержится ли "+" в начале строки
+    const hasPlusInBeginning = input.startsWith('+');
+
+    // Фильтрация вводимых символов, оставляем только цифры и знак +
+    let filteredInput = input.replace(/[^0-9+]/g, '');
+
+    // Если "+" не находится в начале строки, удаляем его
+    if (!hasPlusInBeginning) {
+      filteredInput = filteredInput.replace(/^\+/, '');
+    }
+
+    // Форматирование номера
+    let formattedNumber = '';
+
+    // Если "+" есть в начале, форматируем для длины 12, иначе для длины 11
+    if (hasPlusInBeginning) {
+      if (filteredInput.length <= 12) {
+        formattedNumber = filteredInput.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '$1 ($2) $3-$4');
+      } else {
+        return formattedNumber
+      }
+    } else {
+      if (filteredInput.length <= 11) {
+        formattedNumber = filteredInput.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '$1 ($2) $3-$4');
+      } else {
+        return formattedNumber
+      }
+    }
+
+    setPhoneNumber(formattedNumber);
+  };
   return (
     <section className={styles.wrapper}>
       <div className="container">
@@ -56,7 +91,8 @@ const Feedback = (props) => {
               </div>
               <div className={styles.row}>
                 <label htmlFor="phone">{lang === 'ru' ? 'Телефон' : 'Phone'}</label>
-                <input type="tel" name="phone" id="phone" placeholder={lang === 'ru' ? 'Введите номер телефона' : 'Enter your phone number'} required />
+                <input type="tel" name="phone" id="phone" value={phoneNumber}
+                  onChange={handlePhoneNumberChange} placeholder='+7 (777) 777-7777' required />
               </div>
               <div className={styles.row}>
                 <label htmlFor="message">{lang === 'ru' ? 'Сообщение' : 'Message'}</label>
