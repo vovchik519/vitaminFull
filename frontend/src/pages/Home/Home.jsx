@@ -24,7 +24,7 @@ const Home = ({onLoading}) => {
             return new Promise(r => setTimeout(() => r(), ms))
         }
 
-        let homePage = `${server}/api/home-page?locale=${lang}&populate=deep,10`;
+        const homePage = `${server}/api/home-page?locale=${lang}&populate=deep,10`;
 
         async function fetchData() {
             try {
