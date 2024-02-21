@@ -6,8 +6,14 @@ import sprite from './../../images/icons/sprite.svg';
 
 const BasketInside = ({ orders, removeOrder, handleToggle, handleToggleTwo, orderPlacement }) => {
     let lang = localStorage.getItem('selectedLanguage');
-    let productNumbers = orders.length;
-
+    let productNumbers = 0;
+    orders.forEach(item => {
+        if(item.quantity > 1){
+            productNumbers += item.quantity
+        } else{
+            productNumbers += 1
+        }
+    })
     let priceAll = 0;
     const [quantity, setQuantity] = useState(1);
     const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];

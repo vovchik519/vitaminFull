@@ -5,7 +5,7 @@ import BasketInside from '../BasketInside/BasketInside';
 
 const Basket = ({ orders, removeOrder, handleToggle, open }) => {
     let productNumbers = orders.length
-    
+
     if (document.location.pathname !== '/store/item') {
     }
     const [openTwo, setOpenTwo] = useState(false)
@@ -25,11 +25,18 @@ const Basket = ({ orders, removeOrder, handleToggle, open }) => {
     return (
         <>
             {open || openTwo ?
-                <article className={styles.wrapper}>
-                    <div className={styles.container}>
+                <aside className={styles.wrapper} onClick={() => {
+                    if(handleToggle){
+                        handleToggle()
+                    }
+                    setOpenTwo(false)
+                }}>
+                    <div className={styles.container} onClick={(e) => {
+                        e.stopPropagation();
+                    }}>
                         <BasketInside orders={orders} removeOrder={removeOrder} handleToggle={handleToggle} handleToggleTwo={handleToggleTwo} />
                     </div>
-                </article> :
+                </aside> :
                 document.location.pathname !== '/store/item' ?
                     <button type="button" onClick={() => handleToggleTwo()} className={styles.backetButton}>
                         <svg className='icon'>

@@ -114,16 +114,6 @@ const OrderPlacement = ({ onLoading }) => {
         },
     })
     const paymentRadios = document.querySelectorAll('input[name="payment"]');
-    const [paymentInfo, setPaymentInfo] = useState(false)
-    paymentRadios.forEach(radio => {
-        radio.addEventListener('change', function () {
-            if (this.id === 'online') {
-                setPaymentInfo(true)
-            } else {
-                setPaymentInfo(false)
-            }
-        });
-    });
     return (
         <>
             <Header />
@@ -224,40 +214,29 @@ const OrderPlacement = ({ onLoading }) => {
                                                 }
                                             </div>
                                         </li>
-                                        <li className={styles.listItem}><h3>3. {lang === 'ru' ? 'Способ оплаты' : 'Method of payment'}</h3>
+                                        <li className={styles.listItem}><h3>3. {lang === 'ru' ? 'Реквезиты для оплата по СБП:' : 'Details for payment via SBP:'}</h3>
                                             <div className={styles.payment}>
-                                                <div>
-                                                    <input type="radio" id='online' name='payment' value='Банковской картой онлайн' required />
-                                                    <label htmlFor="online">{lang === 'ru' ? 'Банковской картой онлайн' : 'By bank card online'}</label>
-                                                </div>
-                                                {paymentInfo === true ?
-                                                    <div className={styles.paymentInfo}>
-                                                        <p><span>Привязанный к банковскому счету номер:</span> +7 926 535 49 40</p>
-                                                        <p><span>Валюта получаемого перевода:</span> Российский рубль (RUB)</p>
-                                                        <p><span>Получатель:</span> МАЛЬКОВ ВАЛЕРИЙ АРКАДЬЕВИЧ</p>
-                                                        <p><span>Номер счёта:</span> 40817810738171947010</p>
-                                                        <p><span>Банк получателя:</span> ПАО Сбербанк</p>
-                                                        <p><span>БИК:</span> 044525225</p>
-                                                        <p><span>Корр. счёт:</span> 30101810400000000225</p>
-                                                        <p><span>ИНН:</span> 7707083893</p>
-                                                        <p><span>КПП:</span> 773643001</p>
-                                                        <p><span>ОКПО:</span> 57972160</p>
-                                                        <p><span>ОГРН:</span> 1027700132195</p>
-                                                        <p><span>SWIFT-код:</span> SABRRUMM</p>
-                                                        <p><span>Почтовый адрес банка:</span> 109544, МОСКВА, УЛ.Б.АНДРОНЬЕВСКАЯ,6</p>
-                                                        <p><span>Почтовый адрес доп.офиса:</span> 125368, Г.МОСКВА, 3-ИЙ МИТИНСКИЙ ПЕРЕУЛОК, 6, КОРПУС 1</p>
-                                                    </div>
-                                                    : null
-                                                }
-                                                <div>
-                                                    <input type="radio" id='offline' name='payment' value='Банковской картой при получении' required />
-                                                    <label htmlFor="offline">{lang === 'ru' ? 'Банковской картой при получении' : 'By bank card upon receipt'}</label>
+                                                <div className={styles.paymentInfo}>
+                                                    <p><span>Привязанный к банковскому счету номер:</span> +7 926 535 49 40</p>
+                                                    <p><span>Валюта получаемого перевода:</span> Российский рубль (RUB)</p>
+                                                    <p><span>Получатель:</span> МАЛЬКОВ ВАЛЕРИЙ АРКАДЬЕВИЧ</p>
+                                                    <p><span>Номер счёта:</span> 40817810738171947010</p>
+                                                    <p><span>Банк получателя:</span> ПАО Сбербанк</p>
+                                                    <p><span>БИК:</span> 044525225</p>
+                                                    <p><span>Корр. счёт:</span> 30101810400000000225</p>
+                                                    <p><span>ИНН:</span> 7707083893</p>
+                                                    <p><span>КПП:</span> 773643001</p>
+                                                    <p><span>ОКПО:</span> 57972160</p>
+                                                    <p><span>ОГРН:</span> 1027700132195</p>
+                                                    <p><span>SWIFT-код:</span> SABRRUMM</p>
+                                                    <p><span>Почтовый адрес банка:</span> 109544, МОСКВА, УЛ.Б.АНДРОНЬЕВСКАЯ,6</p>
+                                                    <p><span>Почтовый адрес доп.офиса:</span> 125368, Г.МОСКВА, 3-ИЙ МИТИНСКИЙ ПЕРЕУЛОК, 6, КОРПУС 1</p>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
                                 </fieldset>
-                                <ButtonDark type="submit" name={lang === 'ru' ? 'перейти к оплате' : 'proceed to payment'} disabled={btnDisabled} />
+                                <ButtonDark type="submit" name={lang === 'ru' ? 'Заказать' : 'Order'} disabled={btnDisabled} />
                             </form>
                         </div>
                         <div className={styles.right}>

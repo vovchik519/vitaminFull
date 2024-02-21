@@ -7,13 +7,36 @@
     font-style: normal;
     font-weight: 400;
     line-height: 115%;
-    span{
+
+    span {
         text-wrap: nowrap;
     }
 }
+
 .border {
     position: absolute;
     top: -170%;
     left: -5%;
     width: 110%;
+}
+
+@media (max-width: 1024px) {
+    .border {
+        top: -180%;
+    }
+}
+@media (max-width: 768px) {
+    .border {
+        top: -190%;
+    }
+}
+@media (max-width: 480px) {
+    .border {
+        top: -200%;
+    }
+}
+@media (max-width: 420px) {
+    .border {
+        top: -205%;
+    }
 }

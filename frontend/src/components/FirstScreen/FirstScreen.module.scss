@@ -66,11 +66,7 @@
         grid-template-columns: 1fr;
         h1 {
             grid-column: 1;
-            margin-top: clamp(
-                20px,
-                calc(2.5rem + ((1vw - 10.24px) * 3.012)),
-                40px
-            );
+            margin-top: clamp(30px, calc(2.8125rem + (30 - 45) * ((100vw - 1024px) / (320 - 1024))), 45px);
         }
     }
 }
