@@ -183,16 +183,6 @@ const OrderPlacement = ({ onLoading }) => {
                                                     />
                                                 </li>
                                                 <li>
-                                                    <label htmlFor="address">{lang === 'ru' ? 'Адрес доставки*' : 'Delivery address*'}</label>
-                                                    <input
-                                                        type="text"
-                                                        id="address"
-                                                        name='addressForm'
-                                                        placeholder={lang === 'ru' ? 'Москва' : 'Moscow'}
-                                                        required
-                                                    />
-                                                </li>
-                                                <li>
                                                     <label htmlFor="phone">{lang === 'ru' ? 'Телефон*' : 'Phone*'}</label>
                                                     <input
                                                         type="tel"
@@ -206,7 +196,7 @@ const OrderPlacement = ({ onLoading }) => {
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li className={styles.listItem}><h3>2. {lang === 'ru' ? 'Доставка' : 'Delivery'}</h3>
+                                        {/* <li className={styles.listItem}><h3>2. {lang === 'ru' ? 'Доставка' : 'Delivery'}</h3>
                                             <span className={styles.subTitle}>{lang === 'ru' ? 'Курьерская доставка Почты России' : 'Courier delivery right to your door by the Russian Post'}</span>
                                             <ul className={styles.switchingAdress}>
                                                 <li onClick={() => setDelivery(true)} className={delivery === true ? styles.active : ''}>{lang === 'ru' ? 'список' : 'list'}
@@ -246,24 +236,58 @@ const OrderPlacement = ({ onLoading }) => {
                                                     </div>
                                                 }
                                             </div>
+                                            </li> */}
+                                        <li className={styles.listItem}><h3>2. {lang === 'ru' ? 'Доставка Почтой РФ' : 'Delivery by Russian Post'}</h3>
+                                            <ul className={styles.list}>
+                                                <li>
+                                                    <label htmlFor="city">{lang === 'ru' ? 'Город*' : 'City*'}</label>
+                                                    <input
+                                                        type="text"
+                                                        id="city"
+                                                        name='city'
+                                                        placeholder={lang === 'ru' ? 'Москва' : 'Moscow'}
+                                                        required
+                                                    />
+                                                </li>
+                                                <li>
+                                                    <label htmlFor="address">{lang === 'ru' ? 'Адрес*' : 'Address*'}</label>
+                                                    <input
+                                                        type="text"
+                                                        id="address"
+                                                        name='address'
+                                                        placeholder={lang === 'ru' ? 'Проспект Вернадского, 18 к1' : 'Prospect Vernadskogo, 18 k1'}
+                                                        required
+                                                    />
+                                                </li>
+                                                <li>
+                                                    <label htmlFor="postcode">{lang === 'ru' ? 'Почтовый индекс*' : 'Postcode*'}</label>
+                                                    <input
+                                                        type="text"
+                                                        id="postcode"
+                                                        name='postcode'
+                                                        placeholder='101000'
+                                                        required
+                                                    />
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li className={styles.listItem}><h3>3. {lang === 'ru' ? 'Реквезиты для оплата по СБП:' : 'Details for payment via SBP:'}</h3>
+                                        <li className={styles.listItem}><h3>3. {lang === 'ru' ? 'Оплата по СБП:' : 'Payment via SBP:'}</h3>
                                             <div className={styles.payment}>
                                                 <div className={styles.paymentInfo}>
-                                                    <p><span>Привязанный к банковскому счету номер:</span> +7 926 535 49 40</p>
-                                                    <p><span>Валюта получаемого перевода:</span> Российский рубль (RUB)</p>
-                                                    <p><span>Получатель:</span> МАЛЬКОВ ВАЛЕРИЙ АРКАДЬЕВИЧ</p>
-                                                    <p><span>Номер счёта:</span> 40817810738171947010</p>
-                                                    <p><span>Банк получателя:</span> ПАО Сбербанк</p>
-                                                    <p><span>БИК:</span> 044525225</p>
-                                                    <p><span>Корр. счёт:</span> 30101810400000000225</p>
-                                                    <p><span>ИНН:</span> 7707083893</p>
-                                                    <p><span>КПП:</span> 773643001</p>
-                                                    <p><span>ОКПО:</span> 57972160</p>
-                                                    <p><span>ОГРН:</span> 1027700132195</p>
-                                                    <p><span>SWIFT-код:</span> SABRRUMM</p>
-                                                    <p><span>Почтовый адрес банка:</span> 109544, МОСКВА, УЛ.Б.АНДРОНЬЕВСКАЯ,6</p>
-                                                    <p><span>Почтовый адрес доп.офиса:</span> 125368, Г.МОСКВА, 3-ИЙ МИТИНСКИЙ ПЕРЕУЛОК, 6, КОРПУС 1</p>
+                                                    <p><span>{lang === 'ru' ? 'Номер телефона:' : 'Phone number:'}</span> +7 926 535 49 40</p>
+                                                    <p><span>{lang === 'ru' ? 'Валюта получаемого перевода:' : 'Currency of transfer:'}</span> {lang === 'ru' ? 'Российский рубль (RUB)' : 'Russian ruble (RUB)'}</p>
+                                                    <p><span>{lang === 'ru' ? 'Получатель:' : 'Recipient:'}</span> {lang === 'ru' ? 'МАЛЬКОВ ВАЛЕРИЙ АРКАДЬЕВИЧ' : 'MALKOV VALERY ARKADIEVICH'}</p>
+                                                    <p><span>{lang === 'ru' ? 'Номер счёта:' : 'Account number:'}</span> 40817810738171947010</p>
+                                                    <p><span>{lang === 'ru' ? 'Банк получателя:' : 'Recipient bank:'}</span> {lang === 'ru' ? 'ПАО Сбербанк' : 'PJSC Sberbank'}</p>
+                                                    <p><span>{lang === 'ru' ? 'БИК:' : 'Bank identification code (BIC):'}</span> 044525225</p>
+                                                    <p><span>{lang === 'ru' ? 'Корр. счёт:' : 'Correspondent account:'}</span> 30101810400000000225</p>
+                                                    <p><span>{lang === 'ru' ? 'ИНН:' : 'Tax identification number (INN):'}</span> 7707083893</p>
+                                                    <p><span>{lang === 'ru' ? 'КПП:' : 'Reason code of tax registration (KPP):'}</span> 773643001</p>
+                                                    <p><span>{lang === 'ru' ? 'ОКПО:' : 'Primary state registration number (OGRN):'}</span> 57972160</p>
+                                                    <p><span>{lang === 'ru' ? 'ОГРН:' : 'SWIFT code:'}</span> 1027700132195</p>
+                                                    <p><span>{lang === 'ru' ? 'SWIFT-код:' : 'Bank postal address:'}</span> SABRRUMM</p>
+                                                    <p><span>{lang === 'ru' ? 'Почтовый адрес банка:' : 'Bank postal address:'}</span> {lang === 'ru' ? '109544, МОСКВА, УЛ.Б.АНДРОНЬЕВСКАЯ,6' : '109544, MOSCOW, B.ANDRONYEVSKAYA STREET, 6'}</p>
+                                                    <p><span>{lang === 'ru' ? 'Почтовый адрес доп.офиса:' : 'Additional office postal address:'}</span> {lang === 'ru' ? '125368, Г.МОСКВА, 3-ИЙ МИТИНСКИЙ ПЕРЕУЛОК, 6, КОРПУС 1' : '125368, MOSCOW, 3rd MITINSKY LANE, 6, BUILDING 1'}</p>
                                                 </div>
                                             </div>
                                         </li>
