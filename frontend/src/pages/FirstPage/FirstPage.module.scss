@@ -44,15 +44,15 @@
     align-items: flex-end;
 }
 
-.link {
-    display: inline-block;
-    width: clamp(50px, calc(5rem + ((1vw - 14.4px) * 2.7778)), 80px);
-    height: clamp(50px, calc(5rem + ((1vw - 14.4px) * 2.7778)), 80px);
+// .link {
+//     display: inline-block;
+//     width: clamp(50px, calc(5rem + ((1vw - 14.4px) * 2.7778)), 80px);
+//     height: clamp(50px, calc(5rem + ((1vw - 14.4px) * 2.7778)), 80px);
 
-    :global {
-        .icon {
-            width: inherit;
-            height: inherit;
-        }
-    }
-}
+//     :global {
+//         .icon {
+//             width: inherit;
+//             height: inherit;
+//         }
+//     }
+// }

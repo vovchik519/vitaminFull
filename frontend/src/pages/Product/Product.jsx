@@ -12,7 +12,7 @@ import Basket from '../../components/Basket/Basket';
 import sprite from './../../images/icons/sprite.svg';
 import Error from '../../components/Error/Error';
 
-const Product = ({onLoading}) => {
+const Product = ({ onLoading }) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -54,13 +54,13 @@ const Product = ({onLoading}) => {
     const { orders, addOrder, removeOrder } = useOrders();
     const [popup, setPopup] = useState(false)
     const handleAddToCart = (product) => {
-        if(orders.length < 20){
+        if (orders.length < 20) {
             addOrder(product);
             const existingOrders = orders.find((order) => order.id === product.id)
             if (!existingOrders) {
                 setPopup(true)
             }
-        } else{
+        } else {
             alert('product limit 20 pcs')
         }
     };
@@ -224,19 +224,22 @@ const Product = ({onLoading}) => {
                             <h2>{lang === 'ru' ? 'Вам также может понравиться' : 'You may also like'}</h2>
                         </div>
                         <ProductList product={displayedProducts} />
-                        <button type="button" className={styles.link} onClick={() => showAllProducts()}>
-                            {lang === 'ru' ?
-                                !productListOpen ?
-                                    'Смотреть все' :
-                                    'Свернуть' :
-                                !productListOpen ?
-                                    'See all' :
-                                    'roll up'
-                            }
-                            <svg className='icon'>
-                                <use xlinkHref={`${sprite}#icon-arrow-basket`}></use>
-                            </svg>
-                        </button>
+                        {productList.length >= 6 ?
+                            <button type="button" className={styles.link} onClick={() => showAllProducts()}>
+                                {lang === 'ru' ?
+                                    !productListOpen ?
+                                        'Смотреть все' :
+                                        'Свернуть' :
+                                    !productListOpen ?
+                                        'See all' :
+                                        'roll up'
+                                }
+                                <svg className='icon'>
+                                    <use xlinkHref={`${sprite}#icon-arrow-basket`}></use>
+                                </svg>
+                            </button>
+                            : null
+                        }
                     </div>
                 </section>
             </main>

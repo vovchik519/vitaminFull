@@ -35,7 +35,7 @@ const FirstPage = ({ onLoading }) => {
                 setLogoWhiteImg(data.data.attributes.logo.iconWhite.data.attributes);
                 // background
                 setBackground(data.data.attributes.background.data.attributes);
-                
+
                 onLoading()
             } catch (e) {
                 console.log(e);
@@ -85,12 +85,15 @@ const FirstPage = ({ onLoading }) => {
                 <h1>{data.title}</h1>
             </div>
             <div className={styles.foot}>
-                <Language />
                 <Link to='/home' className={styles.link} aria-label={data.buttonName}>
-                    <svg className="icon">
-                        <use xlinkHref={`${sprite}#icon-arrow-right`}></use>
-                    </svg>
+                    <Language ru={true} />
                 </Link>
+                <Link to='/home' className={styles.link} aria-label={data.buttonName}>
+                    <Language en={true} />
+                </Link>
+                {/* <svg className="icon">
+                        <use xlinkHref={`${sprite}#icon-arrow-right`}></use>
+                    </svg> */}
             </div>
         </section>
     );
