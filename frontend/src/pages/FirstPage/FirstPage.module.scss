@@ -27,7 +27,7 @@
     color: white;
     max-width: 35ch;
     line-height: 1.4em;
-    font-size: clamp(0.875rem, calc(1.25rem + (0.875 - 1.25) * ((100vw - 80rem) / (20 - 80))), 1.25rem);
+    font-size: clamp(0.875rem, calc(1.125rem + ((1vw - 0.8rem) * 0.4167)), 1.125rem);
 }
 
 .head,

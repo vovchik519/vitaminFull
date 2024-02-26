@@ -6,8 +6,9 @@ import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 import Name from './../../ui/Name/Name';
 import ProductList from '../../components/ProductList/ProductList';
+import sprite from './../../images/icons/sprite.svg';
 
-const Shop = ({onLoading}) => {
+const Shop = ({ onLoading }) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -125,8 +126,13 @@ const Shop = ({onLoading}) => {
                         ))}
                     </section>
                     <section>
-                        <label className={styles.sort}>
+                        <div className={styles.sort}>
                             {lang === 'ru' ? 'Сортировать по:' : 'Sort by:'}
+                            <span className={styles.arrow}>
+                                <svg className='icon'>
+                                    <use xlinkHref={`${sprite}#icon-arrow-top`}></use>
+                                </svg>
+                            </span>
                             <select value={sortOption} onChange={handleSortChange}>
                                 <option value="bestSales">{lang === 'ru' ? 'Лучшие продажи' : 'Best sales'}</option>
                                 <option value="alphabeticalAsc">{lang === 'ru' ? 'По алфавиту А-Я' : 'Alphabetically AZ'}</option>
@@ -134,7 +140,7 @@ const Shop = ({onLoading}) => {
                                 <option value="priceAsc">{lang === 'ru' ? 'По возрастанию цены' : 'In descending order of price'}</option>
                                 <option value="priceDesc">{lang === 'ru' ? 'По убыванию цены' : 'In ascending order of price'}</option>
                             </select>
-                        </label>
+                        </div>
                         <ProductList product={sortedProductList} />
                     </section>
                 </div>

@@ -39,18 +39,18 @@ const Language = ({ ru, en }) => {
                 </div>
                 :
                 <> {ru === true ?
-                    <div className={styles.language} onClick={() => changeLang('ru')}>
+                    <div className={`${styles.language} ${styles.solo}`} onClick={() => changeLang('ru')}>
                         <div className={styles.border}>
                             <svg>
-                                <use xlinkHref={`${sprite}#icon-border-one`}></use>
+                                <use xlinkHref={`${sprite}#icon-border-two`}></use>
                             </svg>
                         </div>
                         <button type='button' >Рус</button>
                     </div> :
-                    <div className={styles.language} onClick={() => changeLang('en')}>
+                    <div className={`${styles.language} ${styles.solo}`} onClick={() => changeLang('en')}>
                         <div className={styles.border}>
                             <svg>
-                                <use xlinkHref={`${sprite}#icon-border-one`}></use>
+                                <use xlinkHref={`${sprite}#icon-border-two`}></use>
                             </svg>
                         </div>
                         <button type='button'>Eng</button>
