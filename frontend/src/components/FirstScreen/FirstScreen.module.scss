@@ -44,11 +44,11 @@
 }
 .decoration {
     position: absolute;
-    max-width: 925px;
+    max-width: 1440px;
     width: 64vw;
     max-height: 400px;
     object-fit: contain;
-    top: -10.7vw;
+    top: clamp(-130px, -10.7vw, -30px);
     left: 0.8vw;
 }
 .images {

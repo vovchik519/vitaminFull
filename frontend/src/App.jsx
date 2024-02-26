@@ -14,6 +14,7 @@ import Shop from './pages/Shop/Shop';
 import Product from './pages/Product/Product';
 import OrderPlacement from './pages/OrderPlacement/OrderPlacement';
 import NotFound from './pages/NotFound/NotFound';
+import FeedbackPage from './pages/Feedback/Feedback';
 
 const App = () => {
   let server = 'http://185.251.88.31:1337';
@@ -22,7 +23,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleDataLoaded = () => {
-    setTimeout(() =>{
+    setTimeout(() => {
       setIsLoading(false);
     }, 100)
   };
@@ -52,10 +53,11 @@ const App = () => {
           <Route path="/poem" element={<PoemItem onLoading={handleDataLoaded} />} />
           <Route path="/gallery" element={<Gallery onLoading={handleDataLoaded} />} />
           <Route path="/storeroom" element={<Pantry onLoading={handleDataLoaded} />} />
+          <Route path="/feedback" element={<FeedbackPage onLoading = { handleDataLoaded } />} />
           <Route path="/store" element={<Shop onLoading={handleDataLoaded} />} />
           <Route path="/store/item" element={<Product onLoading={handleDataLoaded} />} />
           <Route path="/store/order-placement" element={<OrderPlacement onLoading={handleDataLoaded} />} />
-          <Route path="*" element={<NotFound onLoading={handleDataLoaded}/>} />
+          <Route path="*" element={<NotFound onLoading={handleDataLoaded} />} />
         </Routes>
       </div>
     </div>

@@ -19,38 +19,40 @@ const GalleryMain = (props) => {
     const swiperRef = useRef();
     return (
         <section className={styles.wrapper}>
-            <div className="container">
-                <div className={styles.wrap}>
+            <div className={styles.wrap}>
+                <div className="container">
                     <div className={styles.head}>
                         <Name
                             name={props.name}
                         />
                         <Link to={props.buttonLink}>{props.buttonName}</Link>
                     </div>
-                    <Swiper
-                        modules={[Autoplay, Navigation]}
-                        spaceBetween={20}
-                        slidesPerView='auto'
-                        onBeforeInit={(swiper) => {
-                            swiperRef.current = swiper;
-                        }}
-                        autoplay={{
-                            delay: 4000,
-                            disableOnInteraction: true,
-                        }}
-                        className={styles.slider}
-                    >
-                        {slides.map((image, index) => (
-                            props.galleryMime[index].indexOf('image') ?
-                                    <SwiperSlide key={index}>
-                                        <video src={image} controls></video>
-                                    </SwiperSlide>
-                                :
-                                <SwiperSlide key={index}>
-                                    <img src={image} alt='slide' />
-                                </SwiperSlide>
-                        ))}
-                    </Swiper>
+                </div>
+                <Swiper
+                    modules={[Autoplay, Navigation]}
+                    spaceBetween={20}
+                    slidesPerView='auto'
+                    onBeforeInit={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
+                    autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: true,
+                    }}
+                    className={styles.slider}
+                >
+                    {slides.map((image, index) => (
+                        props.galleryMime[index].indexOf('image') ?
+                            <SwiperSlide key={index}>
+                                <video src={image} controls></video>
+                            </SwiperSlide>
+                            :
+                            <SwiperSlide key={index}>
+                                <img src={image} alt='slide' />
+                            </SwiperSlide>
+                    ))}
+                </Swiper>
+                <div className="container">
                     <div className={styles.buttons}>
                         <button onClick={() => swiperRef.current?.slidePrev()} className={styles.sliderPrev}>
                             <svg className='icon'>

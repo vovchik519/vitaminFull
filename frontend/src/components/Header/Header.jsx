@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './Header.module.scss';
 import Language from './../Language/Language';
 import sprite from './../../images/icons/sprite.svg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Basket from '../Basket/Basket';
 import useOrders from '../../database-orders';
 
@@ -99,7 +99,7 @@ const Header = ({ handleToggle, ordersProduct }) => {
                                 <ul>
                                     {menu.map((item, index) => (
                                         <li key={index}>
-                                            <Link to={item.link}>{item.name}</Link>
+                                            <NavLink to={item.link}>{item.name}</NavLink>
                                         </li>
                                     ))}
                                     <li className={styles.mobile}>
