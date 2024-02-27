@@ -47,24 +47,21 @@ const Gallery = ({onLoading}) => {
                 let galleryId = []
                 let galleryImageArray = []
                 let galleryTitleArray = []
-                let galleryMimeArray = []
                 let gallerySubTitleArray = []
                 let galleryDescriptionArray = []
                 let galleryDescriptionIndentArray = []
-                let gallerySignatureArray = []
                 for (let i = 0; i < data.data.attributes.gallery.length; i++) {
                     galleryId.push(data.data.attributes.gallery[i].id)
                     galleryTitleArray.push(data.data.attributes.gallery[i].title)
                     gallerySubTitleArray.push(data.data.attributes.gallery[i].subTitle)
                     let descriptionArray = []
                     let descriptionIndentArray = []
-                    let mimeArray = []
                     let imageArray = []
-                    let signatureArray = []
                     for (let g = 0; g < data.data.attributes.gallery[i].gallery.data.attributes.Image.length; g++) {
-                        mimeArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.mime)
-                        imageArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
-                        signatureArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
+                        let galleryArray = []
+                        galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
+                        galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
+                        imageArray.push(galleryArray)
                     }
                     for (let j = 0; j < data.data.attributes.gallery[i].description.length; j++) {
                         descriptionArray.push(data.data.attributes.gallery[i].description[j].paragraph)
@@ -73,8 +70,6 @@ const Gallery = ({onLoading}) => {
                     galleryDescriptionArray.push(descriptionArray)
                     galleryDescriptionIndentArray.push(descriptionIndentArray)
                     galleryImageArray.push(imageArray)
-                    galleryMimeArray.push(mimeArray)
-                    gallerySignatureArray.push(signatureArray)
                 }
                 setGalleryId(galleryId)
                 setGalleryTitle(galleryTitleArray)
@@ -82,8 +77,6 @@ const Gallery = ({onLoading}) => {
                 setGalleryDescription(galleryDescriptionArray)
                 setGalleryDescriptionIndent(galleryDescriptionIndentArray)
                 setGalleryImage(galleryImageArray)
-                setGalleryMime(galleryMimeArray)
-                setGallerySignature(gallerySignatureArray)
                 onLoading()
             } catch (e) {
                 console.log(e);
@@ -104,8 +97,6 @@ const Gallery = ({onLoading}) => {
     const [galleryDescription, setGalleryDescription] = useState([]);
     const [galleryDescriptionIndent, setGalleryDescriptionIndent] = useState([]);
     const [galleryImage, setGalleryImage] = useState([]);
-    const [galleryMime, setGalleryMime] = useState([]);
-    const [gallerySignature, setGallerySignature] = useState([]);
     const breakpointColumnsObj = {
         default: 3,
         1024: 2,
@@ -213,14 +204,15 @@ const Gallery = ({onLoading}) => {
                                                             columnClassName="images-column">
                                                             {currentTableData().map((image, imageIndex) => (
                                                                 <div key={imageIndex} className={styles.imageTop}>
+                                                                    {console.log(image)}
                                                                     <div className={styles.image}>
-                                                                        {isVideo(image) ?
-                                                                            <video src={image} controls></video>
+                                                                        {isVideo(image[0]) ?
+                                                                            <video src={image[0]} controls></video>
                                                                             :
-                                                                            <Image src={image} alt="Картинка" />
+                                                                            <Image src={image[0]} alt="Картинка" />
                                                                         }
                                                                     </div>
-                                                                    <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                                    <h3>{image[1]}</h3>
                                                                 </div>
                                                             ))}
                                                         </Masonry>

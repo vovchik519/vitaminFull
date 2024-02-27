@@ -12,7 +12,7 @@ import Footer from './../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import Pagination from '../../components/Pagination/Pagination';
 
-const Pantry = ({onLoading}) => {
+const Pantry = ({ onLoading }) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -45,7 +45,6 @@ const Pantry = ({onLoading}) => {
                 // gallery
                 let galleryId = []
                 let galleryImageArray = []
-                let galleryMimeArray = []
                 let galleryTitleArray = []
                 let gallerySubTitleArray = []
                 let galleryDescriptionArray = []
@@ -58,12 +57,12 @@ const Pantry = ({onLoading}) => {
                     let descriptionArray = []
                     let descriptionIndentArray = []
                     let imageArray = []
-                    let mimeArray = []
                     let signatureArray = []
                     for (let g = 0; g < data.data.attributes.gallery[i].gallery.data.attributes.Image.length; g++) {
-                        mimeArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.mime)
-                        imageArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
-                        signatureArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
+                        let galleryArray = []
+                        galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
+                        galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
+                        imageArray.push(galleryArray)
                     }
                     for (let j = 0; j < data.data.attributes.gallery[i].description.length; j++) {
                         descriptionArray.push(data.data.attributes.gallery[i].description[j].paragraph)
@@ -72,7 +71,6 @@ const Pantry = ({onLoading}) => {
                     galleryDescriptionArray.push(descriptionArray)
                     galleryDescriptionIndentArray.push(descriptionIndentArray)
                     galleryImageArray.push(imageArray)
-                    galleryMimeArray.push(mimeArray)
                     gallerySignatureArray.push(signatureArray)
                 }
                 setImagePagination(galleryImageArray)
@@ -82,12 +80,10 @@ const Pantry = ({onLoading}) => {
                 setGalleryDescription(galleryDescriptionArray)
                 setGalleryDescriptionIndent(galleryDescriptionIndentArray)
                 setGalleryImage(galleryImageArray)
-                setGalleryMime(galleryMimeArray)
                 setGallerySignature(gallerySignatureArray)
                 // galleryFriends
                 let galleryFriendsId = []
                 let galleryFriendsImageArray = []
-                let galleryFriendsMimeArray = []
                 let galleryFriendsTitleArray = []
                 let galleryFriendsSubTitleArray = []
                 let galleryFriendsDescriptionArray = []
@@ -100,12 +96,12 @@ const Pantry = ({onLoading}) => {
                     let descriptionFriendsArray = []
                     let descriptionIndentFriendsArray = []
                     let imageFriendsArray = []
-                    let mimeFriendsArray = []
                     let signatureFriendsArray = []
                     for (let g = 0; g < data.data.attributes.galleryFriends[i].gallery.data.attributes.Image.length; g++) {
-                        mimeFriendsArray.push(data.data.attributes.galleryFriends[i].gallery.data.attributes.Image[g].image.data.attributes.mime)
-                        imageFriendsArray.push(data.data.attributes.galleryFriends[i].gallery.data.attributes.Image[g].image.data.attributes.url)
-                        signatureFriendsArray.push(data.data.attributes.galleryFriends[i].gallery.data.attributes.Image[g].signature)
+                        let galleryArrayFriends = []
+                        galleryArrayFriends.push(data.data.attributes.galleryFriends[i].gallery.data.attributes.Image[g].image.data.attributes.url)
+                        galleryArrayFriends.push(data.data.attributes.galleryFriends[i].gallery.data.attributes.Image[g].signature)
+                        imageFriendsArray.push(galleryArrayFriends)
                     }
                     for (let j = 0; j < data.data.attributes.galleryFriends[i].description.length; j++) {
                         descriptionFriendsArray.push(data.data.attributes.galleryFriends[i].description[j].paragraph)
@@ -114,7 +110,6 @@ const Pantry = ({onLoading}) => {
                     galleryFriendsDescriptionArray.push(descriptionFriendsArray)
                     galleryFriendsDescriptionIndentArray.push(descriptionIndentFriendsArray)
                     galleryFriendsImageArray.push(imageFriendsArray)
-                    galleryFriendsMimeArray.push(mimeFriendsArray)
                     galleryFriendsSignatureArray.push(signatureFriendsArray)
                 }
                 setImageFriendsPagination(galleryFriendsImageArray)
@@ -124,7 +119,6 @@ const Pantry = ({onLoading}) => {
                 setGalleryFriendsDescription(galleryFriendsDescriptionArray)
                 setGalleryFriendsDescriptionIndent(galleryFriendsDescriptionIndentArray)
                 setGalleryFriendsImage(galleryFriendsImageArray)
-                setGalleryFriendsMime(galleryFriendsMimeArray)
                 setGalleryFriendsSignature(galleryFriendsSignatureArray)
                 // poem
                 setPoems(data.data.attributes.poem);
@@ -160,7 +154,6 @@ const Pantry = ({onLoading}) => {
     const [galleryDescription, setGalleryDescription] = useState([]);
     const [galleryDescriptionIndent, setGalleryDescriptionIndent] = useState([]);
     const [galleryImage, setGalleryImage] = useState([]);
-    const [galleryMime, setGalleryMime] = useState([]);
     const [gallerySignature, setGallerySignature] = useState([]);
     // galeryFriends
     const [galleryFriendsId, setGalleryFriendsId] = useState([]);
@@ -169,7 +162,6 @@ const Pantry = ({onLoading}) => {
     const [galleryFriendsDescription, setGalleryFriendsDescription] = useState([]);
     const [galleryFriendsDescriptionIndent, setGalleryFriendsDescriptionIndent] = useState([]);
     const [galleryFriendsImage, setGalleryFriendsImage] = useState([]);
-    const [galleryFriendsMime, setGalleryFriendsMime] = useState([]);
     const [galleryFriendsSignature, setGalleryFriendsSignature] = useState([]);
     // poem
     const [poemBlockImage, setPoemBlockImage] = useState('');
@@ -266,13 +258,13 @@ const Pantry = ({onLoading}) => {
                                                 <div key={imageIndex} className={styles.imageTop}>
                                                     <div className={styles.image}>
                                                         {
-                                                            isVideo(image) ?
-                                                                <video src={image} controls></video>
+                                                            isVideo(image[0]) ?
+                                                                <video src={image[0]} controls></video>
                                                                 :
-                                                                <Image src={image} alt="Картинка" />
+                                                                <Image src={image[0]} alt="Картинка" />
                                                         }
                                                     </div>
-                                                    <h3>{gallerySignature[index][imageIndex]}</h3>
+                                                    <h3>{image[1]}</h3>
                                                 </div>
                                             ))}
                                         </Masonry>
@@ -351,13 +343,13 @@ const Pantry = ({onLoading}) => {
                                             {currentTableDataFriends().map((image, imageIndex) => (
                                                 <div key={imageIndex} className={styles.imageTop}>
                                                     <div className={styles.image}>
-                                                        {isVideo(image) ?
-                                                            <video src={image} controls></video>
+                                                        {isVideo(image[0]) ?
+                                                            <video src={image[0]} controls></video>
                                                             :
-                                                            <Image src={image} alt="Картинка" />
+                                                            <Image src={image[0]} alt="Картинка" />
                                                         }
                                                     </div>
-                                                    <h3>{galleryFriendsSignature[index][imageIndex]}</h3>
+                                                    <h3>{image[1]}</h3>
                                                 </div>
                                             ))}
                                         </Masonry>

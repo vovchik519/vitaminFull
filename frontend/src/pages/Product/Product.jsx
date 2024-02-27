@@ -224,7 +224,7 @@ const Product = ({ onLoading }) => {
                             <h2>{lang === 'ru' ? 'Вам также может понравиться' : 'You may also like'}</h2>
                         </div>
                         <ProductList product={displayedProducts} />
-                        {productList.length >= 6 ?
+                        {productList.length > 6 ?
                             <button type="button" className={styles.link} onClick={() => showAllProducts()}>
                                 {lang === 'ru' ?
                                     !productListOpen ?
