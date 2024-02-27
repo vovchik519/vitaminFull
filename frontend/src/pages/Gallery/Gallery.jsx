@@ -204,7 +204,6 @@ const Gallery = ({onLoading}) => {
                                                             columnClassName="images-column">
                                                             {currentTableData().map((image, imageIndex) => (
                                                                 <div key={imageIndex} className={styles.imageTop}>
-                                                                    {console.log(image)}
                                                                     <div className={styles.image}>
                                                                         {isVideo(image[0]) ?
                                                                             <video src={image[0]} controls></video>
