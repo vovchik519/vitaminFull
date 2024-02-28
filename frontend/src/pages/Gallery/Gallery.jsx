@@ -118,7 +118,7 @@ const Gallery = ({onLoading}) => {
         }, 750)
     }, [switched])
 
-    const PageSize = 7;
+    const PageSize = 12;
     const [currentPage, setCurrentPage] = useState();
     useEffect(() => {
         const initialCurrentPage = Object.fromEntries(galleryImage.map((_, index) => [index, 1]));
@@ -206,7 +206,7 @@ const Gallery = ({onLoading}) => {
                                                                 <div key={imageIndex} className={styles.imageTop}>
                                                                     <div className={styles.image}>
                                                                         {isVideo(image[0]) ?
-                                                                            <video src={image[0]} controls></video>
+                                                                            <video src={image[0]} controls loading='lazy'></video>
                                                                             :
                                                                             <Image src={image[0]} alt="Картинка" />
                                                                         }

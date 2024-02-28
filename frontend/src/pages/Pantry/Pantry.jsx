@@ -259,7 +259,7 @@ const Pantry = ({ onLoading }) => {
                                                     <div className={styles.image}>
                                                         {
                                                             isVideo(image[0]) ?
-                                                                <video src={image[0]} controls></video>
+                                                                <video src={image[0]} controls loading='lazy'></video>
                                                                 :
                                                                 <Image src={image[0]} alt="Картинка" />
                                                         }
@@ -344,7 +344,7 @@ const Pantry = ({ onLoading }) => {
                                                 <div key={imageIndex} className={styles.imageTop}>
                                                     <div className={styles.image}>
                                                         {isVideo(image[0]) ?
-                                                            <video src={image[0]} controls></video>
+                                                            <video src={image[0]} controls loading='lazy'></video>
                                                             :
                                                             <Image src={image[0]} alt="Картинка" />
                                                         }

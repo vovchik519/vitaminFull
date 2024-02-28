@@ -44,11 +44,11 @@ const GalleryMain = (props) => {
                     {slides.map((image, index) => (
                         props.galleryMime[index].indexOf('image') ?
                             <SwiperSlide key={index}>
-                                <video src={image} controls></video>
+                                <video src={image} controls loading='lazy'></video>
                             </SwiperSlide>
                             :
                             <SwiperSlide key={index}>
-                                <img src={image} alt='slide' />
+                                <img src={image} alt='slide' loading='lazy'/>
                             </SwiperSlide>
                     ))}
                 </Swiper>
