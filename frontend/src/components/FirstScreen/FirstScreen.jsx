@@ -3,11 +3,11 @@ import styles from './FirstScreen.module.scss';
 import Name from './../../ui/Name/Name';
 
 const FirstScreen = (props) => {
-    const [position, setPosition] = useState({ mouseX: 0, mouseY: 0 });
+    const [position, setPosition] = useState({ mouseX: 0});
 
     useEffect(() => {
       const handleMouseMove = (e) => {
-        setPosition({ mouseX: e.clientX, mouseY: e.clientY });
+        setPosition({ mouseX: e.clientX });
       };
   
       window.addEventListener('mousemove', handleMouseMove);
@@ -19,8 +19,7 @@ const FirstScreen = (props) => {
   
     const calculateParallaxPosition = (strength) => {
       const parallaxX = (position.mouseX - window.innerWidth / 2) / strength;
-      const parallaxY = (position.mouseY - window.innerHeight / 2) / strength;
-      return { transform: `translate(${parallaxX}px, ${parallaxY}px)` };
+      return { transform: `translate(${parallaxX}px` };
     };
     return (
         <section className={styles.wrapper}>
