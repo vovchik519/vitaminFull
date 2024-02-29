@@ -111,11 +111,26 @@ const PoemList = (props) => {
                                                 {articlesTitle[index]}
                                             </h2>
                                             <div className={styles.text}>
-                                                {articlesParagraph[index].map((textId, textIndex) => (
-                                                    <p key={textIndex} className={articlesParagraphIndents[index][textIndex] === true ? '' : 'indent'}>
-                                                        {articlesParagraph[index][textIndex]}
-                                                    </p>
-                                                ))}
+                                                {articlesParagraph[index].map((textId, textIndex) => {
+                                                    let textIdArray = textId.split('\n')
+                                                    return (
+                                                        <div key={textIndex}>
+                                                            {textId.indexOf('\n') !== -1 ?
+                                                                <>
+                                                                    {textIdArray.map((arrayItem, arrayIndex) => (
+                                                                        <p key={arrayIndex}>
+                                                                            {arrayItem}
+                                                                        </p>
+                                                                    ))}
+                                                                </>
+                                                                :
+                                                                <p key={textIndex} className={articlesParagraphIndents[index][textIndex] === true ? '' : 'indent'}>
+                                                                    {articlesParagraph[index][textIndex]}
+                                                                </p>
+                                                            }
+                                                        </div>
+                                                    )
+                                                })}
                                             </div>
                                         </div>
                                         {lang === 'ru' ?

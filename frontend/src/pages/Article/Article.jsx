@@ -7,7 +7,7 @@ import FirstScreen from './../../components/FirstScreen/FirstScreen';
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
 
-const Article = ({onLoading}) => {
+const Article = ({ onLoading }) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -131,11 +131,28 @@ const Article = ({onLoading}) => {
                                                         {articlesParagraphTitle[index][paragraphIndex]}
                                                     </h3>
                                                     <div className={styles.text}>
-                                                        {articlesParagraph[index][paragraphIndex].map((textId, textIndex) => (
-                                                            <p key={textIndex} className={articlesParagraphIndents[index][paragraphIndex][textIndex] === true ? '' : 'indent'}>
-                                                                {articlesParagraph[index][paragraphIndex][textIndex]}
-                                                            </p>
-                                                        ))}
+                                                        {articlesParagraph[index][paragraphIndex].map((textId, textIndex) => {
+                                                            let textIdArray = textId.split('\n')
+                                                            return (
+                                                                <div key={textIndex}>
+                                                                    {textId.indexOf('\n') !== -1 ?
+                                                                        <>
+                                                                            {textIdArray.map((arrayItem, arrayIndex) => (
+                                                                                <p key={arrayIndex} style={{
+                                                                                    minHeight: '1.3em'
+                                                                                }}>
+                                                                                    {arrayItem}
+                                                                                </p>
+                                                                            ))}
+                                                                        </>
+                                                                        :
+                                                                        <p key={textIndex} className={articlesParagraphIndents[index][paragraphIndex][textIndex] === true ? '' : 'indent'}>
+                                                                            {articlesParagraph[index][paragraphIndex][textIndex]}
+                                                                        </p>
+                                                                    }
+                                                                </div>
+                                                            )
+                                                        })}
                                                     </div>
                                                 </div>
                                             ))}
