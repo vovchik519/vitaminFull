@@ -12,7 +12,7 @@ import Footer from './../../components/Footer/Footer';
 import Error from '../../components/Error/Error';
 import Pagination from './../../components/Pagination/Pagination';
 
-const PoemItem = ({onLoading}) => {
+const PoemItem = ({ onLoading }) => {
     let server = 'http://185.251.88.31:1337'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -119,20 +119,35 @@ const PoemItem = ({onLoading}) => {
                                         </h2>
                                         <div className={styles.text}>
                                             {currentTableData.map((textId, textIndex) => {
+                                                let textIdArray = textId.split('\n')
                                                 return (
-                                                    <p key={textIndex} className={articlesParagraphIndents[index][textIndex] === true ? '' : 'indent'}>
-                                                        {textId}</p>
+                                                    <div key={textIndex}>
+                                                        {textId.indexOf('\n') !== -1?
+                                                            <>
+                                                                {textIdArray.map((arrayItem, arrayIndex) => (
+                                                                    <p key={arrayIndex} style={{
+                                                                        height: '1.3em'
+                                                                    }}>
+                                                                        {arrayItem}
+                                                                    </p>
+                                                                ))}
+                                                            </>
+                                                            :
+                                                            <p key={textIndex} className={articlesParagraphIndents[index][textIndex] === true ? '' : 'indent'}>
+                                                                {textId}</p>
+                                                        }
+                                                    </div>
                                                 );
                                             })}
                                             <div className={styles.paginationWrapper}>
-                                            <Pagination
-                                                className="pagination-bar"
-                                                currentPage={currentPage}
-                                                totalCount={articlesPagination.length}
-                                                pageSize={PageSize}
-                                                onPageChange={page => setCurrentPage(page)}
+                                                <Pagination
+                                                    className="pagination-bar"
+                                                    currentPage={currentPage}
+                                                    totalCount={articlesPagination.length}
+                                                    pageSize={PageSize}
+                                                    onPageChange={page => setCurrentPage(page)}
                                                 />
-                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

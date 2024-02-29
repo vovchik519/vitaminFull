@@ -183,7 +183,7 @@ const Pantry = ({ onLoading }) => {
             array.push(data[i][key])
         }
     }
-    const PageSize = 7;
+    const PageSize = 12;
     const [imageFriendsPagination, setImageFriendsPagination] = useState([]);
     const [imagePagination, setImagePagination] = useState([]);
     const [currentPage, setCurrentPage] = useState();
