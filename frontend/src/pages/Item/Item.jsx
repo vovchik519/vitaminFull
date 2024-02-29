@@ -130,7 +130,7 @@ const Item = ({ onLoading }) => {
                                                                         <>
                                                                             {textIdArray.map((arrayItem, arrayIndex) => (
                                                                                 <p key={arrayIndex} style={{
-                                                                                    height: '1.3em'
+                                                                                    minHeight: '1.3em'
                                                                                 }}>
                                                                                     {arrayItem}
                                                                                 </p>

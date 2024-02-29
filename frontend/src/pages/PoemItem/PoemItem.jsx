@@ -84,21 +84,10 @@ const PoemItem = ({ onLoading }) => {
             window.location.reload();
         }, 0)
     };
-    const [PageSize, setPageSize] = useState(25);
+    const [PageSize, setPageSize] = useState(9999);
     const [currentPage, setCurrentPage] = useState(1);
     const [articlesPagination, setArticlesPagination] = useState([]);
     const [articlesTypePagination, setArticlesTypePagination] = useState(false);
-    useEffect(() => {
-        if (articlesTypePagination === true) {
-            if (window.innerWidth >= 580) {
-                setPageSize(8)
-            } else {
-                setPageSize(5)
-            }
-        } else {
-            setPageSize(25)
-        }
-    }, [articlesTypePagination])
     const currentTableData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize;
         const lastPageIndex = firstPageIndex + PageSize;
@@ -126,7 +115,7 @@ const PoemItem = ({ onLoading }) => {
                                                             <>
                                                                 {textIdArray.map((arrayItem, arrayIndex) => (
                                                                     <p key={arrayIndex} style={{
-                                                                        height: '1.3em'
+                                                                        minHeight: '1.3em'
                                                                     }}>
                                                                         {arrayItem}
                                                                     </p>
