@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '../../components/Pagination/Pagination';
 
 const Pantry = ({ onLoading }) => {
-    let server = 'http://185.251.88.31:1337'
+    let server = 'https://vitamin-art.ru:4444'
 
     let lang = localStorage.getItem('selectedLanguage');
 

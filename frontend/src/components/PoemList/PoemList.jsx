@@ -10,7 +10,7 @@ import styles from './PoemList.module.scss';
 import sprite from './../../images/icons/sprite.svg';
 
 const PoemList = (props) => {
-    let server = 'http://185.251.88.31:1337'
+    let server = 'https://vitamin-art.ru:4444'
 
     let lang = localStorage.getItem('selectedLanguage');
 

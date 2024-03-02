@@ -13,7 +13,7 @@ import Pagination from '../../components/Pagination/Pagination';
 import sprite from './../../images/icons/sprite.svg';
 
 const Gallery = ({onLoading}) => {
-    let server = 'http://185.251.88.31:1337'
+    let server = 'https://vitamin-art.ru:4444'
 
     let lang = localStorage.getItem('selectedLanguage');
     const [switched, setSwitched] = useState('');

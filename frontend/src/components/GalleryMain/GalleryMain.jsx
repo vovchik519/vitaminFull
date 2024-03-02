@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 
 const GalleryMain = (props) => {
-    let server = 'http://185.251.88.31:1337'
+    let server = 'https://vitamin-art.ru:4444'
 
     let { slides } = props;
 

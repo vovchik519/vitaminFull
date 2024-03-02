@@ -3,7 +3,7 @@ import styles from './BlockTextOne.module.scss';
 import Name from './../../ui/Name/Name';
 
 const BlockTextOne = (props) => {
-    let server = 'http://185.251.88.31:1337'
+    let server = 'https://vitamin-art.ru:4444'
 
     const { descriptions } = props;
     const { indents } = props;
