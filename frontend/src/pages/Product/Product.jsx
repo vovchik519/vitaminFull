@@ -153,39 +153,35 @@ const Product = ({ onLoading }) => {
                                             {lang === 'ru' ?
                                                 <details className={styles.description}>
                                                     <summary>
-                                                        <span>Инструкции по уходу</span>
+                                                        <span>ДОПОЛНЕНИЕ К ПОКУПКЕ</span>
                                                         <svg className='icon'>
                                                             <use xlinkHref={`${sprite}#icon-arrow-top`}></use>
                                                         </svg>
                                                     </summary>
-                                                    <p>Спасибо за покупку! Чтобы гарантировать, что ваша картина была доставлена в идеальном состоянии, следуйте приведенным ниже инструкциям по распаковке:</p>
-                                                    <ol>
-                                                        <li>Найдите язычок на одном конце ленты и осторожно вытащите ленту из крафт-бумаги. Будьте осторожны, чтобы не порвать бумагу или картину внутри. Мы не рекомендуем использовать канцелярский нож или любой другой острый инструмент, чтобы разрезать ленту и/или бумагу. </li>
-                                                        <li>Разверните картину из крафт-бумаги на ровную поверхность.</li>
-                                                    </ol>
-                                                    <p>Обратите внимание, что мы не несем ответственности за ущерб, вызванный небрежной распаковкой.</p>
-                                                    <p>Если у вас есть какие-либо вопросы или сомнения по поводу вашей работы, не стесняйтесь обращаться к нам по <a href="mailto:v.a.malkov@mail.ru">v.a.malkov@mail.ru</a>.
-                                                        Еще раз благодарим вас за покупку и надеемся, что вам понравятся ваши  произведения искусства!</p>
+                                                    <p>Спасибо за покупку, дорогие любители прекрасного!</p>
+                                                    <p>Дед Валерий и его друзья несказанно рады тому, что вы приняли правильное решение и хоть</p>
+                                                    <p>немного украсили свою жизнь и жизни дорогих вам людей.</p>
+                                                    <p>Пожалуйста, будьте аккуратны, распаковывая полученные вами жикле.</p>
+                                                    <p>Будут вопросы – обращайтесь.</p>
+                                                    <p>Никогда не унывайте и не останавливайтесь на пути к своей цели!</p>
+                                                    <p>Доброго вам сибирского здоровья, благополучия и удачи.</p>
+                                                    <p>С уважением, Дед Валерий и его верные и надёжные друзья.</p>
                                                 </details>
                                                 :
                                                 <details className={styles.description}>
                                                     <summary>
-                                                        <span>Care instructions</span>
+                                                        <span>ADDON TO YOUR PURCHASE</span>
                                                         <svg className='icon'>
                                                             <use xlinkHref={`${sprite}#icon-arrow-top`}></use>
                                                         </svg></summary>
-                                                    <p>Thank you for your purchase! To ensure your painting has been delivered in perfect condition, follow the unpacking instructions below:</p>
-                                                    <ol>
-                                                        <li>
-                                                            Locate the tab on one end of the ribbon and carefully pull the ribbon out of the kraft paper. Be careful not to tear the paper or picture inside. We do not recommend using a stationery knife or any other sharp tool to cut the ribbon and/or paper.
-                                                        </li>
-                                                        <li>
-                                                            Unroll the kraft paper painting onto a flat surface.
-                                                        </li>
-                                                    </ol>
-                                                    <p>Please note that we are not responsible for damage caused by careless unpacking.</p>
-                                                    <p>If you have any questions or concerns about your artwork, feel free to contact us at <a href="v.a.malkov@mail.ru">v.a.malkov@mail.ru</a>.</p>
-                                                    <p>Thank you again for your purchase and we hope you enjoy your artwork!</p>
+                                                    <p>Thank you for your purchase, dear fine art admirers!</p>
+                                                    <p>Grandpa Valerii and his friends are utmost glad for your wise decision to make slightly brighter your life</p>
+                                                    <p>and the lives of your dear ones.</p>
+                                                    <p>Please, unpack your giclee carefully.</p>
+                                                    <p>Please, do not hesitate to approach me if required.</p>
+                                                    <p>Be strong and never give up on your way to your goal!</p>
+                                                    <p>Wishing you good Siberian health and good luck.</p>
+                                                    <p>Sincerely yours, Grandpa Valerii and his devoted friends</p>
                                                 </details>
                                             }
                                         </div>
