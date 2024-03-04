@@ -62,25 +62,18 @@
     max-height: 400px;
     object-fit: contain;
     top: clamp(-130px, -10.7vw, -30px);
-    left: -1vw;
-    animation: moveToRight 18.5s linear(0.02 39.22%, 0.44 89.38%) infinite;
+    left: -64vw;
+    animation: moveToRight 19s linear(0.02 39.22%, 0.44 89.38%) infinite;
 }
 
 @keyframes moveToRight {
     0% {
-        left: -1vw;
-    }
-
-    85% {
-        left: 400vw;
-    }
-
-    86% {
-        left: -100%;
+        left: -64vw;
     }
 
     100% {
-        left: -1vw;
+        left: 400vw;
+
     }
 }
 
