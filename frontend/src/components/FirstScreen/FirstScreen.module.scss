@@ -1,10 +1,13 @@
 .wrapper {
-    margin: clamp(40px, calc(3.75rem + ((1vw - 14.4px) * 1.8519)), 60px) 0
-        clamp(35px, calc(4.6875rem + ((1vw - 14.4px) * 3.7037)), 75px);
+    padding-top: clamp(40px, calc(3.75rem + ((1vw - 14.4px) * 1.8519)), 60px);
+    margin-bottom: clamp(35px, calc(4.6875rem + ((1vw - 14.4px) * 3.7037)), 75px);
+    overflow: hidden;
 }
+
 .titleWrap {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+
     h1 {
         justify-self: center;
         grid-column: 2/3;
@@ -14,11 +17,18 @@
         line-height: 100%;
         color: #292626;
         width: 100%;
+
         span {
             color: #12486b;
         }
     }
 }
+
+.info {
+    position: relative;
+    z-index: 1;
+}
+
 .name {
     font-family: Amatic SC;
     font-size: clamp(24px, calc(2.25rem + ((1vw - 14.4px) * 1.1111)), 36px);
@@ -28,11 +38,13 @@
     letter-spacing: 0.07rem;
     max-width: 16ch;
 }
+
 .description {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     margin-top: 24px;
+
     p {
         max-width: 42ch;
         width: 100%;
@@ -42,6 +54,7 @@
         text-transform: uppercase;
     }
 }
+
 .decoration {
     position: absolute;
     max-width: 1440px;
@@ -49,31 +62,59 @@
     max-height: 400px;
     object-fit: contain;
     top: clamp(-130px, -10.7vw, -30px);
-    left: 0.8vw;
+    left: -1vw;
+    animation: moveToRight 18.5s linear(0.02 39.22%, 0.44 89.38%) infinite;
 }
+
+@keyframes moveToRight {
+    0% {
+        left: -1vw;
+    }
+
+    85% {
+        left: 400vw;
+    }
+
+    86% {
+        left: -100%;
+    }
+
+    100% {
+        left: -1vw;
+    }
+}
+
 .images {
     position: relative;
     margin-top: clamp(50px, calc(3.125rem + ((1vw - 14.4px) * -1.2963)), 64px);
 }
+
 .image {
     width: 100%;
     height: clamp(260px, calc(47.8125rem + ((1vw - 14.4px) * 46.7593)), 765px);
     object-fit: cover;
     object-position: top;
 }
+
 @media (max-width: 1024px) {
     .titleWrap {
         grid-template-columns: 1fr;
+
         h1 {
             grid-column: 1;
             margin-top: clamp(30px, calc(2.8125rem + (30 - 45) * ((100vw - 1024px) / (320 - 1024))), 45px);
         }
     }
 }
+
 @media (max-width: 580px) {
     .titleWrap {
         h1 {
             justify-self: start;
         }
+    }
+
+    .decoration {
+        animation: moveToRight 14.5s linear(0.02 39.22%, 0.44 89.38%) infinite;
     }
 }

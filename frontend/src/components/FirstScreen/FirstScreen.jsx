@@ -3,24 +3,24 @@ import styles from './FirstScreen.module.scss';
 import Name from './../../ui/Name/Name';
 
 const FirstScreen = (props) => {
-    const [position, setPosition] = useState({ mouseX: 0});
+    // const [position, setPosition] = useState({ mouseX: 0});
 
-    useEffect(() => {
-      const handleMouseMove = (e) => {
-        setPosition({ mouseX: e.clientX });
-      };
-  
-      window.addEventListener('mousemove', handleMouseMove);
-  
-      return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-      };
-    }, []);
-  
-    const calculateParallaxPosition = (strength) => {
-      const parallaxX = (position.mouseX - window.innerWidth / 2) / strength;
-      return { transform: `translate(${parallaxX}px` };
-    };
+    // useEffect(() => {
+    //   const handleMouseMove = (e) => {
+    //     setPosition({ mouseX: e.clientX });
+    //   };
+
+    //   window.addEventListener('mousemove', handleMouseMove);
+
+    //   return () => {
+    //     window.removeEventListener('mousemove', handleMouseMove);
+    //   };
+    // }, []);
+
+    // const calculateParallaxPosition = (strength) => {
+    //   const parallaxX = (position.mouseX - window.innerWidth / 2) / strength;
+    //   return { transform: `translate(${parallaxX}px` };
+    // };
     return (
         <section className={styles.wrapper}>
             <div className="container">
@@ -36,7 +36,8 @@ const FirstScreen = (props) => {
             </div>
             <div className={styles.images}>
                 {props.decoration !== undefined ?
-                    <img src={`${props.decoration}`} className={styles.decoration} alt='decoration' style={calculateParallaxPosition(70)}/>
+                    // <img src={`${props.decoration}`} className={styles.decoration} alt='decoration' style={calculateParallaxPosition(70)}/>
+                    <img src={`${props.decoration}`} className={styles.decoration} alt='decoration' />
                     : null
                 }
                 <img src={`${props.imageUrl}`} className={styles.image} alt={props.imageAlt} />
