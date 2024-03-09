@@ -87,10 +87,8 @@ const Article = ({ onLoading }) => {
     const [articlesTitle, setArticlesTitle] = useState([]);
     const [articlesParagraphTitle, setArticlesParagraphTitle] = useState([]);
     const [articlesParagraph, setArticlesParagraph] = useState([]);
-    // const [articlesParagraphIndents, setArticlesParagraphIndents] = useState([]);
     const [articlesImage, setArticlesImage] = useState([]);
 
-    console.log(articlesParagraph)
     return (
         <>
             <Header />
@@ -115,37 +113,22 @@ const Article = ({ onLoading }) => {
                                             <h2>
                                                 {articlesTitle[index]}
                                             </h2>
-                                            {articlesParagraphId[index].map((paragraphId, paragraphIndex) => (
-                                                <div key={paragraphIndex} className={styles.paragraph}>
+                                            {articlesParagraph[index].map((paragraph, paragraphIndex) => {
+                                                console.log()
+                                                let textIdArray = paragraph.split('\n')
+                                                return <div key={paragraphIndex} className={styles.paragraph}>
                                                     <h3>
                                                         {articlesParagraphTitle[index][paragraphIndex]}
                                                     </h3>
                                                     <div className={styles.text}>
-                                                        {/* {articlesParagraph[index][paragraphIndex].map((textId, textIndex) => {
-                                                            let textIdArray = textId.split('\n')
+                                                        {textIdArray.map((textId, textIndex) => {
                                                             return (
-                                                                <div key={textIndex}>
-                                                                    {textId.indexOf('\n') !== -1 ?
-                                                                        <>
-                                                                            {textIdArray.map((arrayItem, arrayIndex) => (
-                                                                                <p key={arrayIndex} style={{
-                                                                                    minHeight: '1.3em'
-                                                                                }}>
-                                                                                    {arrayItem}
-                                                                                </p>
-                                                                            ))}
-                                                                        </>
-                                                                        :
-                                                                        <p key={textIndex} className={articlesParagraphIndents[index][paragraphIndex][textIndex] === true ? '' : 'indent'}>
-                                                                            {articlesParagraph[index][paragraphIndex][textIndex]}
-                                                                        </p>
-                                                                    }
-                                                                </div>
+                                                                <p key={textIndex} style={{ minHeight: '1.3em' }}>{textId}</p>
                                                             )
-                                                        })} */}
+                                                        })}
                                                     </div>
                                                 </div>
-                                            ))}
+                                            })}
                                         </div>
                                         {lang === 'ru' ?
                                             <a href={`/item#${blockId}`}>Читать полностью</a>

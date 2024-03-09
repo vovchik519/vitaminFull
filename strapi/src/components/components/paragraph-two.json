@@ -10,15 +10,15 @@
       "type": "string"
     },
     "paragraph": {
-      "type": "string"
+      "type": "text"
     },
     "images": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": true,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

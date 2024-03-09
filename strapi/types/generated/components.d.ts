@@ -151,7 +151,7 @@ export interface ComponentsParagraphTwo extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    paragraph: Attribute.String;
+    paragraph: Attribute.Text;
     images: Attribute.Media;
   };
 }
