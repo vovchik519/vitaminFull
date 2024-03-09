@@ -39,7 +39,6 @@ const Item = ({ onLoading }) => {
                 // articles
                 let articlesTitleArray = []
                 let articlesParagraphArray = []
-                let articlesParagraphIndentsArray = []
                 let articlesParagraphTitleArray = []
                 let articlesImageArray = []
                 let articlesIdArray = []
@@ -47,33 +46,23 @@ const Item = ({ onLoading }) => {
                 for (let i = 0; i < data.data.attributes.articles.data[0].attributes.block.length; i++) {
                     let articlesBlockTitle = []
                     let articlesBlockParagraph = []
-                    let articlesBlockParagraphIndents = []
                     let articlesBlockId = []
                     let articlesBlockParagraphId = []
                     articlesTitleArray.push(data.data.attributes.articles.data[0].attributes.block[i].title)
                     articlesImageArray.push(data.data.attributes.articles.data[0].attributes.block[i].image.data.attributes.url)
                     for (let j = 0; j < data.data.attributes.articles.data[0].attributes.block[i].paragraph.length; j++) {
-                        let paragraphArray = []
-                        let paragraphIndentsArray = []
                         articlesBlockTitle.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].title)
                         articlesBlockId.splice(0, 1, data.data.attributes.articles.data[0].attributes.block[i].id)
                         articlesBlockParagraphId.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].id)
-                        for (let g = 0; g < data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph.length; g++) {
-                            paragraphArray.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph[g].paragraph)
-                            paragraphIndentsArray.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph[g].removeIndentation)
-                        }
-                        articlesBlockParagraph.push(paragraphArray)
-                        articlesBlockParagraphIndents.push(paragraphIndentsArray)
+                        articlesBlockParagraph.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph)
                     }
                     articlesParagraphTitleArray.push(articlesBlockTitle)
                     articlesParagraphArray.push(articlesBlockParagraph)
-                    articlesParagraphIndentsArray.push(articlesBlockParagraphIndents)
                     articlesIdArray.push(articlesBlockId)
                     articlesParagraphIdArray.push(articlesBlockParagraphId)
                 }
                 setArticlesTitle(articlesTitleArray)
                 setArticlesParagraph(articlesParagraphArray)
-                setArticlesParagraphIndents(articlesParagraphIndentsArray)
                 setArticlesParagraphTitle(articlesParagraphTitleArray)
                 setArticlesImage(articlesImageArray)
                 setArticlesId(articlesIdArray)
@@ -92,7 +81,6 @@ const Item = ({ onLoading }) => {
     const [articlesTitle, setArticlesTitle] = useState([]);
     const [articlesParagraphTitle, setArticlesParagraphTitle] = useState([]);
     const [articlesParagraph, setArticlesParagraph] = useState([]);
-    const [articlesParagraphIndents, setArticlesParagraphIndents] = useState([]);
     const [articlesImage, setArticlesImage] = useState([]);
     function handleReloadClick() {
         setTimeout(() => {
@@ -101,7 +89,6 @@ const Item = ({ onLoading }) => {
     };
 
     const swiperRef = useRef();
-    const [errorRender, setErrorRender] = useState()
     return (
         <>
             <Header />
@@ -116,37 +103,21 @@ const Item = ({ onLoading }) => {
                                             <h2>
                                                 {articlesTitle[index]}
                                             </h2>
-                                            {articlesParagraphId[index].map((paragraphId, paragraphIndex) => (
-                                                <div key={paragraphIndex} className={styles.paragraph}>
+                                            {articlesParagraph[index].map((paragraph, paragraphIndex) => {
+                                                let textIdArray = paragraph.split('\n')
+                                                return <div key={paragraphIndex} className={styles.paragraph}>
                                                     <h3>
                                                         {articlesParagraphTitle[index][paragraphIndex]}
                                                     </h3>
                                                     <div className={styles.text}>
-                                                        {articlesParagraph[index][paragraphIndex].map((textId, textIndex) => {
-                                                            let textIdArray = textId.split('\n')
+                                                        {textIdArray.map((textId, textIndex) => {
                                                             return (
-                                                                <div key={textIndex}>
-                                                                    {textId.indexOf('\n') !== -1 ?
-                                                                        <>
-                                                                            {textIdArray.map((arrayItem, arrayIndex) => (
-                                                                                <p key={arrayIndex} style={{
-                                                                                    minHeight: '1.3em'
-                                                                                }}>
-                                                                                    {arrayItem}
-                                                                                </p>
-                                                                            ))}
-                                                                        </>
-                                                                        :
-                                                                        <p key={textIndex} className={articlesParagraphIndents[index][paragraphIndex][textIndex] === true ? '' : 'indent'}>
-                                                                            {articlesParagraph[index][paragraphIndex][textIndex]}
-                                                                        </p>
-                                                                    }
-                                                                </div>
+                                                                <p key={textIndex} style={{ minHeight: '1.3em' }}>{textId}</p>
                                                             )
                                                         })}
                                                     </div>
                                                 </div>
-                                            ))}
+                                            })}
                                         </div>
                                     </div>
                                 </div>

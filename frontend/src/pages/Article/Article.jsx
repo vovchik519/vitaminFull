@@ -114,7 +114,6 @@ const Article = ({ onLoading }) => {
                                                 {articlesTitle[index]}
                                             </h2>
                                             {articlesParagraph[index].map((paragraph, paragraphIndex) => {
-                                                console.log()
                                                 let textIdArray = paragraph.split('\n')
                                                 return <div key={paragraphIndex} className={styles.paragraph}>
                                                     <h3>
