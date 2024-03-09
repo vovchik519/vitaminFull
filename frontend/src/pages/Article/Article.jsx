@@ -9,7 +9,7 @@ import Footer from './../../components/Footer/Footer';
 
 const Article = ({ onLoading }) => {
     let server = 'https://vitamin-art.ru:4444'
-    
+
     let lang = localStorage.getItem('selectedLanguage');
 
     useEffect(() => {
@@ -40,7 +40,6 @@ const Article = ({ onLoading }) => {
                 // articles
                 let articlesTitleArray = []
                 let articlesParagraphArray = []
-                let articlesParagraphIndentsArray = []
                 let articlesParagraphTitleArray = []
                 let articlesImageArray = []
                 let articlesIdArray = []
@@ -48,33 +47,23 @@ const Article = ({ onLoading }) => {
                 for (let i = 0; i < data.data.attributes.articles.data[0].attributes.block.length; i++) {
                     let articlesBlockTitle = []
                     let articlesBlockParagraph = []
-                    let articlesBlockParagraphIndents = []
                     let articlesBlockId = []
                     let articlesBlockParagraphId = []
                     articlesTitleArray.push(data.data.attributes.articles.data[0].attributes.block[i].title)
                     articlesImageArray.push(data.data.attributes.articles.data[0].attributes.block[i].image.data.attributes.url)
                     for (let j = 0; j < data.data.attributes.articles.data[0].attributes.block[i].paragraph.length; j++) {
-                        let paragraphArray = []
-                        let paragraphIndentsArray = []
                         articlesBlockTitle.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].title)
                         articlesBlockId.splice(0, 1, data.data.attributes.articles.data[0].attributes.block[i].id)
                         articlesBlockParagraphId.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].id)
-                        for (let g = 0; g < data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph.length; g++) {
-                            paragraphArray.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph[g].paragraph)
-                            paragraphIndentsArray.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph[g].removeIndentation)
-                        }
-                        articlesBlockParagraph.push(paragraphArray)
-                        articlesBlockParagraphIndents.push(paragraphIndentsArray)
+                        articlesBlockParagraph.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph)
                     }
                     articlesParagraphTitleArray.push(articlesBlockTitle)
                     articlesParagraphArray.push(articlesBlockParagraph)
-                    articlesParagraphIndentsArray.push(articlesBlockParagraphIndents)
                     articlesIdArray.push(articlesBlockId)
                     articlesParagraphIdArray.push(articlesBlockParagraphId)
                 }
                 setArticlesTitle(articlesTitleArray)
                 setArticlesParagraph(articlesParagraphArray)
-                setArticlesParagraphIndents(articlesParagraphIndentsArray)
                 setArticlesParagraphTitle(articlesParagraphTitleArray)
                 setArticlesImage(articlesImageArray)
                 setArticlesId(articlesIdArray)
@@ -98,9 +87,10 @@ const Article = ({ onLoading }) => {
     const [articlesTitle, setArticlesTitle] = useState([]);
     const [articlesParagraphTitle, setArticlesParagraphTitle] = useState([]);
     const [articlesParagraph, setArticlesParagraph] = useState([]);
-    const [articlesParagraphIndents, setArticlesParagraphIndents] = useState([]);
+    // const [articlesParagraphIndents, setArticlesParagraphIndents] = useState([]);
     const [articlesImage, setArticlesImage] = useState([]);
 
+    console.log(articlesParagraph)
     return (
         <>
             <Header />
@@ -131,7 +121,7 @@ const Article = ({ onLoading }) => {
                                                         {articlesParagraphTitle[index][paragraphIndex]}
                                                     </h3>
                                                     <div className={styles.text}>
-                                                        {articlesParagraph[index][paragraphIndex].map((textId, textIndex) => {
+                                                        {/* {articlesParagraph[index][paragraphIndex].map((textId, textIndex) => {
                                                             let textIdArray = textId.split('\n')
                                                             return (
                                                                 <div key={textIndex}>
@@ -152,7 +142,7 @@ const Article = ({ onLoading }) => {
                                                                     }
                                                                 </div>
                                                             )
-                                                        })}
+                                                        })} */}
                                                     </div>
                                                 </div>
                                             ))}

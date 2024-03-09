@@ -13,7 +13,7 @@
     "paragraph": {
       "type": "component",
       "repeatable": true,
-      "component": "components.paragraph"
+      "component": "components.paragraph-two"
     },
     "image": {
       "allowedTypes": [

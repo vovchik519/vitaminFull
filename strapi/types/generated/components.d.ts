@@ -143,6 +143,19 @@ export interface ComponentsMultiTitle extends Schema.Component {
   };
 }
 
+export interface ComponentsParagraphTwo extends Schema.Component {
+  collectionName: 'components_components_paragraph_twos';
+  info: {
+    displayName: 'paragraphTwo';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    paragraph: Attribute.String;
+    images: Attribute.Media;
+  };
+}
+
 export interface ComponentsParagraph extends Schema.Component {
   collectionName: 'components_components_paragraphs';
   info: {
@@ -227,7 +240,7 @@ export interface SectionsArticleBlock extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    paragraph: Attribute.Component<'components.paragraph', true>;
+    paragraph: Attribute.Component<'components.paragraph-two', true>;
     image: Attribute.Media & Attribute.Required;
   };
 }
@@ -459,6 +472,7 @@ declare module '@strapi/types' {
       'components.multi-paragraph-and-link': ComponentsMultiParagraphAndLink;
       'components.multi-paragraph': ComponentsMultiParagraph;
       'components.multi-title': ComponentsMultiTitle;
+      'components.paragraph-two': ComponentsParagraphTwo;
       'components.paragraph': ComponentsParagraph;
       'components.product-description': ComponentsProductDescription;
       'components.product': ComponentsProduct;
