@@ -43,24 +43,33 @@ const Item = ({ onLoading }) => {
                 let articlesImageArray = []
                 let articlesIdArray = []
                 let articlesParagraphIdArray = []
+                let articlesDataImages = []
                 for (let i = 0; i < data.data.attributes.articles.data[0].attributes.block.length; i++) {
                     let articlesBlockTitle = []
                     let articlesBlockParagraph = []
                     let articlesBlockId = []
                     let articlesBlockParagraphId = []
+                    let articlesParagraphImages = []
                     articlesTitleArray.push(data.data.attributes.articles.data[0].attributes.block[i].title)
                     articlesImageArray.push(data.data.attributes.articles.data[0].attributes.block[i].image.data.attributes.url)
                     for (let j = 0; j < data.data.attributes.articles.data[0].attributes.block[i].paragraph.length; j++) {
+                        let articlesBlockIdImages = []
                         articlesBlockTitle.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].title)
                         articlesBlockId.splice(0, 1, data.data.attributes.articles.data[0].attributes.block[i].id)
                         articlesBlockParagraphId.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].id)
                         articlesBlockParagraph.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph)
+                        for (let o = 0; o < data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data.length; o++) {
+                            articlesBlockIdImages.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data[o].attributes.url)
+                        }
+                        articlesParagraphImages.push(articlesBlockIdImages)
                     }
+                    articlesDataImages.push(articlesParagraphImages)
                     articlesParagraphTitleArray.push(articlesBlockTitle)
                     articlesParagraphArray.push(articlesBlockParagraph)
                     articlesIdArray.push(articlesBlockId)
                     articlesParagraphIdArray.push(articlesBlockParagraphId)
                 }
+                setArticlesParagraphImage(articlesDataImages)
                 setArticlesTitle(articlesTitleArray)
                 setArticlesParagraph(articlesParagraphArray)
                 setArticlesParagraphTitle(articlesParagraphTitleArray)
@@ -82,12 +91,12 @@ const Item = ({ onLoading }) => {
     const [articlesParagraphTitle, setArticlesParagraphTitle] = useState([]);
     const [articlesParagraph, setArticlesParagraph] = useState([]);
     const [articlesImage, setArticlesImage] = useState([]);
+    const [articlesParagraphImage, setArticlesParagraphImage] = useState([]);
     function handleReloadClick() {
         setTimeout(() => {
             window.location.reload();
         }, 0)
     };
-
     const swiperRef = useRef();
     return (
         <>
@@ -105,6 +114,7 @@ const Item = ({ onLoading }) => {
                                             </h2>
                                             {articlesParagraph[index].map((paragraph, paragraphIndex) => {
                                                 let textIdArray = paragraph.split('\n')
+                                                console.log(articlesParagraphImage[index])
                                                 return <div key={paragraphIndex} className={styles.paragraph}>
                                                     <h3>
                                                         {articlesParagraphTitle[index][paragraphIndex]}

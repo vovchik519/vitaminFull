@@ -13,15 +13,16 @@
     "paragraph": {
       "type": "component",
       "repeatable": true,
-      "component": "components.paragraph-two"
+      "component": "components.paragraph-two",
+      "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

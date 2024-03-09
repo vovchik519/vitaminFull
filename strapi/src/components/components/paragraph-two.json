@@ -10,7 +10,8 @@
       "type": "string"
     },
     "paragraph": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "images": {
       "type": "media",

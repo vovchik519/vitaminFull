@@ -151,7 +151,7 @@ export interface ComponentsParagraphTwo extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    paragraph: Attribute.Text;
+    paragraph: Attribute.Text & Attribute.Required;
     images: Attribute.Media;
   };
 }
@@ -240,7 +240,8 @@ export interface SectionsArticleBlock extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    paragraph: Attribute.Component<'components.paragraph-two', true>;
+    paragraph: Attribute.Component<'components.paragraph-two', true> &
+      Attribute.Required;
     image: Attribute.Media & Attribute.Required;
   };
 }
