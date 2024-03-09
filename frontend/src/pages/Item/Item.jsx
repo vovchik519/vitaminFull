@@ -58,8 +58,10 @@ const Item = ({ onLoading }) => {
                         articlesBlockId.splice(0, 1, data.data.attributes.articles.data[0].attributes.block[i].id)
                         articlesBlockParagraphId.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].id)
                         articlesBlockParagraph.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].paragraph)
-                        for (let o = 0; o < data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data.length; o++) {
-                            articlesBlockIdImages.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data[o].attributes.url)
+                        if (data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data !== null) {
+                            for (let o = 0; o < data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data.length; o++) {
+                                articlesBlockIdImages.push(data.data.attributes.articles.data[0].attributes.block[i].paragraph[j].images.data[o].attributes.url)
+                            }
                         }
                         articlesParagraphImages.push(articlesBlockIdImages)
                     }
@@ -97,6 +99,7 @@ const Item = ({ onLoading }) => {
             window.location.reload();
         }, 0)
     };
+    
     const swiperRef = useRef();
     return (
         <>
@@ -114,17 +117,19 @@ const Item = ({ onLoading }) => {
                                             </h2>
                                             {articlesParagraph[index].map((paragraph, paragraphIndex) => {
                                                 let textIdArray = paragraph.split('\n')
-                                                console.log(articlesParagraphImage[index])
                                                 return <div key={paragraphIndex} className={styles.paragraph}>
-                                                    <h3>
+                                                    {articlesParagraphTitle[index][paragraphIndex] && <h3>
                                                         {articlesParagraphTitle[index][paragraphIndex]}
-                                                    </h3>
+                                                    </h3>}
                                                     <div className={styles.text}>
                                                         {textIdArray.map((textId, textIndex) => {
                                                             return (
                                                                 <p key={textIndex} style={{ minHeight: '1.3em' }}>{textId}</p>
                                                             )
                                                         })}
+                                                        {articlesParagraphImage[index][paragraphIndex].map((image, imageIndex) => (
+                                                            <img src={image} alt="image" key={imageIndex} />
+                                                        ))}
                                                     </div>
                                                 </div>
                                             })}
