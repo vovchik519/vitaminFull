@@ -145,7 +145,7 @@
 .imageDescription {
     :global {
         div.fullscreen-image:last-child {
-            padding: 20px 40px calc(20px + 2rem) !important;
+            padding: 20px 40px calc(20px + 3rem) !important;
         }
     }
 }
@@ -307,7 +307,7 @@
     .imageDescription {
         :global {
             div.fullscreen-image:last-child {
-                padding: 20px 10px calc(20px + 2rem) !important;
+                padding: 20px 10px calc(20px + 3rem) !important;
             }
         }
     }
