@@ -142,6 +142,15 @@
     }
 }
 
+.imageDescription {
+    :global {
+        div.fullscreen-image:last-child {
+            padding: 20px 40px calc(20px + 2rem) !important;
+        }
+    }
+}
+
+
 .imageTop {
     h3 {
         font-family: PT Root UI;
@@ -167,6 +176,33 @@
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
+    }
+
+    p {
+        overflow-y: auto;
+        height: 2rem;
+        position: absolute;
+        text-align: center;
+        bottom: 5%;
+        font-size: .5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        padding: 0 10px;
+    }
+
+    p::-webkit-scrollbar {
+        width: 0.1rem;
+    }
+
+    p::-webkit-scrollbar-thumb {
+        transition: 0.3s;
+        background-color: #12486b;
+        border-radius: 0;
+    }
+
+    p::-webkit-scrollbar-track {
+        background-color: rgb(183, 183, 183);
     }
 }
 
@@ -264,6 +300,14 @@
 
             div.fullscreen-image:last-child {
                 padding: 20px 10px;
+            }
+        }
+    }
+
+    .imageDescription {
+        :global {
+            div.fullscreen-image:last-child {
+                padding: 20px 10px calc(20px + 2rem) !important;
             }
         }
     }

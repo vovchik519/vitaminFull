@@ -12,7 +12,7 @@ import Preloader from './../../components/Preloader/Preloader';
 import Pagination from '../../components/Pagination/Pagination';
 import sprite from './../../images/icons/sprite.svg';
 
-const Gallery = ({onLoading}) => {
+const Gallery = ({ onLoading }) => {
     let server = 'https://vitamin-art.ru:4444'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -61,6 +61,7 @@ const Gallery = ({onLoading}) => {
                         let galleryArray = []
                         galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].image.data.attributes.url)
                         galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].signature)
+                        galleryArray.push(data.data.attributes.gallery[i].gallery.data.attributes.Image[g].description)
                         imageArray.push(galleryArray)
                     }
                     for (let j = 0; j < data.data.attributes.gallery[i].description.length; j++) {
@@ -204,11 +205,11 @@ const Gallery = ({onLoading}) => {
                                                             columnClassName="images-column">
                                                             {currentTableData().map((image, imageIndex) => (
                                                                 <div key={imageIndex} className={styles.imageTop}>
-                                                                    <div className={styles.image}>
+                                                                    <div className={`${styles.image} ${image[2] !== null ? styles.imageDescription : null}`}>
                                                                         {isVideo(image[0]) ?
                                                                             <video src={image[0]} controls loading='lazy'></video>
                                                                             :
-                                                                            <Image src={image[0]} alt="Картинка" />
+                                                                            <Image src={image[0]} alt="Картинка" description={image[2]} />
                                                                         }
                                                                     </div>
                                                                     <h3>{image[1]}</h3>

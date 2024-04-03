@@ -1,0 +1,126 @@
+diff --git a/node_modules/react-fullscreen-image/index.d.ts b/node_modules/react-fullscreen-image/index.d.ts
+index 541c360..12111ab 100644
+--- a/node_modules/react-fullscreen-image/index.d.ts
++++ b/node_modules/react-fullscreen-image/index.d.ts
+@@ -17,6 +17,7 @@ export type ImageGroupActionTypes = {
+ export type ImageProps = {
+   src: string
+   alt: string
++  description: string
+   style?: object
+   [k: string]: any
+ }
+diff --git a/node_modules/react-fullscreen-image/lib/fullscreen.js b/node_modules/react-fullscreen-image/lib/fullscreen.js
+index 63c4321..811d1fe 100644
+--- a/node_modules/react-fullscreen-image/lib/fullscreen.js
++++ b/node_modules/react-fullscreen-image/lib/fullscreen.js
+@@ -1,5 +1,5 @@
+ var __assign = (this && this.__assign) || function () {
+-    __assign = Object.assign || function(t) {
++    __assign = Object.assign || function (t) {
+         for (var s, i = 1, n = arguments.length; i < n; i++) {
+             s = arguments[i];
+             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+@@ -175,18 +175,23 @@ export function ImageGroup(_a) {
+         numberOfImageChildren,
+         state.currentFocusedImageIndex,
+     ]);
+-    return (React.createElement("div", { "data-fullscreen-group": "", className: "fullscreen-group" + (state.isImageGroupExpanded ? ' fullscreen-group--expanded' : ''), style: {
++    return (React.createElement("div", {
++        "data-fullscreen-group": "", className: "fullscreen-group" + (state.isImageGroupExpanded ? ' fullscreen-group--expanded' : ''), style: {
+             transition: "opacity " + transitionMs + "ms ease",
+-        } },
++        }
++    },
+         updatedChildren,
+         state.currentFocusedImageIndex !== -1 && (React.createElement(React.Fragment, null,
+-            React.createElement("button", { className: "fullscreen-exit-btn", onClick: function () {
++            React.createElement("button", {
++                className: "fullscreen-exit-btn", onClick: function () {
+                     dispatch({
+                         type: ImageGroup.actions.toggleCloseAnimate,
+                     });
+-                }, "aria-label": "Close fullscreen view" },
++                }, "aria-label": "Close fullscreen view"
++            },
+                 React.createElement(ExitIcon, null)),
+-            React.createElement("button", { ref: previousImageButton, className: "fullscreen-toggle toggle--left", onClick: function () {
++            React.createElement("button", {
++                ref: previousImageButton, className: "fullscreen-toggle toggle--left", onClick: function () {
+                     dispatch({
+                         type: ImageGroup.actions.toggleExpand,
+                         payload: {
+@@ -195,9 +200,11 @@ export function ImageGroup(_a) {
+                                 : numberOfImageChildren - 1,
+                         },
+                     });
+-                }, tabIndex: state.isImageGroupExpanded ? 0 : -1, "aria-label": "Show previous photo" },
++                }, tabIndex: state.isImageGroupExpanded ? 0 : -1, "aria-label": "Show previous photo"
++            },
+                 React.createElement(Arrow, { direction: "left" })),
+-            React.createElement("button", { ref: nextImageButton, className: "fullscreen-toggle toggle--right", onClick: function () {
++            React.createElement("button", {
++                ref: nextImageButton, className: "fullscreen-toggle toggle--right", onClick: function () {
+                     dispatch({
+                         type: ImageGroup.actions.toggleExpand,
+                         payload: {
+@@ -206,7 +213,8 @@ export function ImageGroup(_a) {
+                                 : 0,
+                         },
+                     });
+-                }, tabIndex: state.isImageGroupExpanded ? 0 : -1, "aria-label": "Show next photo" },
++                }, tabIndex: state.isImageGroupExpanded ? 0 : -1, "aria-label": "Show next photo"
++            },
+                 React.createElement(Arrow, { direction: "right" }))))));
+ }
+ ImageGroup.actions = {
+@@ -215,7 +223,7 @@ ImageGroup.actions = {
+     toggleCloseAnimate: 'TOGGLE_CLOSE_ANIMATE',
+ };
+ export function Image(_a) {
+-    var src = _a.src, alt = _a.alt, style = _a.style, props = __rest(_a, ["src", "alt", "style"]);
++    var src = _a.src, alt = _a.alt, style = _a.style, description = _a.description, props = __rest(_a, ["src", "alt", "style", "description"]);
+     var onClick = props.onClick, isFocused = props.isFocused, shouldAnimate = props.shouldAnimate, isImageGroupExpanded = props.isImageGroupExpanded, transitionMs = props.transitionMs, rest = __rest(props, ["onClick", "isFocused", "shouldAnimate", "isImageGroupExpanded", "transitionMs"]);
+     var scalingImage = React.useRef(null);
+     var wasPreviouslyFocused = React.useRef(false);
+@@ -252,7 +260,9 @@ export function Image(_a) {
+             React.createElement("div", { className: "fullscreen-image" },
+                 React.createElement("img", { src: src, alt: alt, style: style })),
+             React.createElement("div", { ref: scalingImage, className: "fullscreen-image" },
+-                React.createElement("img", { src: src, alt: alt, style: style })))));
++                React.createElement("img", { src: src, alt: alt, style: style }),
++                React.createElement("p", null, description
++                )))));
+ }
+ Image.displayName = 'Image';
+ function mapPropsToChildren(children, fnToApplyToChild) {
+@@ -334,7 +344,7 @@ function Arrow(_a) {
+     var _b = _a.direction, direction = _b === void 0 ? 'right' : _b;
+     return direction === 'right' ? (React.createElement("svg", { width: "20", height: "34", xmlns: "http://www.w3.org/2000/svg" },
+         React.createElement("path", { d: "M18.3523845 18.5841646L4.77482194 32.343229c-.86369698.8756947-2.26403359.8756947-3.12731127 0-.86334756-.8749156-.86334756-2.2939446 0-3.1687894L13.6615574 16.9997698 1.6478601 4.82552501c-.86334757-.87526972-.86334757-2.29415709 0-3.16907271.86334755-.87526973 2.26361428-.87526973 3.12731126 0L18.3527339 15.4157292C18.7844077 15.8533995 19 16.4264076 19 16.999699c0 .5735747-.2160116 1.1470077-.6476155 1.5844656z", fillRule: "nonzero", stroke: "#000", fill: "#fff" }))) : (React.createElement("svg", { width: "20", height: "34", xmlns: "http://www.w3.org/2000/svg" },
+-        React.createElement("path", { d: "M1.6476155 18.5841646L15.22517806 32.343229c.86369698.8756947 2.26403359.8756947 3.12731127 0 .86334756-.8749156.86334756-2.2939446 0-3.1687894L6.3384426 16.9997698 18.3521399 4.82552501c.86334757-.87526972.86334757-2.29415709 0-3.16907271-.86334755-.87526973-2.26361428-.87526973-3.12731126 0L1.6472661 15.4157292C1.2155923 15.8533995 1 16.4264076 1 16.999699c0 .5735747.2160116 1.1470077.6476155 1.5844656z", fillRule: "nonzero", stroke: "#000", fill: "#fff" })));
++            React.createElement("path", { d: "M1.6476155 18.5841646L15.22517806 32.343229c.86369698.8756947 2.26403359.8756947 3.12731127 0 .86334756-.8749156.86334756-2.2939446 0-3.1687894L6.3384426 16.9997698 18.3521399 4.82552501c.86334757-.87526972.86334757-2.29415709 0-3.16907271-.86334755-.87526973-2.26361428-.87526973-3.12731126 0L1.6472661 15.4157292C1.2155923 15.8533995 1 16.4264076 1 16.999699c0 .5735747.2160116 1.1470077.6476155 1.5844656z", fillRule: "nonzero", stroke: "#000", fill: "#fff" })));
+ }
+ function ExitIcon() {
+     return (React.createElement("svg", { width: "20", height: "20", xmlns: "http://www.w3.org/2000/svg" },
+diff --git a/node_modules/react-fullscreen-image/src/fullscreen.tsx b/node_modules/react-fullscreen-image/src/fullscreen.tsx
+index 2e945be..7208314 100644
+--- a/node_modules/react-fullscreen-image/src/fullscreen.tsx
++++ b/node_modules/react-fullscreen-image/src/fullscreen.tsx
+@@ -271,7 +271,7 @@ ImageGroup.actions = {
+   toggleCloseAnimate: 'TOGGLE_CLOSE_ANIMATE',
+ }
+ 
+-export function Image({ src, alt, style, ...props }: ImageProps) {
++export function Image({ src, alt, style, description, ...props }: ImageProps) {
+   const {
+     onClick,
+     isFocused,
+@@ -331,6 +331,7 @@ export function Image({ src, alt, style, ...props }: ImageProps) {
+         <div ref={scalingImage} className="fullscreen-image">
+           <img src={src} alt={alt} style={style} />
+         </div>
++        <p>{description}</p>
+       </button>
+     </div>
+   )
