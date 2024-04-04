@@ -36,6 +36,7 @@ export interface ComponentsGalleryItem extends Schema.Component {
   attributes: {
     image: Attribute.Media & Attribute.Required;
     signature: Attribute.String;
+    description: Attribute.Text;
   };
 }
 

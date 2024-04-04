@@ -17,6 +17,9 @@
     },
     "signature": {
       "type": "string"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
