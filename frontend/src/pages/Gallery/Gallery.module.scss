@@ -192,7 +192,7 @@
     }
 
     p::-webkit-scrollbar {
-        width: 0.1rem;
+        width: 5px;
     }
 
     p::-webkit-scrollbar-thumb {
@@ -203,6 +203,8 @@
 
     p::-webkit-scrollbar-track {
         background-color: rgb(183, 183, 183);
+        border: 1px solid transparent;
+        background-clip: content-box;
     }
 }
 
