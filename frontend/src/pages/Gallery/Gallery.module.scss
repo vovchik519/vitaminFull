@@ -148,6 +148,14 @@
             padding: 20px 40px calc(20px + 3rem) !important;
         }
     }
+
+    @-moz-document url-prefix() {
+        :global {
+            div.fullscreen-image:last-child {
+                padding: 20px 40px calc(20px + 4rem) !important;
+            }
+        }
+    }
 }
 
 
@@ -188,7 +196,15 @@
         left: 50%;
         transform: translateX(-50%);
         width: 80%;
-        padding: 0 10px;
+        padding: 0 15px;
+    }
+
+    @-moz-document url-prefix() {
+        p {
+            scrollbar-color: #12486b rgb(237, 237, 237) !important;
+            scrollbar-width: auto;
+            height: 3.5rem;
+        }
     }
 
     p::-webkit-scrollbar {
@@ -206,6 +222,7 @@
         border: 1px solid transparent;
         background-clip: content-box;
     }
+
 }
 
 .container {
