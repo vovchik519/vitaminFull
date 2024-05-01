@@ -27,11 +27,13 @@ const FourImage = (props) => {
                         <img src={`${props.imageFourUrl}`} alt={props.imageFourAlt} />
                     </div>
                     <div className={styles.info}>
-                        <div className={styles.descriptionBottom}>
-                            {descriptionsBottom.map((description, index) => (
-                                <p className={props.descriptionsBottomIndents[index] === true ? '' : 'indent'} key={index}>{description}</p>
-                            ))}
-                        </div>
+                        {descriptionsBottom.length !== 0 ?
+                            <div className={styles.descriptionBottom}>
+                                {descriptionsBottom.map((description, index) => (
+                                    <p className={props.descriptionsBottomIndents[index] === true ? '' : 'indent'} key={index}>{description}</p>
+                                ))}
+                            </div> : null
+                        }
                     </div>
                 </div>
             </div>

@@ -9,8 +9,10 @@ import FourImage from './../../components/FourImage/FourImage';
 
 import Header from './../../components/Header/Header';
 import Footer from './../../components/Footer/Footer';
+import img1 from './../../images/about/1.jpg';
+import img2 from './../../images/about/2.jpg';
 
-const About = ({onLoading}) => {
+const About = ({ onLoading }) => {
     let server = 'https://vitamin-art.ru:4444'
 
     let lang = localStorage.getItem('selectedLanguage');
@@ -198,7 +200,43 @@ const About = ({onLoading}) => {
                     imageFourUrl={gicleeImageFour.url}
                     imageFourAlt={gicleeImageFour.alternativeText}
                 />
-            </main>
+                <div className="container">
+                    <section className={styles.subSection}>
+                        <div className={styles.subWrap}>
+                            {lang === 'ru' ?
+                                <h2>Дед Валерий устроил вернисаж своих работ и читает свою же историю "Ночное" первоклашкам соседней школы на Уроке о важном.
+                                    <span>Тема урока "Дружба и любовь".</span>
+                                    <span>Все довольны, все смеются. </span>
+                                </h2> :
+                                <h2>These two snapshots depict Grandpa Valerii lecturing the first graders on the topic of Friendship and Love. Grandpa reads his The Overnight Hike story aloud. These lecture and vernisage were fun and delight and success and took place at the nearby school.
+                                </h2>
+                            }
+                        </div>
+                        <div className={styles.images}>
+                            <div className={styles.img}>
+                                <img src={img1} alt="photo one" />
+                            </div>
+                            <div className={styles.img}>
+                                <img src={img2} alt="photo two" />
+                            </div>
+                        </div>
+                        {lang === 'ru' ?
+                            <div className={styles.subWrap}>
+                                <p>
+                                    Деда Валера будет рад получить от вас весточку.
+                                </p>
+                                <p className='indent'>Пишите ему также на страничке «Привет, автор!» У Деда Валеры есть особые предложения для издателей. Дорогие издатели, отзовитесь.</p>
+                            </div> :
+                            <div className={styles.subWrap}>
+                                <p>
+                                    The publishers will get very special offers from Mr. Malkov.
+                                </p>
+                                <p className='indent'>Dear publishers, please don’t hesitate to get a hold of him.</p>
+                            </div>
+                        }
+                    </section>
+                </div >
+            </main >
             <Footer />
         </>
     );
